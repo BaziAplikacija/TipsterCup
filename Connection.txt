@@ -1,0 +1,47 @@
+public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+	    // Ova e tunnel skriptata i preporacuvam da ja startuvate vo CMD, bidejki rabotime na .NET
+            // plink odnadvor@bazi.finki.ukim.mk -ssh -pw B2eN66Rq3GXE7T8R -C -N -2 -L 1620:bazi.finki.ukim.mk:1521
+
+            string oradb = "Data Source=(DESCRIPTION="
+             + "(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1620))"
+             + "(CONNECT_DATA=(SERVICE_NAME=ORCL)));"
+             + "User Id=XXX;Password=YYY;";
+
+
+	    // XXX = Workspace (od rabotni prostori)
+	    // YYY = Password (od rabotni prostori)
+
+            OracleConnection conn = new OracleConnection();
+            conn.ConnectionString = oradb;
+
+            conn.Open();
+	    
+
+
+
+	    // OD TUKA E QUERY
+
+            string sql = "select * from RESTORAN"; // C#
+            OracleCommand cmd = new OracleCommand(sql, conn);
+            cmd.CommandType = CommandType.Text;
+
+            OracleDataReader dr = cmd.ExecuteReader(); // C#
+            dr = cmd.ExecuteReader();
+            dr.Read();
+
+            label1.Text = dr["IME_RESTORAN"].ToString();
+            label2.Text = dr["GRAD"].ToString();
+
+            Console.ReadLine();
+            // C# retrieve by column name
+            conn.Close();
+        }
+    }
