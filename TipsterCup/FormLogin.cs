@@ -31,7 +31,7 @@ namespace TipsterCup
              + "(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1620))"
              + "(CONNECT_DATA=(SERVICE_NAME=ORCL)));"
              + "User Id=DBA_20132014L_GRP_022;Password=9427657;";
-        OracleConnection connection;
+        public OracleConnection connection;
         OracleCommand command; 
 
 
@@ -62,7 +62,7 @@ namespace TipsterCup
                 this.Hide();
                 if (cbLoginAs.SelectedIndex == 0)
                 {
-                    frmMain = new FormMain();
+                    frmMain = new FormMain(connection);
 
                     frmMain.Show();
                 }
@@ -153,7 +153,7 @@ namespace TipsterCup
                 lblUsername.Text = "Корисничко име:";
                 lblPassword.Text = "Лозинка:";
                 btnExit.Text = "Излез";
-                btnGo.Text = "Почни!";
+               // btnGo.Text = "Почни!";
                 this.Text = "Најава";
 
                 cbLoginAs.Items.Add("Типстер");
@@ -169,7 +169,7 @@ namespace TipsterCup
                 lblUsername.Text = "Username:";
                 lblPassword.Text = "Password:";
                 btnExit.Text = "Exit";
-                btnGo.Text = "Go!";
+               // btnGo.Text = "Go!";
                 this.Text = "Login";
 
                 cbLoginAs.Items.Add("Tipster");

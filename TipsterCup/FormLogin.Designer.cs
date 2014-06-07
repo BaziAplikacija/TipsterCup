@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
             this.tbPassword = new System.Windows.Forms.TextBox();
@@ -121,9 +122,9 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(57, 302);
+            this.btnExit.Location = new System.Drawing.Point(57, 301);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(75, 23);
+            this.btnExit.Size = new System.Drawing.Size(63, 68);
             this.btnExit.TabIndex = 6;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -131,11 +132,11 @@
             // 
             // btnGo
             // 
-            this.btnGo.Location = new System.Drawing.Point(256, 302);
+            this.btnGo.Image = ((System.Drawing.Image)(resources.GetObject("btnGo.Image")));
+            this.btnGo.Location = new System.Drawing.Point(306, 301);
             this.btnGo.Name = "btnGo";
-            this.btnGo.Size = new System.Drawing.Size(75, 23);
+            this.btnGo.Size = new System.Drawing.Size(71, 68);
             this.btnGo.TabIndex = 5;
-            this.btnGo.Text = "Go!";
             this.btnGo.UseVisualStyleBackColor = true;
             this.btnGo.Click += new System.EventHandler(this.btnGo_Click);
             // 
@@ -150,7 +151,7 @@
             this.AcceptButton = this.btnGo;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(408, 358);
+            this.ClientSize = new System.Drawing.Size(413, 381);
             this.Controls.Add(this.btnGo);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.cbLoginAs);
