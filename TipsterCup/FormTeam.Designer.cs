@@ -36,6 +36,7 @@
             this.lblName = new System.Windows.Forms.Label();
             this.lblCity = new System.Windows.Forms.Label();
             this.gridPlayers = new System.Windows.Forms.DataGridView();
+            this.IdPlayer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Position = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -107,16 +108,28 @@
             // 
             this.gridPlayers.AllowUserToAddRows = false;
             this.gridPlayers.AllowUserToDeleteRows = false;
+            this.gridPlayers.BackgroundColor = System.Drawing.Color.White;
             this.gridPlayers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridPlayers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdPlayer,
             this.FirstName,
             this.LastName,
             this.Position});
+            this.gridPlayers.GridColor = System.Drawing.Color.White;
             this.gridPlayers.Location = new System.Drawing.Point(255, 217);
             this.gridPlayers.Name = "gridPlayers";
             this.gridPlayers.ReadOnly = true;
+            this.gridPlayers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridPlayers.Size = new System.Drawing.Size(408, 150);
             this.gridPlayers.TabIndex = 7;
+            this.gridPlayers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridPlayers_CellDoubleClick);
+            // 
+            // IdPlayer
+            // 
+            this.IdPlayer.HeaderText = "IdPlayer";
+            this.IdPlayer.Name = "IdPlayer";
+            this.IdPlayer.ReadOnly = true;
+            this.IdPlayer.Visible = false;
             // 
             // FirstName
             // 
@@ -138,12 +151,13 @@
             this.Position.HeaderText = "Position";
             this.Position.Name = "Position";
             this.Position.ReadOnly = true;
-            this.Position.Width = 150;
+            this.Position.Width = 80;
             // 
             // FormTeam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(689, 416);
             this.Controls.Add(this.gridPlayers);
             this.Controls.Add(this.lblCity);
@@ -172,6 +186,7 @@
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblCity;
         private System.Windows.Forms.DataGridView gridPlayers;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdPlayer;
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Position;

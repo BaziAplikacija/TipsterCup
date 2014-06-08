@@ -12,7 +12,10 @@ namespace TipsterCup
         public List<Team> Teams;
         public List<Manager> Managers;
         public List<Player> Players;
-        public List<Position> Positions; 
+        public List<Position> Positions;
+        public List<Match> Matches;
+        public List<Round> Rounds;
+        public List<Goal> Goals;
 
         public MainDoc()
         {
@@ -20,6 +23,102 @@ namespace TipsterCup
             Managers = new List<Manager>();
             Players = new List<Player>();
             Positions = new List<Position>();
+            Matches = new List<Match>();
+            Rounds = new List<Round>();
+            Goals = new List<Goal>();
+            
+        }
+         //IDGOAL	MINUTES	IDMATCH	IDPLAYER
+
+        public Match getMatchById(int idMatch)
+        {
+            foreach (Match match in Matches)
+            {
+                if (match.Id == idMatch)
+                {
+                    return match;
+                }
+            }
+
+            return null;
+        }
+        public void addGoal(int idGoal, int minutes, int idMatch, int idPlayer)
+        {
+            Goal newGoal = new Goal(idGoal, minutes, this.getMatchById(idMatch), this.getPlayerById(idPlayer));
+
+            this.addGoal(newGoal);
+            
+        }
+        public void addGoal(Goal goal)
+        {
+
+            foreach (Match match in Matches)
+            {
+                if (match.Id == goal.Match.Id)
+                {
+                    match.addGoal(goal);
+                    break;
+                }
+            }
+            Goals.Add(goal);
+
+
+        }
+
+
+        public void addRound(Round round)
+        {
+            Rounds.Add(round);
+        }
+
+        public void addRound(int idRound, DateTime dateFrom, DateTime dateTo)
+        {
+            Round newRound = new Round(idRound, dateFrom, dateTo);
+            Rounds.Add(newRound);
+        }
+
+        public void addMatch(Match match)
+        {
+            Matches.Add(match);
+            match.Round.addMatch(match);
+        }
+        
+        public void addMatch(int idMatch, DateTime dateMatch, int idRound, int idGuestTeam, int idHomeTeam)
+        {
+            Match newMatch = new Match(idMatch, getTeamById(idHomeTeam), getTeamById(idGuestTeam), getRoundById(idRound), dateMatch);
+            Matches.Add(newMatch);
+            getRoundById(idRound).addMatch(newMatch);
+        }
+
+        public Round getRoundById(int idRound)
+        {
+            foreach (Round round in Rounds)
+            {
+                if (round.Id == idRound)
+                {
+                    return round;
+                }
+            }
+            return null;
+        }
+
+
+        
+
+
+        public Player getPlayerById(int idPlayer)
+        {
+
+            foreach (Player player in Players)
+            {
+
+                if (player.Id == idPlayer)
+                {
+                    return player;
+                }
+            }
+
+            return null;
         }
 
         public List<Player> getPlayersFromTeam(String teamName)

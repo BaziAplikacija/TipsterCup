@@ -72,18 +72,33 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPlayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPlayer.Designer.cs">
+      <DependentUpon>FormPlayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormRounds.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRounds.Designer.cs">
+      <DependentUpon>FormRounds.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormTeam.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormTeam.Designer.cs">
       <DependentUpon>FormTeam.cs</DependentUpon>
     </Compile>
+    <Compile Include="Goal.cs" />
     <Compile Include="MainDoc.cs" />
     <Compile Include="Manager.cs" />
+    <Compile Include="Match.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Round.cs" />
     <Compile Include="Team.cs" />
     <Compile Include="VirtualMan.cs" />
     <EmbeddedResource Include="FormAdmin.resx">
@@ -94,6 +109,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPlayer.resx">
+      <DependentUpon>FormPlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRounds.resx">
+      <DependentUpon>FormRounds.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormTeam.resx">
       <DependentUpon>FormTeam.cs</DependentUpon>

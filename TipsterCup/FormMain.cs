@@ -30,9 +30,6 @@ namespace TipsterCup
 
             if (connection.State == ConnectionState.Open)
                 connection.Close();
-
-            
-          
         }
 
         private void fillMainDoc()
@@ -117,7 +114,54 @@ namespace TipsterCup
 
                 docMain.addPlayer(id, firstName, lastName, dateOfBirth, rating, idTeam, idPosition);
 
-            }   
+            }
+
+
+            query = "SELECT * FROM Round";
+            command = new OracleCommand(query, connection);
+            command.CommandType = CommandType.Text;
+            reader = command.ExecuteReader();
+            //IDROUND DATEFROM DATETO
+            while (reader.Read())
+            {
+                int id = Convert.ToInt32(reader[0]);
+                DateTime dateFrom = Convert.ToDateTime(reader[1]);
+                DateTime dateTo = Convert.ToDateTime(reader[2]);
+
+                docMain.addRound(id, dateFrom, dateTo);
+            }
+
+            query = "SELECT * FROM Match";
+            command = new OracleCommand(query, connection);
+            command.CommandType = CommandType.Text;
+            reader = command.ExecuteReader();
+            //IDMATCH	DATEMATCH	IDROUND	IDGUESTTEAM	IDHOMETEAM
+            while (reader.Read())
+            {
+                int id = Convert.ToInt32(reader[0]);
+                DateTime dateMatch = Convert.ToDateTime(reader[1]);
+                int idRound = Convert.ToInt32(reader[2]);
+                int idGuestTeam = Convert.ToInt32(reader[3]);
+                int idHomeTeam = Convert.ToInt32(reader[4]);
+
+                docMain.addMatch(id, dateMatch, idRound, idGuestTeam, idHomeTeam);
+            }
+
+            query = "SELECT * FROM Goal";
+            command = new OracleCommand(query, connection);
+            command.CommandType = CommandType.Text;
+            reader = command.ExecuteReader();
+            //IDGOAL	MINUTES	IDMATCH	IDPLAYER
+            while (reader.Read())
+            {
+                int id = Convert.ToInt32(reader[0]);
+                int minutes = Convert.ToInt32(reader[1]);
+                int idMatch = Convert.ToInt32(reader[2]);
+                int idPlayer = Convert.ToInt32(reader[3]);
+
+
+                docMain.addGoal(id, minutes, idMatch, idPlayer);
+            } 
         }
 
         private void fillGrid()
@@ -147,6 +191,12 @@ namespace TipsterCup
                 FormTeam frmTeam = new FormTeam(docMain.getTeamByName(teamName),docMain);
                 frmTeam.Show();
             }
+        }
+
+        private void btnRounds_Click(object sender, EventArgs e)
+        {
+            FormRounds frmRounds = new FormRounds(docMain);
+            frmRounds.Show();
         }
     }
 }

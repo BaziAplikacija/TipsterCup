@@ -38,12 +38,25 @@ namespace TipsterCup
 
             foreach (Player player in players)
             {
-                gridPlayers.Rows.Add(player.FirstName, player.LastName, player.Position.Description);
+                gridPlayers.Rows.Add(player.Id,player.FirstName, player.LastName, player.Position.Description);
 
 
             }
 
             pbTeam.Image = Team.Picture;
+        }
+
+        private void gridPlayers_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if(e.RowIndex >= 0) 
+            {
+                Player player = docMain.getPlayerById(Convert.ToInt32(gridPlayers.Rows[e.RowIndex].Cells[0].Value));
+
+                FormPlayer frmPlayer = new FormPlayer(player);
+                frmPlayer.Show();
+            }
+           
         }
 
        
