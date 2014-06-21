@@ -24,7 +24,7 @@ namespace TipsterCup
             Team = team;
             Position = position;
 
-            Tokens = (int) Rating;//vo osnova verojatnosta daden igrac da dade gol e proporcionalna
+            Tokens = (int) Rating + (int)Team.Rating;//vo osnova verojatnosta daden igrac da dade gol e proporcionalna
                                   // na negoviot rejting
             switch (Position.Id)
             {
