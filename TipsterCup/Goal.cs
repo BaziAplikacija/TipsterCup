@@ -15,6 +15,8 @@ namespace TipsterCup
         public Match Match {get;set;}
         public Player Player {get;set;}
 
+
+
         public Goal(int id, int minutes, Match match, Player player)
         {
             Id = id;
