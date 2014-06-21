@@ -25,7 +25,8 @@ namespace TipsterCup
         FormAdmin frmAdmin;
 
         public Language language = Language.ENGLISH;
-
+        //go cuva intervalot vo minuti
+        public static double timeInterval;
         // parametri potrebni za konekcija so bazata
         String connString = "Data Source=(DESCRIPTION="
              + "(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1620))"
@@ -68,7 +69,7 @@ namespace TipsterCup
                 }
                 else
                 {
-                    frmAdmin = new FormAdmin();
+                    frmAdmin = new FormAdmin(connection);
                     frmAdmin.Show();
                 }
                 
