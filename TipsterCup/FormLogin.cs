@@ -25,8 +25,13 @@ namespace TipsterCup
         FormAdmin frmAdmin;
 
         public Language language = Language.ENGLISH;
+
         //go cuva intervalot vo minuti
-        public static double timeInterval;
+        public static int timeInterval;
+
+        //virtuelnata data vo igrata
+        public static DateTime virtualDate;
+
         // parametri potrebni za konekcija so bazata
         String connString = "Data Source=(DESCRIPTION="
              + "(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1620))"
@@ -41,6 +46,37 @@ namespace TipsterCup
             InitializeComponent();
 
             connection = new OracleConnection(connString);
+            initializeDateandInterval();
+        }
+
+        //Go inicijalizira virtuelniot datum i intervalot
+        public void initializeDateandInterval()
+        {
+            DateTime date = DateTime.Now;
+            DateTime lastDate = DateTime.Now;
+            String query = "SELECT * FROM BasicInfo";
+            if (connection.State == ConnectionState.Closed)
+                connection.Open();
+            OracleCommand command = new OracleCommand(query, connection);
+            command.CommandType = CommandType.Text;
+            OracleDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                timeInterval = reader.GetInt32(0);
+                lastDate = reader.GetDateTime(1);
+                virtualDate = reader.GetDateTime(2);
+            }
+            if (connection.State == ConnectionState.Open)
+                connection.Close();
+            double minutes = date.Subtract(lastDate).TotalMinutes;
+            int daysPassed =(int) (minutes / timeInterval);
+            MessageBox.Show(virtualDate.ToString());
+            virtualDate = virtualDate.AddDays(daysPassed);
+            MessageBox.Show(String.Format("{0}", daysPassed));
+            MessageBox.Show(virtualDate.ToString());
+            timer1.Interval = timeInterval * 60 * 1000;
+            timer1.Start();
+            timer2.Start();
         }
 
         private void FormLogin_Load(object sender, EventArgs e)
@@ -179,6 +215,21 @@ namespace TipsterCup
 
             cbLoginAs.SelectedIndex = selectedIndex;
 
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            virtualDate = virtualDate.AddDays(1);
+            MessageBox.Show(virtualDate.ToString());
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (timeInterval != timer1.Interval/1000/60)
+            {
+                MessageBox.Show("Se smeni");
+                timer1.Interval = timeInterval * 1000 * 60;
+            }
         }
     }
 }

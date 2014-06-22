@@ -121,7 +121,7 @@
   <data name="btnGo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADIAAAAzCAYAAADVY1sUAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAHdElNRQfeBgcODwqbpMI9AAAWEElEQVRoQ8VaB1hb57lm
+        YQUAAAAJcEhZcwAACxAAAAsQAa0jvXUAAAAHdElNRQfeBgcODwqbpMI9AAAWEElEQVRoQ8VaB1hb57lm
         aCAJiSFAArHEEtvsLSSEJgIkBAiEQAyJLTHMMjbLeNvYBq/YGMeuE9sZxNlNnPg643Ykjm9at05SJ3W6
         kjaz66ZJc0e433ck2YrtEtrm3vs/z8s5OtL5z/f+3/4Pbt/i8CKRfLzJZGY4icRIIZFoIk9Pr1YSiT5E
         JnsPUSg+vRSKb7WXFzsHIKBQmGFkMs0X77Pf/v8yPBxHYgR6eHhZGIwIE4Xid4BKDbiXwQg7zGRGLvj6
@@ -222,7 +222,13 @@
   <metadata name="imageList1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>127, 17</value>
+  </metadata>
+  <metadata name="timer2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>214, 17</value>
+  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>27</value>
+    <value>45</value>
   </metadata>
 </root>

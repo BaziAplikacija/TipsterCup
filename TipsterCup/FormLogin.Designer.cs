@@ -41,6 +41,8 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnGo = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // lblUsername
@@ -146,6 +148,16 @@
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // timer2
+            // 
+            this.timer2.Interval = 1000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
             // FormLogin
             // 
             this.AcceptButton = this.btnGo;
@@ -184,5 +196,7 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnGo;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer2;
     }
 }
