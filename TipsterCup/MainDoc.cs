@@ -245,7 +245,7 @@ namespace TipsterCup
             Random random = new Random();
             int totalTokens = 0;
             for (int p = 0; p < allPlayers.Count; p++)
-            {
+            {//verojatnosta deka ke igra daden igrac e proporcionalna na negoviot rating
                 lastToken.Add(totalTokens + (int)allPlayers[p].Rating);
                 totalTokens += (int)allPlayers[p].Rating;
             }
