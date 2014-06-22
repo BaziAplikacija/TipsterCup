@@ -42,8 +42,8 @@ namespace TipsterCup
 
             foreach (Player p in Players)
             {
-                playerLastToken.Add(totalTokens + p.Tokens);
-                totalTokens += p.Tokens;
+                playerLastToken.Add(totalTokens + p.TokensGoals);
+                totalTokens += p.TokensGoals;
             }
         }
 
@@ -58,7 +58,7 @@ namespace TipsterCup
             }
             return false;
         }
-
+        public string Goals { get; set; }
         public void generateGoals() {
             for (int i = 1; i <= 90; i++)
             {
@@ -76,9 +76,9 @@ namespace TipsterCup
                             reader = command.ExecuteReader();
 
                             int id = reader.GetInt32(0) + 1;//sleden gol
-                            query = "INSERT INTO Goal VALUES(" + id + "," + i + "," + Match.Id + "," + Players[p].Id;
+                            /*query = "INSERT INTO Goal VALUES(" + id + "," + i + "," + Match.Id + "," + Players[p].Id;
                             command = new OracleCommand(query, connection);
-                            command.CommandType = CommandType.Text;
+                            command.CommandType = CommandType.Text;*/
                             break;
 
                         }

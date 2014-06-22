@@ -27,6 +27,7 @@ namespace TipsterCup
                 connection.Open();
             fillGrid();
             fillMainDoc();
+            GenerateGoalsForMatch ggm = new GenerateGoalsForMatch(docMain, docMain.getMatchById(31), connection);
 
             if (connection.State == ConnectionState.Open)
                 connection.Close();

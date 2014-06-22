@@ -237,6 +237,44 @@ namespace TipsterCup
             return null;
         }
 
-        
+        public List<Player> getFirstEleven(String teamName)//odbira koi 11 igraci ke igraat na daden natprevar
+        {
+            List<Player> toRet = new List<Player>();
+            List<Player> allPlayers =  getPlayersFromTeam(teamName);
+            List<int> lastToken = new List<int>();
+            Random random = new Random();
+            int totalTokens = 0;
+            for (int p = 0; p < allPlayers.Count; p++)
+            {
+                lastToken.Add(totalTokens + (int)allPlayers[p].Rating);
+                totalTokens += (int)allPlayers[p].Rating;
+            }
+            int[] chosen = { 0, 2, 4, 4, 1 };//1 GKP, 4 DF, 4 MDF, 2 FWD 
+            while (toRet.Count < 11)
+            {
+                int pos = random.Next(totalTokens);
+                for (int p = 0; p < allPlayers.Count; p++)
+                {
+                    if (pos < lastToken[p])
+                    {
+                        if (chosen[allPlayers[p].Position.Id] > 0)
+                        {
+                            chosen[allPlayers[p].Position.Id]--;
+                            toRet.Add(allPlayers[p]);
+                            for (int j = p + 1; j < allPlayers.Count; j++)
+                            {
+                                lastToken[j] -= (int)allPlayers[p].Rating;
+                            }
+                            allPlayers.RemoveAt(p);
+                            lastToken.RemoveAt(p);
+                            break;
+                        }
+                    }
+                }
+                    
+            }
+
+            return toRet;
+        }
     }
 }

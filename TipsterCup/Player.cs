@@ -15,7 +15,10 @@ namespace TipsterCup
         public Team Team { get; set;}
         public Position Position { get; set; }
 
-        public int Tokens { get; set; }
+        public int TokensGoals { get; set; }
+        public int TokensAssists { get; set; }
+        public int TokensInterrupts { get; set; }
+        public int TokensSaves { get; set; }
 
         public Player(int id, String firstName, String lastName, DateTime dateOfBirth, double rating, Team team, Position position) 
             : base(id,firstName,lastName,dateOfBirth)
@@ -24,21 +27,36 @@ namespace TipsterCup
             Team = team;
             Position = position;
 
-            Tokens = (int) Rating + (int)Team.Rating;//vo osnova verojatnosta daden igrac da dade gol e proporcionalna
+            TokensGoals = (int) Rating;//vo osnova verojatnosta daden igrac da dade gol e proporcionalna
                                   // na negoviot rejting
+            TokensAssists = (int)Rating;
+            TokensInterrupts = (int)Rating;
+            TokensSaves = (int)Rating;
             switch (Position.Id)
             {
-                case 1:
-                    Tokens *= 3;//Napagacot da ima najgolemi shansi za gol
+                case 1://Napad
+                    TokensGoals *= 3;//Napagacot da ima najgolemi shansi za gol
+                    TokensAssists *= 2;
+                    TokensInterrupts /= 100;
+                    TokensSaves = 0;
                     break;
-                case 2:
-                    Tokens *= 2;
+                case 2://Sredina
+                    TokensGoals *= 2;
+                    TokensAssists *= 3;
+                    TokensInterrupts = 1;
+                    TokensSaves = 0;
                     break;
-                case 3:
-                    Tokens *= 1;
+                case 3://Odbrana
+                    TokensGoals /= 10;
+                    TokensAssists /= 10;
+                    TokensInterrupts *= 5;
+                    TokensSaves = 0;
                     break;
-                case 4:
-                    Tokens /= 1000;//Postoi moznost i golman da dade gol, no taa e premnogu mala
+                case 4://Golman
+                    TokensGoals /= 1000;//Postoi moznost i golman da dade gol, no taa e premnogu mala
+                    TokensAssists /= 1000;
+                    TokensInterrupts /= 100;
+                    TokensSaves = (int)Rating;
                     break;
             }
 
