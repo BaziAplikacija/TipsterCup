@@ -70,10 +70,7 @@ namespace TipsterCup
                 connection.Close();
             double minutes = date.Subtract(lastDate).TotalMinutes;
             int daysPassed =(int) (minutes / timeInterval);
-            MessageBox.Show(virtualDate.ToString());
             virtualDate = virtualDate.AddDays(daysPassed);
-            MessageBox.Show(String.Format("{0}", daysPassed));
-            MessageBox.Show(virtualDate.ToString());
             timer1.Interval = timeInterval * 60 * 1000;
             timer1.Start();
             timer2.Start();
@@ -220,14 +217,12 @@ namespace TipsterCup
         private void timer1_Tick(object sender, EventArgs e)
         {
             virtualDate = virtualDate.AddDays(1);
-            MessageBox.Show(virtualDate.ToString());
         }
 
         private void timer2_Tick(object sender, EventArgs e)
         {
             if (timeInterval != timer1.Interval/1000/60)
             {
-                MessageBox.Show("Se smeni");
                 timer1.Interval = timeInterval * 1000 * 60;
             }
         }
