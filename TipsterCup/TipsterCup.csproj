@@ -92,7 +92,6 @@
     </Compile>
     <Compile Include="GenerateGoalsForMatch.cs" />
     <Compile Include="Goal.cs" />
-    <Compile Include="Goalkeeper.cs" />
     <Compile Include="MainDoc.cs" />
     <Compile Include="Manager.cs" />
     <Compile Include="Match.cs" />
