@@ -24,6 +24,7 @@ namespace TipsterCup
         private void FormAdmin_Load(object sender, EventArgs e)
         {
             select_tipsters();
+            cbTime.SelectedIndex = 0;
         }
 
         //Vo listBox gi stava tipsterite
