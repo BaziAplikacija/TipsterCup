@@ -93,6 +93,15 @@ namespace TipsterCup
                     interval *= 60;
                 }
                 FormLogin.timeInterval = interval;
+
+                String queryUpdateInterval = "UPDATE BasicInfo SET TIME_INTERVAL =" + interval;
+                if (connection.State == ConnectionState.Closed)
+                    connection.Open();
+                OracleCommand command = new OracleCommand(queryUpdateInterval, connection);
+                command.CommandType = CommandType.Text;
+                command.ExecuteNonQuery();
+                if (connection.State == ConnectionState.Open)
+                    connection.Close();
             }
             
         }
