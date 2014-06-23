@@ -41,9 +41,10 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnGo = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.timerOneTickOneDay = new System.Windows.Forms.Timer(this.components);
+            this.timerCheckIntervalChanged = new System.Windows.Forms.Timer(this.components);
             this.llblRegister = new System.Windows.Forms.LinkLabel();
+            this.timerThisDay = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // lblUsername
@@ -149,15 +150,15 @@
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // timer1
+            // timerOneTickOneDay
             // 
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.timerOneTickOneDay.Interval = 1000;
+            this.timerOneTickOneDay.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // timer2
+            // timerCheckIntervalChanged
             // 
-            this.timer2.Interval = 1000;
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            this.timerCheckIntervalChanged.Interval = 1000;
+            this.timerCheckIntervalChanged.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // llblRegister
             // 
@@ -169,6 +170,10 @@
             this.llblRegister.TabStop = true;
             this.llblRegister.Text = "Register?";
             this.llblRegister.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblRegister_LinkClicked);
+            // 
+            // timerThisDay
+            // 
+            this.timerThisDay.Tick += new System.EventHandler(this.timerThisDay_Tick);
             // 
             // FormLogin
             // 
@@ -209,8 +214,9 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnGo;
         private System.Windows.Forms.ImageList imageList1;
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Timer timerOneTickOneDay;
+        private System.Windows.Forms.Timer timerCheckIntervalChanged;
         private System.Windows.Forms.LinkLabel llblRegister;
+        private System.Windows.Forms.Timer timerThisDay;
     }
 }

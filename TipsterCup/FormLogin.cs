@@ -48,7 +48,7 @@ namespace TipsterCup
             InitializeComponent();
 
             
-             initializeDateandInterval(); 
+            initializeDateandInterval();
         }
 
         private void FormLogin_Load(object sender, EventArgs e)
@@ -85,16 +85,40 @@ namespace TipsterCup
                     lastDate = reader.GetDateTime(1);
                     virtualDate = reader.GetDateTime(2);
                 }
+
             }
-        
-           
+
             
             double minutes = date.Subtract(lastDate).TotalMinutes;
             int daysPassed =(int) (minutes / timeInterval);
             virtualDate = virtualDate.AddDays(daysPassed);
-            timer1.Interval = timeInterval * 60 * 1000;
-            timer1.Start();
-            timer2.Start();
+            int thisDay = (int)minutes % timeInterval;
+            int hoursThisDay = thisDay / 60;
+            int minutesThisDay = thisDay % 60;
+            
+            using (OracleConnection connection = new OracleConnection(FormLogin.connString))
+            {
+                connection.Open();
+                
+                DateTime updateLastDate = date.Subtract(new TimeSpan(hoursThisDay, minutesThisDay, 0));
+                String query = "UPDATE BasicInfo SET Last_Date = (TO_DATE('" + updateLastDate.Month + "/" + updateLastDate.Day + "/" + updateLastDate.Year
+                    +" "+updateLastDate.Hour+":"+updateLastDate.Minute+"', 'mm/dd/yyyy hh24:mi'))";
+                OracleCommand command = new OracleCommand(query, connection);
+                command.CommandType = CommandType.Text;
+                command.ExecuteNonQuery();
+
+                String queryUpdateVirtualDate = "UPDATE BasicInfo SET Virtual_Date = (TO_DATE('" + virtualDate.Month + "/" + virtualDate.Day + "/" + virtualDate.Year
+                    + "', 'mm/dd/yyyy'))";
+
+                command = new OracleCommand(queryUpdateVirtualDate, connection);
+                command.CommandType = CommandType.Text;
+                command.ExecuteNonQuery();
+            }
+            MessageBox.Show(String.Format("{0}", timeInterval - thisDay));
+            timerOneTickOneDay.Interval = timeInterval * 60 * 1000;
+            timerThisDay.Interval = (timeInterval - thisDay)*60*1000;
+            timerThisDay.Start();
+            timerCheckIntervalChanged.Start();
         }
 
        
@@ -241,13 +265,38 @@ namespace TipsterCup
         private void timer1_Tick(object sender, EventArgs e)
         {
             virtualDate = virtualDate.AddDays(1);
+            updateVirtualDateAndLastDate();
+        }
+
+        public void updateVirtualDateAndLastDate()
+        {
+            using (OracleConnection connection = new OracleConnection(FormLogin.connString))
+            {
+                connection.Open();
+                
+                String queryUpdateVirtualDate = "UPDATE BasicInfo SET Virtual_Date = (TO_DATE('" + virtualDate.Month + "/" + virtualDate.Day + "/" + virtualDate.Year
+                    +"', 'mm/dd/yyyy'))";
+                
+                DateTime updateLastDate = DateTime.Now;
+                String queryUpdateDate = "UPDATE BasicInfo SET Last_Date = (TO_DATE('" + updateLastDate.Month + "/" + updateLastDate.Day + "/" + updateLastDate.Year
+                    + " " + updateLastDate.Hour + ":" + updateLastDate.Minute + "', 'mm/dd/yyyy hh24:mi'))";
+                
+                
+                OracleCommand command = new OracleCommand(queryUpdateVirtualDate, connection);
+                command.CommandType = CommandType.Text;
+                command.ExecuteNonQuery();
+
+                command = new OracleCommand(queryUpdateDate, connection);
+                command.CommandType = CommandType.Text;
+                command.ExecuteNonQuery();
+            }
         }
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            if (timeInterval != timer1.Interval/1000/60)
+            if (timeInterval != timerOneTickOneDay.Interval/1000/60)
             {
-                timer1.Interval = timeInterval * 1000 * 60;
+                timerOneTickOneDay.Interval = timeInterval * 1000 * 60;
             }
         }
 
@@ -256,6 +305,15 @@ namespace TipsterCup
             FormRegister frmRegister = new FormRegister();
 
             frmRegister.ShowDialog();
+        }
+
+        private void timerThisDay_Tick(object sender, EventArgs e)
+        {
+            MessageBox.Show("this day");
+            virtualDate = virtualDate.AddDays(1);
+            updateVirtualDateAndLastDate();
+            timerOneTickOneDay.Start();
+            timerThisDay.Stop();
         }
     }
 }
