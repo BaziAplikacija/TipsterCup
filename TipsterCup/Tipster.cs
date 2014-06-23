@@ -31,7 +31,7 @@ namespace TipsterCup
 
         public override string ToString()
         {
-            return String.Format("{0,-10}{1}", Username, Rating);
+            return String.Format("{0,-20}\t{1}", Username, Rating);
         }
     }
 }

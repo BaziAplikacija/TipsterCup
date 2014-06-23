@@ -237,5 +237,11 @@ namespace TipsterCup
             FormTipster frmMyProfile = new FormTipster(FormLogin.IdLoggedTipster);
             frmMyProfile.Show();
         }
+
+        private void btnTipsters_Click(object sender, EventArgs e)
+        {
+            FormAllTipsters frmAllTipsters = new FormAllTipsters();
+            frmAllTipsters.Show();
+        }
     }
 }

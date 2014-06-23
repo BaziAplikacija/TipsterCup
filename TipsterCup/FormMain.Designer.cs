@@ -131,6 +131,7 @@
             this.btnTipsters.TabIndex = 4;
             this.btnTipsters.Text = "Tipsters";
             this.btnTipsters.UseVisualStyleBackColor = true;
+            this.btnTipsters.Click += new System.EventHandler(this.btnTipsters_Click);
             // 
             // btnStatistics
             // 

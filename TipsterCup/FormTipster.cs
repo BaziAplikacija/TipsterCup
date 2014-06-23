@@ -39,8 +39,12 @@ namespace TipsterCup
                 lblRating.Text = reader.GetInt32(5).ToString();
                 lblEmail.Text = reader.GetString(6);
                 
-                
-               
+                query = "select COUNT(*) + 1 FROM Tipster WHERE Rating > " + Int32.Parse(lblRating.Text);
+
+                command = new OracleCommand(query, conn);
+                command.CommandType = CommandType.Text;
+
+                lblRank.Text = command.ExecuteScalar().ToString();
 
                 reader.Close();
 
