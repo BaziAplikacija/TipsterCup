@@ -123,7 +123,6 @@ namespace TipsterCup
                     command.ExecuteNonQuery();
                 }
 
-                listTipsters.Refresh();
                
             }
             
