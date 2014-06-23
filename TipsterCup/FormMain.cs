@@ -210,5 +210,26 @@ namespace TipsterCup
             FormRounds frmRounds = new FormRounds(docMain);
             frmRounds.Show();
         }
+
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+            using (OracleConnection conn = new OracleConnection(FormLogin.connString))
+            {
+                conn.Open();
+
+                string query = "UPDATE TIPSTER SET loggedin = 'n' WHERE idTipster = " + FormLogin.IdLoggedTipster;
+
+                OracleCommand command = new OracleCommand(query, conn);
+                command.CommandType = CommandType.Text;
+                command.ExecuteNonQuery();
+            }
+            Application.Exit();
+        }
+
+        private void btnStatistics_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

@@ -28,6 +28,7 @@ namespace TipsterCup
         FormAdmin frmAdmin;
 
         public Language language = Language.ENGLISH;
+        public static String currLanguage = "English";
 
         //go cuva intervalot vo minuti
         public static int timeInterval;
@@ -41,6 +42,7 @@ namespace TipsterCup
              + "(CONNECT_DATA=(SERVICE_NAME=ORCL)));"
              + "User Id=DBA_20132014L_GRP_022;Password=9427657;";
 
+        public static int IdLoggedTipster = -1;
 
         public static  Dictionary<String, String> translator; 
         
@@ -73,6 +75,8 @@ namespace TipsterCup
             translator.Add("Administrator English", "Administrator");
             translator.Add("Form English", "Login");
             translator.Add("Register English", "Register");
+            translator.Add("BannedMsg English", "You cannot log in because you are banned.");
+            translator.Add("LoggedMsg English", "You cannot log in because there is someone is already logged in with your username.");
 
             translator.Add("Language Macedonian", "Јазик:");
             translator.Add("Login Macedonian", "Најави се како:");
@@ -82,7 +86,9 @@ namespace TipsterCup
             translator.Add("Tipster Macedonian", "Типстер");
             translator.Add("Administrator Macedonian", "Администратор");
             translator.Add("Form Macedonian", "Најава");
-            translator.Add("Register Macedonian", "Регистрирај се");   
+            translator.Add("Register Macedonian", "Регистрирај се");
+            translator.Add("BannedMsg Macedonian", "Не можете да се најавите бидејќи сте банирани.");
+            translator.Add("LoggedMsg Macedonian", "Не можете да се најавите бидејќи веќе некој е најавен со вашето корисничко име.");
         }
 
         private void FormLogin_Load(object sender, EventArgs e)
@@ -165,7 +171,23 @@ namespace TipsterCup
         private void btnGo_Click(object sender, EventArgs e)
         {
 
-            if (validInput()) { 
+            if (validInput()) {
+
+                if (IdLoggedTipster != -1) // znachi deka se najavil tipster a ne administrator
+                {
+                    using (OracleConnection conn = new OracleConnection(connString))
+                    {
+                        conn.Open();
+                        string query = "UPDATE TIPSTER " +
+                                       "SET loggedIn = 'y' " +
+                                       "WHERE idTipster = " + IdLoggedTipster;
+                        OracleCommand command = new OracleCommand(query, conn);
+                        command.CommandType = CommandType.Text;
+                        command.ExecuteNonQuery();
+                    }
+                }
+               
+                
                 this.Hide();
                 if (cbLoginAs.SelectedIndex == 0)
                 {
@@ -181,10 +203,6 @@ namespace TipsterCup
                 
                 
             }
-            else
-            {
-                MessageBox.Show(translator["InvalidInput " + (language == Language.ENGLISH?"English":"Macedonian")]);
-            }
         }
         // proveruva dali vlezot za username i password vsusnost postoi vo bazata
         private Boolean validInput()
@@ -196,6 +214,7 @@ namespace TipsterCup
 
             if (username.Equals("") || password.Equals(""))
             {
+                MessageBox.Show(translator["InvalidInput " + currLanguage]);
                 return false;
             }
 
@@ -225,10 +244,25 @@ namespace TipsterCup
                 if (!dataReader.Read())
                 {
                     connection.Close(); // za sekoj slucaj
+                    MessageBox.Show(translator["InvalidInput " + currLanguage]);
                     return false;
                 }
+                else if (fromTable.Equals("Tipster") && dataReader.GetString(7).Equals("n"))
+                {
+                    MessageBox.Show(translator["BannedMsg " + currLanguage]);
+                    return false;
+                }
+                else if (fromTable.Equals("Tipster") && dataReader.GetString(8).Equals("y"))
+                {
+                    MessageBox.Show(translator["LoggedMsg " + currLanguage]);
+                    return false;
+                }
+
+                if (fromTable.Equals("Tipster"))
+                    IdLoggedTipster = dataReader.GetInt32(0);
             }
-           
+
+            
             
             return true;
         }
@@ -238,11 +272,13 @@ namespace TipsterCup
             if (cbLanguage.SelectedIndex == 1)
             {
                 language = Language.MACEDONIAN;
+                currLanguage = "Macedonian";
                 
             }
             else
             {
                 language = Language.ENGLISH;
+                currLanguage = "English";
                 
             }
 
@@ -254,16 +290,16 @@ namespace TipsterCup
             int selectedIndex = cbLoginAs.SelectedIndex;
             cbLoginAs.Items.Clear();
            
-            lblLanguage.Text = translator["Language " + (language == Language.ENGLISH ? "English" : "Macedonian")];
-            lblLoginAs.Text = translator["Login " + (language == Language.ENGLISH ? "English" : "Macedonian")];
-            lblUsername.Text = translator["Username " + (language == Language.ENGLISH ? "English" : "Macedonian")];
-            lblPassword.Text = translator["Password " + (language == Language.ENGLISH ? "English" : "Macedonian")];
-            btnExit.Text = translator["Exit " + (language == Language.ENGLISH ? "English" : "Macedonian")];
-            this.Text = translator["Form " + (language == Language.ENGLISH ? "English" : "Macedonian")];
+            lblLanguage.Text = translator["Language " + currLanguage];
+            lblLoginAs.Text = translator["Login " + currLanguage];
+            lblUsername.Text = translator["Username " + currLanguage];
+            lblPassword.Text = translator["Password " + currLanguage];
+            btnExit.Text = translator["Exit " + currLanguage];
+            this.Text = translator["Form " + currLanguage];
 
-            cbLoginAs.Items.Add(translator["Tipster " + (language == Language.ENGLISH ? "English" : "Macedonian")]);
-            cbLoginAs.Items.Add(translator["Administrator " + (language == Language.ENGLISH ? "English" : "Macedonian")]);
-            llblRegister.Text = translator["Register " + (language == Language.ENGLISH ? "English" : "Macedonian")];
+            cbLoginAs.Items.Add(translator["Tipster " + currLanguage]);
+            cbLoginAs.Items.Add(translator["Administrator " + currLanguage]);
+            llblRegister.Text = translator["Register " + currLanguage];
             cbLoginAs.SelectedIndex = selectedIndex;
 
         }

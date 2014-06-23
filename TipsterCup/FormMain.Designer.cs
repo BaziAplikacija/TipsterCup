@@ -139,6 +139,7 @@
             this.btnStatistics.TabIndex = 5;
             this.btnStatistics.Text = "Statistics";
             this.btnStatistics.UseVisualStyleBackColor = true;
+            this.btnStatistics.Click += new System.EventHandler(this.btnStatistics_Click);
             // 
             // FormMain
             // 
@@ -154,6 +155,7 @@
             this.Controls.Add(this.gridStandings);
             this.Name = "FormMain";
             this.Text = "FormMain";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.gridStandings)).EndInit();
             this.ResumeLayout(false);
 
