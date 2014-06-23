@@ -101,6 +101,7 @@
     <Compile Include="MainDoc.cs" />
     <Compile Include="Manager.cs" />
     <Compile Include="Match.cs" />
+    <Compile Include="Participates.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayTheMatch.cs" />
     <Compile Include="Position.cs" />
