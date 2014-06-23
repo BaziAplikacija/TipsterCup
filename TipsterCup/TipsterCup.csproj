@@ -78,6 +78,12 @@
     <Compile Include="FormPlayer.Designer.cs">
       <DependentUpon>FormPlayer.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRegister.Designer.cs">
+      <DependentUpon>FormRegister.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormRounds.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormPlayer.resx">
       <DependentUpon>FormPlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRegister.resx">
+      <DependentUpon>FormRegister.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormRounds.resx">
       <DependentUpon>FormRounds.cs</DependentUpon>

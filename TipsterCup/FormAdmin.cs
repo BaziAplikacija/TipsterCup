@@ -13,12 +13,12 @@ namespace TipsterCup
 {
     public partial class FormAdmin : Form
     {
-        public OracleConnection connection;
         
-        public FormAdmin(OracleConnection conn)
+        
+        public FormAdmin()
         {
             InitializeComponent();
-            connection = conn;
+            
         }
 
         private void FormAdmin_Load(object sender, EventArgs e)
@@ -30,21 +30,25 @@ namespace TipsterCup
         //Vo listBox gi stava tipsterite
         public void select_tipsters()
         {
-            String queryTipsters = "SELECT * FROM Tipster";
-            if (connection.State == ConnectionState.Closed)
-                connection.Open();
-            OracleCommand command = new OracleCommand(queryTipsters, connection);
-            command.CommandType = CommandType.Text;
-            OracleDataReader reader = command.ExecuteReader();
-            listTipsters.Items.Clear();
-            while (reader.Read())
+
+            using (OracleConnection connection = new OracleConnection(FormLogin.connString))
             {
-                Tipster tipster = new Tipster(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetInt32(5), reader.GetString(6), reader.GetString(7));
-                if(tipster.Valid.Equals("y"))
-                    listTipsters.Items.Add(tipster);
+                connection.Open(); // NIKAKO NE SMEE DA SE ZABORAVI! 
+                String queryTipsters = "SELECT * FROM Tipster";
+
+                OracleCommand command = new OracleCommand(queryTipsters, connection);
+                command.CommandType = CommandType.Text;
+                OracleDataReader reader = command.ExecuteReader();
+                listTipsters.Items.Clear();
+                while (reader.Read())
+                {
+                    Tipster tipster = new Tipster(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetInt32(5), reader.GetString(6), reader.GetString(7));
+                    if (tipster.Valid.Equals("y"))
+                        listTipsters.Items.Add(tipster);
+                }
             }
-            if (connection.State == ConnectionState.Open)
-                connection.Close();
+           
+            
             listTipsters.SelectedIndex = 0;
         }
 
@@ -70,13 +74,17 @@ namespace TipsterCup
             {
                 Tipster tipster = (Tipster)listTipsters.SelectedItem;
                 String queryBan = "UPDATE Tipster SET valid = 'n' WHERE idTipster=" + tipster.IdTipster;
-                if (connection.State == ConnectionState.Closed)
+
+                using (OracleConnection connection = new OracleConnection(FormLogin.connString))
+                {
                     connection.Open();
-                OracleCommand command = new OracleCommand(queryBan, connection);
-                command.CommandType = CommandType.Text;
-                command.ExecuteNonQuery();
-                if (connection.State == ConnectionState.Open)
-                    connection.Close();
+                    OracleCommand command = new OracleCommand(queryBan, connection);
+                    command.CommandType = CommandType.Text;
+                    command.ExecuteNonQuery();
+                }
+               
+                
+                
                 select_tipsters();
             }
         }
@@ -95,13 +103,16 @@ namespace TipsterCup
                 FormLogin.timeInterval = interval;
 
                 String queryUpdateInterval = "UPDATE BasicInfo SET TIME_INTERVAL =" + interval;
-                if (connection.State == ConnectionState.Closed)
+               
+                using (OracleConnection connection = new OracleConnection(FormLogin.connString))
+                {
                     connection.Open();
-                OracleCommand command = new OracleCommand(queryUpdateInterval, connection);
-                command.CommandType = CommandType.Text;
-                command.ExecuteNonQuery();
-                if (connection.State == ConnectionState.Open)
-                    connection.Close();
+                    OracleCommand command = new OracleCommand(queryUpdateInterval, connection);
+                    command.CommandType = CommandType.Text;
+                    command.ExecuteNonQuery();
+                }
+                
+               
             }
             
         }

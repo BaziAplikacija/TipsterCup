@@ -43,6 +43,7 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.llblRegister = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // lblUsername
@@ -158,12 +159,24 @@
             this.timer2.Interval = 1000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // llblRegister
+            // 
+            this.llblRegister.AutoSize = true;
+            this.llblRegister.Location = new System.Drawing.Point(322, 145);
+            this.llblRegister.Name = "llblRegister";
+            this.llblRegister.Size = new System.Drawing.Size(52, 13);
+            this.llblRegister.TabIndex = 7;
+            this.llblRegister.TabStop = true;
+            this.llblRegister.Text = "Register?";
+            this.llblRegister.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblRegister_LinkClicked);
+            // 
             // FormLogin
             // 
             this.AcceptButton = this.btnGo;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(413, 381);
+            this.Controls.Add(this.llblRegister);
             this.Controls.Add(this.btnGo);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.cbLoginAs);
@@ -198,5 +211,6 @@
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.LinkLabel llblRegister;
     }
 }

@@ -13,28 +13,31 @@ namespace TipsterCup
 {
     public partial class FormMain : Form
     {
-        OracleConnection connection;
-        OracleCommand command;
-        OracleDataReader reader;
+        
         MainDoc docMain;
-        public FormMain(OracleConnection conn)
+        public FormMain()
         {
             InitializeComponent();
-            connection = conn;
+            
             docMain = new MainDoc();
 
-            if (connection.State == ConnectionState.Closed)
-                connection.Open();
+            
             fillGrid();
             fillMainDoc();
-            GenerateGoalsForMatch ggm = new GenerateGoalsForMatch(docMain, docMain.getMatchById(31), connection);
+            //GenerateGoalsForMatch ggm = new GenerateGoalsForMatch(docMain, docMain.getMatchById(31), connection);
 
-            if (connection.State == ConnectionState.Open)
-                connection.Close();
         }
 
         private void fillMainDoc()
         {
+
+            using (OracleConnection connection = new OracleConnection(FormLogin.connString))
+            {
+                connection.Open();
+                OracleCommand command;
+                OracleDataReader reader;
+
+           
             String query = "SELECT * FROM Manager";
             command = new OracleCommand(query, connection);
             command.CommandType = CommandType.Text;
@@ -162,23 +165,31 @@ namespace TipsterCup
 
 
                 docMain.addGoal(id, minutes, idMatch, idPlayer);
-            } 
+            }
+            }
         }
 
         private void fillGrid()
         {
-            
-
             String query = "SELECT * FROM Standings";
-            command = new OracleCommand(query,connection);
-            command.CommandType = CommandType.Text;
-
-            reader = command.ExecuteReader();
-
-            while(reader.Read()) 
+            using (OracleConnection connection = new OracleConnection(FormLogin.connString))
             {
-                gridStandings.Rows.Add(reader[0],reader[1],reader[2],reader[3],reader[4]);
+                connection.Open(); // NE SMEE DA SE ZABORAVI!
+                OracleCommand command = new OracleCommand(query, connection);
+
+                command.CommandType = CommandType.Text;
+
+                OracleDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    gridStandings.Rows.Add(reader[0], reader[1], reader[2], reader[3], reader[4]);
+                }
+
             }
+            
+            
+            
 
            
         }
