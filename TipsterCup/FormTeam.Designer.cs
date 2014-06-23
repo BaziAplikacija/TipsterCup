@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pbTeam = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblStadium = new System.Windows.Forms.Label();
@@ -40,8 +42,10 @@
             this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Position = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chartTeamRating = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.pbTeam)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridPlayers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartTeamRating)).BeginInit();
             this.SuspendLayout();
             // 
             // pbTeam
@@ -153,12 +157,27 @@
             this.Position.ReadOnly = true;
             this.Position.Width = 80;
             // 
+            // chartTeamRating
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chartTeamRating.ChartAreas.Add(chartArea1);
+            this.chartTeamRating.Location = new System.Drawing.Point(255, 21);
+            this.chartTeamRating.Name = "chartTeamRating";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Name = "Series1";
+            this.chartTeamRating.Series.Add(series1);
+            this.chartTeamRating.Size = new System.Drawing.Size(408, 167);
+            this.chartTeamRating.TabIndex = 8;
+            this.chartTeamRating.Text = "chart1";
+            // 
             // FormTeam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(689, 416);
+            this.Controls.Add(this.chartTeamRating);
             this.Controls.Add(this.gridPlayers);
             this.Controls.Add(this.lblCity);
             this.Controls.Add(this.lblName);
@@ -171,6 +190,7 @@
             this.Text = "FormTeam";
             ((System.ComponentModel.ISupportInitialize)(this.pbTeam)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridPlayers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartTeamRating)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -190,5 +210,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Position;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartTeamRating;
     }
 }

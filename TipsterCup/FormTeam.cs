@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.DataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,7 +28,41 @@ namespace TipsterCup
 
 
             fillFields();
+            changeChartView();
             
+        }
+
+
+        private void changeChartView()
+        {
+            using (OracleConnection connection = new OracleConnection(FormLogin.connString))
+            {
+                connection.Open();
+                String query = "SELECT FLOOR(idMatch / 10) AS ROUND, SUM(part.match_Rating)/COUNT(part.match_Rating) AS TEAMRATING"
+                    +" FROM participates part JOIN player p ON (part.idPlayer = p.idPlayer)"
+                    + " WHERE p.idTeam = 12"
+                    + " GROUP BY part.idMatch"
+                    + " ORDER BY part.idMatch";
+                OracleDataAdapter adapter = new OracleDataAdapter(query, connection);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+
+                chartTeamRating.DataSource = table;
+                chartTeamRating.Series["Series1"].XValueMember = "Round";
+                chartTeamRating.Series["Series1"].YValueMembers = "TeamRating";
+            }
+
+            chartTeamRating.ChartAreas["ChartArea1"].AxisX.Title = "Rounds";
+            chartTeamRating.ChartAreas["ChartArea1"].AxisY.Title = "Rating";
+            chartTeamRating.ChartAreas["ChartArea1"].AxisX.Minimum = 1;
+            chartTeamRating.ChartAreas["ChartArea1"].AxisX.Maximum = 38;
+            chartTeamRating.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+            chartTeamRating.ChartAreas["ChartArea1"].AxisY.Minimum = 1000;
+            chartTeamRating.ChartAreas["ChartArea1"].AxisY.Maximum = 3000;
+            
+
+
+
         }
 
         private void fillFields()
