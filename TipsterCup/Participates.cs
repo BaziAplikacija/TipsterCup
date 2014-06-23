@@ -16,7 +16,7 @@ namespace TipsterCup
         public int NumInterrupts { get; set; }
         public int NumSaves { get; set; }
 
-        public int TmpRating { get; set; }//ke se koristi pri obnovuvanje na rejtingot na igracot
+        public int MatchRating { get; set; }
 
         //verojatnosno-empirisko odreduvanje na najpogodni tezini, mozno e da ima i promeni
         private const int WEIGHT_GOAL = 3000;//na site igraci ke bidat ednakvo vrednuvani site dostignuvanja
@@ -36,7 +36,7 @@ namespace TipsterCup
             NumInterrupts = ni;
             NumSaves = ns;
 
-            TmpRating = NumGoals * WEIGHT_GOAL + NumAssists * WEIGHT_ASSIST + NumInterrupts * WEIGHT_INTERRUPT
+            MatchRating = NumGoals * WEIGHT_GOAL + NumAssists * WEIGHT_ASSIST + NumInterrupts * WEIGHT_INTERRUPT
                         + NumSaves * WEIGHT_SAVE;
         }
 
