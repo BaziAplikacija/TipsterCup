@@ -96,7 +96,6 @@
     <Compile Include="FormTeam.Designer.cs">
       <DependentUpon>FormTeam.cs</DependentUpon>
     </Compile>
-    <Compile Include="GenerateGoalsForMatch.cs" />
     <Compile Include="Goal.cs" />
     <Compile Include="MainDoc.cs" />
     <Compile Include="Manager.cs" />

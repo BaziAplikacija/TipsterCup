@@ -17,6 +17,9 @@ namespace TipsterCup
         ENGLISH,
         MACEDONIAN
     }
+
+   
+    
     public partial class FormLogin : Form
     {
 
@@ -39,6 +42,7 @@ namespace TipsterCup
              + "User Id=DBA_20132014L_GRP_022;Password=9427657;";
 
 
+        public static  Dictionary<String, String> translator; 
         
 
         public FormLogin()
@@ -49,6 +53,36 @@ namespace TipsterCup
 
             
             initializeDateandInterval();
+
+            initMessages();
+        }
+
+        private void initMessages()
+        {
+            translator = new Dictionary<String, String>();
+
+            translator.Add("InvalidInput English", "The input parameters are invalid.");
+            translator.Add("InvalidInput Macedonian", "Внесените параметри не се валидни.");
+
+            translator.Add("Language English", "Language:");
+            translator.Add("Login English", "Login as:");
+            translator.Add("Username English", "Username:");
+            translator.Add("Password English", "Password:");
+            translator.Add("Exit English", "Exit");
+            translator.Add("Tipster English", "Tipster");
+            translator.Add("Administrator English", "Administrator");
+            translator.Add("Form English", "Login");
+            translator.Add("Register English", "Register");
+
+            translator.Add("Language Macedonian", "Јазик:");
+            translator.Add("Login Macedonian", "Најави се како:");
+            translator.Add("Username Macedonian", "Корисничко име:");
+            translator.Add("Password Macedonian", "Лозинка:");
+            translator.Add("Exit Macedonian", "Излез");
+            translator.Add("Tipster Macedonian", "Типстер");
+            translator.Add("Administrator Macedonian", "Администратор");
+            translator.Add("Form Macedonian", "Најава");
+            translator.Add("Register Macedonian", "Регистрирај се");   
         }
 
         private void FormLogin_Load(object sender, EventArgs e)
@@ -149,17 +183,7 @@ namespace TipsterCup
             }
             else
             {
-                String errorMessage = "";
-
-                if (language == Language.ENGLISH)
-                {
-                    errorMessage = "The input parameters are invalid.";
-                }
-                else
-                {
-                    errorMessage = "Внесените параметри не се валидни.";
-                }
-                MessageBox.Show(errorMessage);
+                MessageBox.Show(translator["InvalidInput " + (language == Language.ENGLISH?"English":"Macedonian")]);
             }
         }
         // proveruva dali vlezot za username i password vsusnost postoi vo bazata
@@ -214,49 +238,32 @@ namespace TipsterCup
             if (cbLanguage.SelectedIndex == 1)
             {
                 language = Language.MACEDONIAN;
-                changeLanguageInItems(true);
+                
             }
             else
             {
                 language = Language.ENGLISH;
-                changeLanguageInItems(false);
+                
             }
+
+            changeLanguageInItems();
         }
 
-        private void changeLanguageInItems(Boolean macedonian)
+        private void changeLanguageInItems()
         {
             int selectedIndex = cbLoginAs.SelectedIndex;
             cbLoginAs.Items.Clear();
-            if (macedonian)
-            {
-                lblLanguage.Text = "Јазик:";
-                lblLoginAs.Text = "Најави се како:";
-                lblUsername.Text = "Корисничко име:";
-                lblPassword.Text = "Лозинка:";
-                btnExit.Text = "Излез";
-               // btnGo.Text = "Почни!";
-                this.Text = "Најава";
+           
+            lblLanguage.Text = translator["Language " + (language == Language.ENGLISH ? "English" : "Macedonian")];
+            lblLoginAs.Text = translator["Login " + (language == Language.ENGLISH ? "English" : "Macedonian")];
+            lblUsername.Text = translator["Username " + (language == Language.ENGLISH ? "English" : "Macedonian")];
+            lblPassword.Text = translator["Password " + (language == Language.ENGLISH ? "English" : "Macedonian")];
+            btnExit.Text = translator["Exit " + (language == Language.ENGLISH ? "English" : "Macedonian")];
+            this.Text = translator["Form " + (language == Language.ENGLISH ? "English" : "Macedonian")];
 
-                cbLoginAs.Items.Add("Типстер");
-                cbLoginAs.Items.Add("Администратор");
-                
-
-                
-            }
-            else
-            {
-                lblLanguage.Text = "Language:";
-                lblLoginAs.Text = "Login as:";
-                lblUsername.Text = "Username:";
-                lblPassword.Text = "Password:";
-                btnExit.Text = "Exit";
-               // btnGo.Text = "Go!";
-                this.Text = "Login";
-
-                cbLoginAs.Items.Add("Tipster");
-                cbLoginAs.Items.Add("Administrator");
-            }
-
+            cbLoginAs.Items.Add(translator["Tipster " + (language == Language.ENGLISH ? "English" : "Macedonian")]);
+            cbLoginAs.Items.Add(translator["Administrator " + (language == Language.ENGLISH ? "English" : "Macedonian")]);
+            llblRegister.Text = translator["Register " + (language == Language.ENGLISH ? "English" : "Macedonian")];
             cbLoginAs.SelectedIndex = selectedIndex;
 
         }
