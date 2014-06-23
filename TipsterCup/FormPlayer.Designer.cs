@@ -43,7 +43,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(91, 64);
+            this.label1.Location = new System.Drawing.Point(165, 38);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 0;
@@ -52,7 +52,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(91, 93);
+            this.label2.Location = new System.Drawing.Point(165, 67);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 13);
             this.label2.TabIndex = 1;
@@ -61,7 +61,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(91, 129);
+            this.label3.Location = new System.Drawing.Point(336, 34);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 13);
             this.label3.TabIndex = 2;
@@ -70,7 +70,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(91, 162);
+            this.label4.Location = new System.Drawing.Point(336, 67);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 13);
             this.label4.TabIndex = 3;
@@ -79,7 +79,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(96, 190);
+            this.label5.Location = new System.Drawing.Point(341, 95);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 13);
             this.label5.TabIndex = 4;
@@ -88,7 +88,7 @@
             // lblLastName
             // 
             this.lblLastName.AutoSize = true;
-            this.lblLastName.Location = new System.Drawing.Point(170, 93);
+            this.lblLastName.Location = new System.Drawing.Point(244, 67);
             this.lblLastName.Name = "lblLastName";
             this.lblLastName.Size = new System.Drawing.Size(35, 13);
             this.lblLastName.TabIndex = 5;
@@ -97,7 +97,7 @@
             // lblFirstName
             // 
             this.lblFirstName.AutoSize = true;
-            this.lblFirstName.Location = new System.Drawing.Point(170, 64);
+            this.lblFirstName.Location = new System.Drawing.Point(244, 38);
             this.lblFirstName.Name = "lblFirstName";
             this.lblFirstName.Size = new System.Drawing.Size(35, 13);
             this.lblFirstName.TabIndex = 6;
@@ -106,7 +106,7 @@
             // lblPosition
             // 
             this.lblPosition.AutoSize = true;
-            this.lblPosition.Location = new System.Drawing.Point(170, 190);
+            this.lblPosition.Location = new System.Drawing.Point(415, 95);
             this.lblPosition.Name = "lblPosition";
             this.lblPosition.Size = new System.Drawing.Size(35, 13);
             this.lblPosition.TabIndex = 8;
@@ -115,7 +115,7 @@
             // lblTeam
             // 
             this.lblTeam.AutoSize = true;
-            this.lblTeam.Location = new System.Drawing.Point(170, 162);
+            this.lblTeam.Location = new System.Drawing.Point(415, 67);
             this.lblTeam.Name = "lblTeam";
             this.lblTeam.Size = new System.Drawing.Size(41, 13);
             this.lblTeam.TabIndex = 9;
@@ -124,7 +124,7 @@
             // lblRating
             // 
             this.lblRating.AutoSize = true;
-            this.lblRating.Location = new System.Drawing.Point(164, 129);
+            this.lblRating.Location = new System.Drawing.Point(409, 34);
             this.lblRating.Name = "lblRating";
             this.lblRating.Size = new System.Drawing.Size(41, 13);
             this.lblRating.TabIndex = 10;
@@ -135,7 +135,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(509, 328);
+            this.ClientSize = new System.Drawing.Size(565, 328);
             this.Controls.Add(this.lblRating);
             this.Controls.Add(this.lblTeam);
             this.Controls.Add(this.lblPosition);

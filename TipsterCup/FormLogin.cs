@@ -114,7 +114,6 @@ namespace TipsterCup
                 command.CommandType = CommandType.Text;
                 command.ExecuteNonQuery();
             }
-            MessageBox.Show(String.Format("{0}", timeInterval - thisDay));
             timerOneTickOneDay.Interval = timeInterval * 60 * 1000;
             timerThisDay.Interval = (timeInterval - thisDay)*60*1000;
             timerThisDay.Start();
@@ -309,7 +308,6 @@ namespace TipsterCup
 
         private void timerThisDay_Tick(object sender, EventArgs e)
         {
-            MessageBox.Show("this day");
             virtualDate = virtualDate.AddDays(1);
             updateVirtualDateAndLastDate();
             timerOneTickOneDay.Start();
