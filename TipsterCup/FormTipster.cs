@@ -13,9 +13,10 @@ namespace TipsterCup
 {
     public partial class FormTipster : Form
     {
-        
-        public FormTipster()
+        int idTipster;
+        public FormTipster(int idTipster)
         {
+            this.idTipster = idTipster;
             InitializeComponent();
         }
 
@@ -24,6 +25,25 @@ namespace TipsterCup
             using (OracleConnection conn = new OracleConnection(FormLogin.connString))
             {
                 conn.Open();
+
+                string query = "select * from Tipster where idTipster = " + idTipster;
+                OracleCommand command = new OracleCommand(query, conn);
+                command.CommandType = CommandType.Text;
+
+                OracleDataReader reader = command.ExecuteReader();
+                reader.Read();
+
+                lblUsername.Text = reader.GetString(1);
+                lblFirstName.Text = reader.GetString(3);
+                lblSurname.Text = reader.GetString(4);
+                lblRating.Text = reader.GetInt32(5).ToString();
+                lblEmail.Text = reader.GetString(6);
+                
+                
+               
+
+                reader.Close();
+
             }
         }
 

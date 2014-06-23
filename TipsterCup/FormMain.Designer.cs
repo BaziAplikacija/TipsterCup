@@ -39,6 +39,7 @@
             this.btnPlayers = new System.Windows.Forms.Button();
             this.btnTipsters = new System.Windows.Forms.Button();
             this.btnStatistics = new System.Windows.Forms.Button();
+            this.btnMyProfile = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridStandings)).BeginInit();
             this.SuspendLayout();
             // 
@@ -141,12 +142,23 @@
             this.btnStatistics.UseVisualStyleBackColor = true;
             this.btnStatistics.Click += new System.EventHandler(this.btnStatistics_Click);
             // 
+            // btnMyProfile
+            // 
+            this.btnMyProfile.Location = new System.Drawing.Point(479, 30);
+            this.btnMyProfile.Name = "btnMyProfile";
+            this.btnMyProfile.Size = new System.Drawing.Size(98, 23);
+            this.btnMyProfile.TabIndex = 6;
+            this.btnMyProfile.Text = "My profile";
+            this.btnMyProfile.UseVisualStyleBackColor = true;
+            this.btnMyProfile.Click += new System.EventHandler(this.btnMyProfile_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(792, 422);
+            this.Controls.Add(this.btnMyProfile);
             this.Controls.Add(this.btnStatistics);
             this.Controls.Add(this.btnTipsters);
             this.Controls.Add(this.btnPlayers);
@@ -174,5 +186,6 @@
         private System.Windows.Forms.Button btnPlayers;
         private System.Windows.Forms.Button btnTipsters;
         private System.Windows.Forms.Button btnStatistics;
+        private System.Windows.Forms.Button btnMyProfile;
     }
 }

@@ -213,7 +213,7 @@ namespace TipsterCup
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            // !!!!PROBLEM E KOGA NAGLO KJE SNEMA KONEKCIJA a ostanuva tipster logiran!!!!
             using (OracleConnection conn = new OracleConnection(FormLogin.connString))
             {
                 conn.Open();
@@ -230,6 +230,12 @@ namespace TipsterCup
         private void btnStatistics_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void btnMyProfile_Click(object sender, EventArgs e)
+        {
+            FormTipster frmMyProfile = new FormTipster(FormLogin.IdLoggedTipster);
+            frmMyProfile.Show();
         }
     }
 }
