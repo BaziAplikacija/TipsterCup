@@ -94,9 +94,9 @@
             this.panel1.Controls.Add(this.lblName);
             this.panel1.Controls.Add(this.lblPassword);
             this.panel1.Controls.Add(this.lblUsername);
-            this.panel1.Location = new System.Drawing.Point(170, 3);
+            this.panel1.Location = new System.Drawing.Point(232, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(321, 267);
+            this.panel1.Size = new System.Drawing.Size(259, 267);
             this.panel1.TabIndex = 1;
             // 
             // btnBan
@@ -104,7 +104,7 @@
             this.btnBan.BackColor = System.Drawing.Color.Red;
             this.btnBan.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnBan.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnBan.Location = new System.Drawing.Point(191, 225);
+            this.btnBan.Location = new System.Drawing.Point(129, 225);
             this.btnBan.Name = "btnBan";
             this.btnBan.Size = new System.Drawing.Size(123, 38);
             this.btnBan.TabIndex = 12;
@@ -226,8 +226,9 @@
             this.listTipsters.FormattingEnabled = true;
             this.listTipsters.Location = new System.Drawing.Point(6, 6);
             this.listTipsters.Name = "listTipsters";
-            this.listTipsters.Size = new System.Drawing.Size(158, 264);
+            this.listTipsters.Size = new System.Drawing.Size(220, 264);
             this.listTipsters.TabIndex = 0;
+            this.listTipsters.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listTipsters_DrawItem);
             this.listTipsters.SelectedIndexChanged += new System.EventHandler(this.listTipsters_SelectedIndexChanged);
             // 
             // tabOptions

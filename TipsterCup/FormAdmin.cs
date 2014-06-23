@@ -18,19 +18,19 @@ namespace TipsterCup
         public FormAdmin()
         {
             InitializeComponent();
-            
+            cbTime.SelectedIndex = 0;
         }
 
         private void FormAdmin_Load(object sender, EventArgs e)
         {
             select_tipsters();
-            cbTime.SelectedIndex = 0;
+            listTipsters.DrawMode = DrawMode.OwnerDrawVariable;
+            listTipsters.DrawItem += new DrawItemEventHandler(listTipsters_DrawItem);
         }
 
         //Vo listBox gi stava tipsterite
         public void select_tipsters()
         {
-
             using (OracleConnection connection = new OracleConnection(FormLogin.connString))
             {
                 connection.Open(); // NIKAKO NE SMEE DA SE ZABORAVI! 
@@ -43,8 +43,7 @@ namespace TipsterCup
                 while (reader.Read())
                 {
                     Tipster tipster = new Tipster(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetInt32(5), reader.GetString(6), reader.GetString(7));
-                    if (tipster.Valid.Equals("y"))
-                        listTipsters.Items.Add(tipster);
+                    listTipsters.Items.Add(tipster);
                 }
             }
            
@@ -64,6 +63,14 @@ namespace TipsterCup
                 lblSurnameData.Text = tipster.Surname;
                 lblEmailData.Text = tipster.Email;
                 lblRatingData.Text = String.Format("{0}", tipster.Rating);
+                if (tipster.Valid.Equals("n"))
+                {
+                    btnBan.Text = "UNBAN";
+                }
+                else
+                {
+                    btnBan.Text = "BAN";
+                }
             }
         }
 
@@ -73,7 +80,12 @@ namespace TipsterCup
             if (listTipsters.SelectedIndex >= 0)
             {
                 Tipster tipster = (Tipster)listTipsters.SelectedItem;
-                String queryBan = "UPDATE Tipster SET valid = 'n' WHERE idTipster=" + tipster.IdTipster;
+                String valid = "'y'";
+                if (tipster.Valid.Equals("y"))
+                {
+                    valid = "'n'";
+                }
+                String queryBan = "UPDATE Tipster SET valid = " +valid+ " WHERE idTipster=" + tipster.IdTipster;
 
                 using (OracleConnection connection = new OracleConnection(FormLogin.connString))
                 {
@@ -82,10 +94,9 @@ namespace TipsterCup
                     command.CommandType = CommandType.Text;
                     command.ExecuteNonQuery();
                 }
-               
-                
-                
-                select_tipsters();
+                int selectedIndex = listTipsters.SelectedIndex;
+                FormAdmin_Load(this, null);
+                listTipsters.SelectedIndex = selectedIndex;
             }
         }
 
@@ -111,10 +122,26 @@ namespace TipsterCup
                     command.CommandType = CommandType.Text;
                     command.ExecuteNonQuery();
                 }
-                
+
+                listTipsters.Refresh();
                
             }
             
+        }
+
+        private void listTipsters_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            e.DrawBackground();
+            e.DrawFocusRectangle();
+            Tipster tipster = listTipsters.Items[e.Index] as Tipster;
+            if (tipster.Valid.Equals("n"))
+            {
+                e.Graphics.DrawString(tipster.ToString(), new Font("Lucida Console", 9.75F, FontStyle.Regular, GraphicsUnit.Pixel),new SolidBrush(Color.Red),e.Bounds);
+            }
+            else
+            {
+                e.Graphics.DrawString(tipster.ToString(), new Font("Lucida Console", 9.75F, FontStyle.Regular, GraphicsUnit.Pixel), new SolidBrush(Color.Black), e.Bounds);
+            }
         }
     }
 }
