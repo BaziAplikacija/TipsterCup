@@ -36,10 +36,13 @@ namespace TipsterCup
             NumInterrupts = ni;
             NumSaves = ns;
 
+            
+        }
+
+        public void calculateMatchRating()
+        {
             MatchRating = NumGoals * WEIGHT_GOAL + NumAssists * WEIGHT_ASSIST + NumInterrupts * WEIGHT_INTERRUPT
                         + NumSaves * WEIGHT_SAVE;
         }
-
-
     }
 }
