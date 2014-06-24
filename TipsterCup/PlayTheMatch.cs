@@ -35,7 +35,7 @@ namespace TipsterCup
             Match match = mainDoc.getMatchById(idMatch);
             random = new Random();
             List<Player> homeTeam = mainDoc.getFirstEleven(match.HomeTeam.Name);
-            List<Player> guestTeam = mainDoc.getFirstEleven(match.HomeTeam.Name);
+            List<Player> guestTeam = mainDoc.getFirstEleven(match.GuestTeam.Name);
 
             int id = 0;//OVA TREBA DA GO DOBIJAM OD BAZATA
             Participations = new List<Participates>();
@@ -49,8 +49,8 @@ namespace TipsterCup
                 Participations.Add(new Participates(id, p, match, 0, 0, 0, 0));//vaka za site ucesnici se stava isto id
                 totalAssistTokens += p.TokensAssists;                     //no ovaa lista e samo lokalna za ovaa klasa
                 totalGoalTokens += p.TokensGoals;               //i toj index ne se koristi na drugi mesta, pa zatoa ne smeta
-                totalInterruptTokens += p.TokensInterrupts;//ne go izbrisav polet bidejki koga ke se zemaat site ucestva od glavnata forma
-                totalSaveTokens += p.TokensSaves;           //polet bidejki koga ke se zemaat site ucestva od glavnata forma ke bide potrebno i toa pole
+                totalInterruptTokens += p.TokensInterrupts;//ne go izbrisav poleto bidejki koga ke se zemaat site ucestva od glavnata forma
+                totalSaveTokens += p.TokensSaves;           //poleto bidejki koga ke se zemaat site ucestva od glavnata forma ke bide potrebno i toa pole
             }
             foreach (Player p in guestTeam)
             {
@@ -180,11 +180,15 @@ namespace TipsterCup
 
         private int goalScorer()
         {
-            int token = random.Next(totalGoalTokens);
+            totalGoalTokens = 0;
             List<int> tokens = new List<int>();
-            foreach(Player p in AllPlayers){
+            foreach (Player p in AllPlayers)
+            {
+                totalGoalTokens += p.TokensGoals;
                 tokens.Add(p.TokensGoals);
             }
+            int token = random.Next(totalGoalTokens);
+            
             return ownerOfToken(token, tokens);
             
         }
@@ -225,15 +229,19 @@ namespace TipsterCup
 
         private int ownerOfToken(int chosen, List<int> tokens)
         {
-            int lastToken = tokens[0];
-            for (int i = 0; i < 22; i++)
+            List<int> lastToken = new List<int>();
+            lastToken.Add(tokens[0]);
+            for (int i = 1; i < tokens.Count; i++)
             {
-                if (chosen < lastToken)
-                {
-                    return i;
-                }
-                lastToken += tokens[i + 1];
+                lastToken.Add(lastToken[i - 1] + tokens[i]);
             }
+                for (int i = 0; i < 22; i++)
+                {
+                    if (chosen < lastToken[i])
+                    {
+                        return i;
+                    }
+                }
             return 21;
         }
 
