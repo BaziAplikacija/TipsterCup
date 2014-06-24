@@ -16,11 +16,18 @@ namespace TipsterCup
         public FormAllTipsters()
         {
             InitializeComponent();
+        
+        }
+
+        public void callLoad()
+        {
+            FormAllTipsters_Load(null, null);
         }
 
         private void FormAllTipsters_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
+            gridTipsters.Rows.Clear();
             using (OracleConnection conn = new OracleConnection(FormLogin.connString))
             {
                 conn.Open();
@@ -49,6 +56,7 @@ namespace TipsterCup
         {
             int idTipster = Int32.Parse(gridTipsters[0, e.RowIndex].Value.ToString());
             FormTipster frmTipster = new FormTipster(idTipster);
+            frmTipster.frmParent = this;
             frmTipster.Show();
         }
     }

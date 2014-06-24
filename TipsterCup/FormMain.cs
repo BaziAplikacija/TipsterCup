@@ -25,9 +25,16 @@ namespace TipsterCup
             frmAllTipsters = null;
         }
 
-        
 
-        
+
+        public void InvalidateChildren()
+        {
+
+            foreach (Form frm in this.MdiChildren) 
+            {
+                frm.Invalidate();
+            }
+        }
 
         private void btnRounds_Click(object sender, EventArgs e)
         {

@@ -14,14 +14,22 @@ namespace TipsterCup
     public partial class FormTipster : Form
     {
         int idTipster;
+        public FormAllTipsters frmParent;
         public FormTipster(int idTipster)
         {
             this.idTipster = idTipster;
             InitializeComponent();
+
+            
         }
 
         private void FormTipster_Load(object sender, EventArgs e)
         {
+            
+            if (idTipster != FormLogin.IdLoggedTipster)
+            {
+                btnTransaction.Visible = true;
+            }
             using (OracleConnection conn = new OracleConnection(FormLogin.connString))
             {
                 conn.Open();
@@ -49,6 +57,19 @@ namespace TipsterCup
                 reader.Close();
 
             }
+        }
+
+        private void btnTransaction_Click(object sender, EventArgs e)
+        {
+            FormTransaction frmTrans = new FormTransaction(this.idTipster,this.lblUsername.Text);
+            frmTrans.frmParent = this;
+            frmTrans.ShowDialog();
+
+            if (frmParent != null)
+            {
+                frmParent.callLoad();
+            }
+            
         }
 
 
