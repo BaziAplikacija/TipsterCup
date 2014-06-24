@@ -15,14 +15,14 @@ namespace TipsterCup
     {
 
         int currentRound;
-        int lastRound;
+        //int lastRound;
 
         List<Round> Rounds;
         MainDoc docMain;
         List<Label> labels;
         List<Button> buttons;
-
         List<Match> matchesInRound;
+       
         public FormRounds(MainDoc doc)
         {
             InitializeComponent();
@@ -30,51 +30,40 @@ namespace TipsterCup
             //Rounds = new List<Round>();
             labels = new List<Label>();
             buttons = new List<Button>();
+            
         }
+
 
 
         private void setMatches()
         {
             matchesInRound = new List<Match>();
 
-            using (OracleConnection connection = new OracleConnection(FormLogin.connString))
-            {
-                connection.Open();
-                String query = "SELECT * FROM Match WHERE idRound = "+ (cbRounds.SelectedIndex + 1);
-                OracleCommand command = new OracleCommand(query, connection);
-                OracleDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    Match m = new Match(reader.GetInt32(0), reader.GetInt32(3), reader.GetInt32(4), reader.GetInt32(2), reader.GetDateTime(1));
-                    matchesInRound.Add(m);
-                }
-                
-            }
 
-            /*foreach (Match match in docMain.Matches)
+            foreach (Match match in docMain.Matches)
             {
                 if (match.Round.Id == cbRounds.SelectedIndex + 1)
                 {
                     matchesInRound.Add(match);
                 }
-            }*/
-
-            
-            for (int i = 0; i < matchesInRound.Count; i++)
-            {
-                labels[i * 4].Text = matchesInRound[i].DateMatch.ToShortDateString();
-                if (matchesInRound[i].DateMatch.CompareTo(FormLogin.virtualDate) <= 0)
-                {
-                    labels[i * 4 + 2].Text = matchesInRound[i].GoalsHome.Count + "-" + matchesInRound[i].GoalsGuest.Count;
-                }
-                else
-                {
-                    labels[i * 4 + 2].Text = "";
-                }
-                labels[i * 4 + 1].Text = matchesInRound[i].HomeTeam.Name;
-                labels[i * 4 + 3].Text = matchesInRound[i].GuestTeam.Name;
-
             }
+
+
+                for (int i = 0; i < matchesInRound.Count; i++)
+                {
+                    labels[i * 4].Text = matchesInRound[i].DateMatch.ToShortDateString();
+                    if (matchesInRound[i].DateMatch.CompareTo(FormLogin.virtualDate) < 0)
+                    {
+                        labels[i * 4 + 2].Text = matchesInRound[i].GoalsHome.Count + "-" + matchesInRound[i].GoalsGuest.Count;
+                    }
+                    else
+                    {
+                        labels[i * 4 + 2].Text = "";
+                    }
+                    labels[i * 4 + 1].Text = matchesInRound[i].HomeTeam.Name;
+                    labels[i * 4 + 3].Text = matchesInRound[i].GuestTeam.Name;
+
+                }
 
         }
 
@@ -85,18 +74,19 @@ namespace TipsterCup
         private void cbRounds_SelectedIndexChanged(object sender, EventArgs e)
         {
             setMatches();
-            if(cbRounds.SelectedIndex + 1 < lastRound)
-                disableButtons();
+            disableButtons();
         }
 
         private void disableButtons()
         {
             for (int i = 0; i < buttons.Count; ++i)
             {
-                buttons[i].Enabled = false;
+                if (i >= matchesInRound.Count || matchesInRound[i].DateMatch.CompareTo(FormLogin.virtualDate) < 0)
+                    buttons[i].Enabled = false;
+                else
+                    buttons[i].Enabled = true;
             }
         }
-
 
 
         private void FormRounds_Load(object sender, EventArgs e)
@@ -104,13 +94,14 @@ namespace TipsterCup
             setControls();
             currentRound = setRound();
             cbRounds.SelectedIndex = currentRound - 1;
+            disableButtons();
         }
 
 
         private int setRound()
         {
             int round = 0;
-            lastRound = 0;
+            //lastRound = 0;
             using (OracleConnection connection = new OracleConnection(FormLogin.connString))
             {
                 connection.Open();
@@ -134,7 +125,8 @@ namespace TipsterCup
                     {
                         round = reader.GetInt32(0);
                     }
-                    lastRound = round;
+                    round++;
+                    //lastRound = round;
                 }
             }
             return round;
