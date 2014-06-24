@@ -35,7 +35,7 @@ namespace TipsterCup
             Match match = mainDoc.getMatchById(idMatch);
             random = new Random();
             List<Player> homeTeam = mainDoc.getFirstEleven(match.HomeTeam.Name);
-            List<Player> guestTeam = mainDoc.getFirstEleven(match.HomeTeam.Name);
+            List<Player> guestTeam = mainDoc.getFirstEleven(match.GuestTeam.Name);
 
             int id = 0;//OVA TREBA DA GO DOBIJAM OD BAZATA
             Participations = new List<Participates>();
@@ -180,11 +180,15 @@ namespace TipsterCup
 
         private int goalScorer()
         {
-            int token = random.Next(totalGoalTokens);
+            totalGoalTokens = 0;
             List<int> tokens = new List<int>();
-            foreach(Player p in AllPlayers){
+            foreach (Player p in AllPlayers)
+            {
+                totalGoalTokens += p.TokensGoals;
                 tokens.Add(p.TokensGoals);
             }
+            int token = random.Next(totalGoalTokens);
+            
             return ownerOfToken(token, tokens);
             
         }
