@@ -179,22 +179,6 @@ namespace TipsterCup
         {
 
             if (validInput()) {
-
-                if (IdLoggedTipster != -1) // znachi deka se najavil tipster a ne administrator
-                {
-                    using (OracleConnection conn = new OracleConnection(connString))
-                    {
-                        conn.Open();
-                        string query = "UPDATE TIPSTER " +
-                                       "SET loggedIn = 'y' " +
-                                       "WHERE idTipster = " + IdLoggedTipster;
-                        OracleCommand command = new OracleCommand(query, conn);
-                        command.CommandType = CommandType.Text;
-                        command.ExecuteNonQuery();
-                    }
-                }
-               
-                
                 this.Hide();
                 if (cbLoginAs.SelectedIndex == 0)
                 {
@@ -259,11 +243,7 @@ namespace TipsterCup
                     MessageBox.Show(translator["BannedMsg " + currLanguage]);
                     return false;
                 }
-                else if (fromTable.Equals("Tipster") && dataReader.GetString(8).Equals("y"))
-                {
-                    MessageBox.Show(translator["LoggedMsg " + currLanguage]);
-                    return false;
-                }
+               
 
                 if (fromTable.Equals("Tipster"))
                     IdLoggedTipster = dataReader.GetInt32(0);
@@ -394,7 +374,7 @@ namespace TipsterCup
 
 
         //MainDoc
-
+        
         private void fillMainDoc()
         {
 

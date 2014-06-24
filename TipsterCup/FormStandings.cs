@@ -13,6 +13,7 @@ namespace TipsterCup
 {
     public partial class FormStandings : Form
     {
+        private Bitmap bgImage;
         public FormStandings()
         {
             InitializeComponent();
@@ -20,6 +21,8 @@ namespace TipsterCup
 
         private void FormStandings_Load(object sender, EventArgs e)
         {
+            bgImage = new Bitmap("bgStadium.jpg");
+            
             fillGrid();
             this.WindowState = FormWindowState.Maximized;
         }
@@ -53,11 +56,18 @@ namespace TipsterCup
         {
             if (e.ColumnIndex == 0 && e.RowIndex != -1)
             {
+                MessageBox.Show("Got ya!");
                 String teamName = Convert.ToString(gridStandings.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
 
                 FormTeam frmTeam = new FormTeam(FormLogin.docMain.getTeamByName(teamName), FormLogin.docMain);
                 frmTeam.Show();
             }
+        }
+
+        private void FormStandings_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.Clear(Color.White);
+            e.Graphics.DrawImage(bgImage, 0, 0, this.Width, this.Height);
         }
     }
 }

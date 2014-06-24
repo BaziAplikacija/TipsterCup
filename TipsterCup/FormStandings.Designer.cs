@@ -41,6 +41,7 @@
             // 
             this.gridStandings.AllowUserToAddRows = false;
             this.gridStandings.AllowUserToDeleteRows = false;
+            this.gridStandings.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.gridStandings.BackgroundColor = System.Drawing.Color.White;
             this.gridStandings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridStandings.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -50,12 +51,13 @@
             this.L,
             this.Points});
             this.gridStandings.GridColor = System.Drawing.Color.White;
-            this.gridStandings.Location = new System.Drawing.Point(103, 53);
+            this.gridStandings.Location = new System.Drawing.Point(75, 55);
             this.gridStandings.Name = "gridStandings";
             this.gridStandings.ReadOnly = true;
             this.gridStandings.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.gridStandings.Size = new System.Drawing.Size(676, 422);
-            this.gridStandings.TabIndex = 1;
+            this.gridStandings.TabIndex = 2;
+            this.gridStandings.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridStandings_CellDoubleClick);
             // 
             // TeamName
             // 
@@ -97,6 +99,7 @@
             this.Name = "FormStandings";
             this.Text = "FormStandings";
             this.Load += new System.EventHandler(this.FormStandings_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.FormStandings_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.gridStandings)).EndInit();
             this.ResumeLayout(false);
 
@@ -110,5 +113,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn D;
         private System.Windows.Forms.DataGridViewTextBoxColumn L;
         private System.Windows.Forms.DataGridViewTextBoxColumn Points;
+
     }
 }

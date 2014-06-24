@@ -70,12 +70,9 @@ namespace TipsterCup
 
         private void btnTipsters_Click(object sender, EventArgs e)
         {
-            if (frmAllTipsters != null)
-            {
-                frmAllTipsters.Close();
-            }
             frmAllTipsters = new FormAllTipsters();
             frmAllTipsters.MdiParent = this;
+           
             frmAllTipsters.Show();
         }
 
