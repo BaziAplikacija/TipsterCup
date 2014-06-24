@@ -43,7 +43,7 @@ namespace TipsterCup
                 OracleCommand command = new OracleCommand(query, connection);
                 OracleDataReader reader = command.ExecuteReader();
                 reader.Read();
-                Player p = new Player(FormLogin.docMain, idPlayer, reader.GetString(1), reader.GetString(2), reader.GetDateTime(3), reader.GetDouble(4), reader.GetInt32(5), reader.GetInt32(6));
+                Player p = new Player(FormLogin.docMain, idPlayer, reader.GetString(1), reader.GetString(2), reader.GetDateTime(3), reader.GetInt32(4), reader.GetInt32(5), reader.GetInt32(6));
                 return p;
             }
         }
