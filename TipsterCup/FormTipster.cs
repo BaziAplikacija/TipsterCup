@@ -36,10 +36,10 @@ namespace TipsterCup
                 lblUsername.Text = reader.GetString(1);
                 lblFirstName.Text = reader.GetString(3);
                 lblSurname.Text = reader.GetString(4);
-                lblRating.Text = reader.GetInt32(5).ToString();
+                lblMoney.Text = reader.GetInt32(5).ToString();
                 lblEmail.Text = reader.GetString(6);
                 
-                query = "select COUNT(*) + 1 FROM Tipster WHERE Rating > " + Int32.Parse(lblRating.Text);
+                query = "select COUNT(*) + 1 FROM Tipster WHERE Money > " + Int32.Parse(lblMoney.Text);
 
                 command = new OracleCommand(query, conn);
                 command.CommandType = CommandType.Text;

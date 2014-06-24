@@ -25,7 +25,7 @@ namespace TipsterCup
             {
                 conn.Open();
 
-                string query = "SELECT T.idTipster,(SELECT COUNT(*) FROM TIPSTER WHERE Rating > T.RATING) + 1 as rank, T.username, T.rating  FROM TIPSTER T  ORDER BY rank";
+                string query = "SELECT T.idTipster,(SELECT COUNT(*) FROM TIPSTER WHERE Money > T.money) + 1 as rank, T.username, T.money  FROM TIPSTER T  ORDER BY rank";
 
                 OracleCommand command = new OracleCommand(query, conn);
                 command.CommandType = CommandType.Text;

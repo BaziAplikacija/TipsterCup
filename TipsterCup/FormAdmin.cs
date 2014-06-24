@@ -62,7 +62,7 @@ namespace TipsterCup
                 lblNameData.Text = tipster.Name;
                 lblSurnameData.Text = tipster.Surname;
                 lblEmailData.Text = tipster.Email;
-                lblRatingData.Text = String.Format("{0}", tipster.Rating);
+                lblRatingData.Text = String.Format("{0}", tipster.Money);
                 if (tipster.Valid.Equals("n"))
                 {
                     btnBan.Text = "UNBAN";

@@ -28,18 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTipster));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.lblRating = new System.Windows.Forms.Label();
+            this.lblMoney = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblSurname = new System.Windows.Forms.Label();
             this.lblFirstName = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblRank = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -81,29 +88,29 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(41, 159);
+            this.label5.Location = new System.Drawing.Point(41, 168);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 13);
+            this.label5.Size = new System.Drawing.Size(42, 13);
             this.label5.TabIndex = 4;
-            this.label5.Text = "Rating:";
+            this.label5.Text = "Money:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(41, 188);
+            this.label6.Location = new System.Drawing.Point(41, 210);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(36, 13);
             this.label6.TabIndex = 5;
             this.label6.Text = "Rank:";
             // 
-            // lblRating
+            // lblMoney
             // 
-            this.lblRating.AutoSize = true;
-            this.lblRating.Location = new System.Drawing.Point(102, 159);
-            this.lblRating.Name = "lblRating";
-            this.lblRating.Size = new System.Drawing.Size(35, 13);
-            this.lblRating.TabIndex = 6;
-            this.lblRating.Text = "label7";
+            this.lblMoney.AutoSize = true;
+            this.lblMoney.Location = new System.Drawing.Point(102, 168);
+            this.lblMoney.Name = "lblMoney";
+            this.lblMoney.Size = new System.Drawing.Size(35, 13);
+            this.lblMoney.TabIndex = 6;
+            this.lblMoney.Text = "label7";
             // 
             // lblEmail
             // 
@@ -144,11 +151,41 @@
             // lblRank
             // 
             this.lblRank.AutoSize = true;
-            this.lblRank.Location = new System.Drawing.Point(102, 188);
+            this.lblRank.Location = new System.Drawing.Point(102, 210);
             this.lblRank.Name = "lblRank";
             this.lblRank.Size = new System.Drawing.Size(41, 13);
             this.lblRank.TabIndex = 11;
             this.lblRank.Text = "label12";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(159, 158);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(29, 23);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(159, 122);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(29, 23);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 13;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(159, 200);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(29, 23);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 14;
+            this.pictureBox3.TabStop = false;
             // 
             // FormTipster
             // 
@@ -156,12 +193,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(419, 284);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblRank);
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.lblFirstName);
             this.Controls.Add(this.lblSurname);
             this.Controls.Add(this.lblEmail);
-            this.Controls.Add(this.lblRating);
+            this.Controls.Add(this.lblMoney);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -171,6 +211,9 @@
             this.Name = "FormTipster";
             this.Text = "FormTipster";
             this.Load += new System.EventHandler(this.FormTipster_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -184,11 +227,14 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label lblRating;
+        private System.Windows.Forms.Label lblMoney;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label lblSurname;
         private System.Windows.Forms.Label lblFirstName;
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Label lblRank;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }

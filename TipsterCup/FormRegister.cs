@@ -111,7 +111,7 @@ namespace TipsterCup
                 command.Parameters.Add("p_password", OracleDbType.Varchar2).Value = password;
                 command.Parameters.Add("p_name", OracleDbType.Varchar2).Value = name;
                 command.Parameters.Add("p_surname", OracleDbType.Varchar2).Value = surname;
-                command.Parameters.Add("p_rating", OracleDbType.Int32).Value = 1000;
+                command.Parameters.Add("p_money", OracleDbType.Int32).Value = 1000;
                 command.Parameters.Add("p_email", OracleDbType.Varchar2).Value = email;
 
                 command.ExecuteNonQuery();

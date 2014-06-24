@@ -96,6 +96,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(827, 532);
             this.Controls.Add(this.gridStandings);
+            this.DoubleBuffered = true;
             this.Name = "FormStandings";
             this.Text = "FormStandings";
             this.Load += new System.EventHandler(this.FormStandings_Load);
