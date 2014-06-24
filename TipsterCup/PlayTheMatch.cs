@@ -14,11 +14,11 @@ namespace TipsterCup
         //da nema zabuna, ednite Tokens, kaj igraci, odreduvat verojatnost deka daden igrac ke postigne nesto
         //pr. gol, asistencija i sl.
         //ovie ovde Tokens odreduvat verojatnost deka nesto voopsto ke se sluci
-        private const int GOAL_TOKENS = 5;// 5/100 e verojatnost deka ke ima gol vo dadena minuta
-        private const int INTERRUPT_TOKENS = 32;//32/100 deka ke ima prekin na protivnicka akcija itn.
-        private const int SAVE_TOKENS = 13;
-        private const int NOTHING_HAPPENS_TOKENS = 50;
-        private const int TOTAL_TOKENS = GOAL_TOKENS + INTERRUPT_TOKENS + SAVE_TOKENS + NOTHING_HAPPENS_TOKENS;
+        private const int GOAL_TOKENS = 25;// 25/900 e verojatnost deka ke ima gol vo dadena minuta
+        private const int INTERRUPT_TOKENS = 350;//350/900 deka ke ima prekin na protivnicka akcija itn.
+        private const int SAVE_TOKENS = 80;
+        private const int NOTHING_HAPPENS_TOKENS = 460;
+        private const int TOTAL_TOKENS = 900;
         Random random;
 
         public List<Participates> Participations { get; set; }

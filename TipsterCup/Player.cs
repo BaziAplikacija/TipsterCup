@@ -37,13 +37,13 @@ namespace TipsterCup
                 case 1://Napad
                     TokensGoals *= 3;//Napagacot da ima najgolemi shansi za gol
                     TokensAssists *= 2;
-                    TokensInterrupts = TokensInterrupts;
+                    TokensInterrupts *= 1;
                     TokensSaves = 0;
                     break;
                 case 2://Sredina
                     TokensGoals *= 2;
                     TokensAssists *= 3;
-                    TokensInterrupts = 2;
+                    TokensInterrupts *= 2;
                     TokensSaves = 0;
                     break;
                 case 3://Odbrana

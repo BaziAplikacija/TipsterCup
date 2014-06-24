@@ -18,13 +18,15 @@ namespace TipsterCup
 
         public int MatchRating { get; set; }
 
+        private const int BASE_RATING = 500;//sekoj igrac u start da ima BASE_RATING so samoto ucestvo
         //verojatnosno-empirisko odreduvanje na najpogodni tezini, mozno e da ima i promeni
         private const int WEIGHT_GOAL = 3000;//na site igraci ke bidat ednakvo vrednuvani site dostignuvanja
         private const int WEIGHT_ASSIST = 2500;//nezavisno od pozicijata
-        private const int WEIGHT_INTERRUPT = 1000;//Tokens ke vlijaat koj kolku poeni ke dobiva od sto
-        private const int WEIGHT_SAVE = 800;//bidejki toa odreduva koj igrac kolkavi sansi ima sto da postigne
+        private const int WEIGHT_INTERRUPT = 500;//Tokens ke vlijaat koj kolku poeni ke dobiva od sto
+        private const int WEIGHT_SAVE = 500;//bidejki toa odreduva koj igrac kolkavi sansi ima sto da postigne
                                             //vaka e po fer, bidejki na pr. gol e gol nezavisno dali igracot na
                                             //koja pozicija igra
+
 
         public Participates(int id, Player player, Match match, int ng, int na, int ni, int ns)
         {
@@ -41,7 +43,7 @@ namespace TipsterCup
 
         public void calculateMatchRating()
         {
-            MatchRating = NumGoals * WEIGHT_GOAL + NumAssists * WEIGHT_ASSIST + NumInterrupts * WEIGHT_INTERRUPT
+            MatchRating = BASE_RATING + NumGoals * WEIGHT_GOAL + NumAssists * WEIGHT_ASSIST + NumInterrupts * WEIGHT_INTERRUPT
                         + NumSaves * WEIGHT_SAVE;
         }
     }
