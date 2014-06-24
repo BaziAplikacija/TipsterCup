@@ -116,6 +116,12 @@
     <Compile Include="MainDoc.cs" />
     <Compile Include="Manager.cs" />
     <Compile Include="Match.cs" />
+    <Compile Include="FormMatchDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMatchDetails.Designer.cs">
+      <DependentUpon>FormMatchDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Participates.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayTheMatch.cs" />
@@ -153,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormTipster.resx">
       <DependentUpon>FormTipster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMatchDetails.resx">
+      <DependentUpon>FormMatchDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

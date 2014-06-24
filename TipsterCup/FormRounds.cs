@@ -22,15 +22,10 @@ namespace TipsterCup
             InitializeComponent();
 
             docMain = doc;
-
-
-
             Rounds = new List<Round>();
-
             labels = new List<Label>();
-            
-
         }
+
 
         private void setMatches()
         {
@@ -73,6 +68,8 @@ namespace TipsterCup
 
         }
 
+
+
         private void FormRounds_Load(object sender, EventArgs e)
         {
             setControls();
@@ -80,6 +77,8 @@ namespace TipsterCup
 
 
         }
+
+
 
         private void setControls()
         {
@@ -90,12 +89,19 @@ namespace TipsterCup
                 Label labelHome = new Label();
                 Label labelGuest = new Label();
                 Label labelDate = new Label();
+                
                 labelResult.Dock = DockStyle.Fill;
-                labelResult.TextAlign = ContentAlignment.MiddleCenter;
+                labelResult.TextAlign = ContentAlignment.BottomCenter;
+                labelResult.Click += new EventHandler(labelResult_Click);
+                
                 labelHome.Dock = DockStyle.Fill;
                 labelHome.TextAlign = ContentAlignment.BottomRight;
+                labelHome.Click += new EventHandler(labelTeam_Click);
+
                 labelGuest.Dock = DockStyle.Fill;
                 labelGuest.TextAlign = ContentAlignment.BottomLeft;
+                labelGuest.Click += new EventHandler(labelTeam_Click);
+
                 labelDate.Dock = DockStyle.Fill;
                 labelDate.TextAlign = ContentAlignment.BottomLeft;
 
@@ -116,6 +122,35 @@ namespace TipsterCup
                 tableResults.Controls.Add(btnTip, 4, i);
             }
         }
+
+
+
+        private void labelResult_Click(object sender, EventArgs e)
+        {
+            int row = tableResults.GetRow(sender as Control);
+            FormMatchDetails frm = new FormMatchDetails(matchesInRound[row]);
+            frm.Show();
+        }
+
+
+
+        private void labelTeam_Click(object sender, EventArgs e)
+        {
+            int row = tableResults.GetRow(sender as Control);
+            int column = tableResults.GetColumn(sender as Control);
+            if (column == 1)
+            {
+                FormTeam frmTeam = new FormTeam(matchesInRound[row].HomeTeam, docMain);
+                frmTeam.Show();
+            }
+            if (column == 3)
+            {
+                FormTeam frmTeam = new FormTeam(matchesInRound[row].GuestTeam, docMain);
+                frmTeam.Show();
+            }
+        }
+
+
 
         private void button_Click(object sender, EventArgs e)
         {
