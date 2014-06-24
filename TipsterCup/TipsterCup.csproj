@@ -100,6 +100,12 @@
     <Compile Include="FormRounds.Designer.cs">
       <DependentUpon>FormRounds.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormStandings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStandings.Designer.cs">
+      <DependentUpon>FormStandings.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormTeam.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormRounds.resx">
       <DependentUpon>FormRounds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStandings.resx">
+      <DependentUpon>FormStandings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormTeam.resx">
       <DependentUpon>FormTeam.cs</DependentUpon>

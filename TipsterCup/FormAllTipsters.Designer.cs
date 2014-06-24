@@ -40,6 +40,7 @@
             // 
             this.gridTipsters.AllowUserToAddRows = false;
             this.gridTipsters.AllowUserToDeleteRows = false;
+            this.gridTipsters.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.gridTipsters.BackgroundColor = System.Drawing.Color.White;
             this.gridTipsters.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.gridTipsters.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -48,11 +49,11 @@
             this.colRank,
             this.colTipster,
             this.colMoney});
-            this.gridTipsters.Location = new System.Drawing.Point(91, 85);
+            this.gridTipsters.Location = new System.Drawing.Point(47, 85);
             this.gridTipsters.Name = "gridTipsters";
             this.gridTipsters.ReadOnly = true;
             this.gridTipsters.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridTipsters.Size = new System.Drawing.Size(384, 225);
+            this.gridTipsters.Size = new System.Drawing.Size(581, 370);
             this.gridTipsters.TabIndex = 0;
             this.gridTipsters.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridTipsters_CellDoubleClick);
             // 
@@ -87,7 +88,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(554, 356);
+            this.ClientSize = new System.Drawing.Size(790, 437);
             this.Controls.Add(this.gridTipsters);
             this.Name = "FormAllTipsters";
             this.Text = "FormAllTipsters";

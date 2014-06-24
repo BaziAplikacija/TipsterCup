@@ -13,59 +13,31 @@ namespace TipsterCup
 {
     public partial class FormMain : Form
     {
+        FormStandings frmStandings;
+        FormRounds frmRounds;
+        FormAllTipsters frmAllTipsters;
         
         public FormMain()
         {
             InitializeComponent();
-            
-            
-            
-            fillGrid();
-            //GenerateGoalsForMatch ggm = new GenerateGoalsForMatch(docMain, docMain.getMatchById(31), connection);
-
+            frmStandings = null;
+            frmRounds = null;
+            frmAllTipsters = null;
         }
 
         
 
-        private void fillGrid()
-        {
-            String query = "SELECT * FROM Standings";
-            using (OracleConnection connection = new OracleConnection(FormLogin.connString))
-            {
-                connection.Open(); // NE SMEE DA SE ZABORAVI!
-                OracleCommand command = new OracleCommand(query, connection);
-
-                command.CommandType = CommandType.Text;
-
-                OracleDataReader reader = command.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    gridStandings.Rows.Add(reader[0], reader[1], reader[2], reader[3], reader[4]);
-                }
-
-            }
-            
-            
-            
-
-           
-        }
-
-        private void gridStandings_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 0 && e.RowIndex != -1)
-            {
-                String teamName = Convert.ToString(gridStandings.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
-                
-                FormTeam frmTeam = new FormTeam(FormLogin.docMain.getTeamByName(teamName),FormLogin.docMain);
-                frmTeam.Show();
-            }
-        }
+        
 
         private void btnRounds_Click(object sender, EventArgs e)
         {
-            FormRounds frmRounds = new FormRounds(FormLogin.docMain);
+
+            if (frmRounds != null)
+            {
+                frmRounds.Close();
+            }
+            frmRounds = new FormRounds(FormLogin.docMain);
+            frmRounds.MdiParent = this;
             frmRounds.Show();
         }
 
@@ -98,8 +70,30 @@ namespace TipsterCup
 
         private void btnTipsters_Click(object sender, EventArgs e)
         {
-            FormAllTipsters frmAllTipsters = new FormAllTipsters();
+            if (frmAllTipsters != null)
+            {
+                frmAllTipsters.Close();
+            }
+            frmAllTipsters = new FormAllTipsters();
+            frmAllTipsters.MdiParent = this;
             frmAllTipsters.Show();
+        }
+
+        private void btnStandings_Click(object sender, EventArgs e)
+        {
+            if (frmStandings != null)
+            {
+                frmStandings.Close();
+            }
+            frmStandings = new FormStandings();
+            frmStandings.MdiParent = this;
+            frmStandings.Show();
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            btnStandings_Click(null, null);
         }
     }
 }

@@ -20,6 +20,7 @@ namespace TipsterCup
 
         private void FormAllTipsters_Load(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
             using (OracleConnection conn = new OracleConnection(FormLogin.connString))
             {
                 conn.Open();

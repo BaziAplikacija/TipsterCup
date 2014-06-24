@@ -35,6 +35,7 @@
             // 
             // cbRounds
             // 
+            this.cbRounds.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbRounds.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbRounds.FormattingEnabled = true;
             this.cbRounds.Items.AddRange(new object[] {
@@ -45,7 +46,7 @@
             "5",
             "6",
             "7"});
-            this.cbRounds.Location = new System.Drawing.Point(85, 28);
+            this.cbRounds.Location = new System.Drawing.Point(339, 44);
             this.cbRounds.Name = "cbRounds";
             this.cbRounds.Size = new System.Drawing.Size(121, 21);
             this.cbRounds.TabIndex = 1;
@@ -53,8 +54,9 @@
             // 
             // lblRound
             // 
+            this.lblRound.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblRound.AutoSize = true;
-            this.lblRound.Location = new System.Drawing.Point(23, 31);
+            this.lblRound.Location = new System.Drawing.Point(277, 47);
             this.lblRound.Name = "lblRound";
             this.lblRound.Size = new System.Drawing.Size(42, 13);
             this.lblRound.TabIndex = 2;
@@ -62,6 +64,7 @@
             // 
             // tableResults
             // 
+            this.tableResults.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tableResults.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableResults.ColumnCount = 5;
             this.tableResults.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -69,7 +72,7 @@
             this.tableResults.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableResults.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableResults.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableResults.Location = new System.Drawing.Point(26, 73);
+            this.tableResults.Location = new System.Drawing.Point(143, 162);
             this.tableResults.Name = "tableResults";
             this.tableResults.RowCount = 10;
             this.tableResults.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -89,7 +92,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(602, 378);
+            this.ClientSize = new System.Drawing.Size(787, 467);
             this.Controls.Add(this.lblRound);
             this.Controls.Add(this.cbRounds);
             this.Controls.Add(this.tableResults);
