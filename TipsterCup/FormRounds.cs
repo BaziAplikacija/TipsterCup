@@ -13,9 +13,14 @@ namespace TipsterCup
 {
     public partial class FormRounds : Form
     {
+
+        int currentRound;
+        int lastRound;
+
         List<Round> Rounds;
         MainDoc docMain;
         List<Label> labels;
+        List<Button> buttons;
 
         List<Match> matchesInRound;
         public FormRounds(MainDoc doc)
@@ -24,6 +29,7 @@ namespace TipsterCup
             docMain = doc;
             //Rounds = new List<Round>();
             labels = new List<Label>();
+            buttons = new List<Button>();
         }
 
 
@@ -79,7 +85,16 @@ namespace TipsterCup
         private void cbRounds_SelectedIndexChanged(object sender, EventArgs e)
         {
             setMatches();
+            if(cbRounds.SelectedIndex + 1 < lastRound)
+                disableButtons();
+        }
 
+        private void disableButtons()
+        {
+            for (int i = 0; i < buttons.Count; ++i)
+            {
+                buttons[i].Enabled = false;
+            }
         }
 
 
@@ -87,14 +102,15 @@ namespace TipsterCup
         private void FormRounds_Load(object sender, EventArgs e)
         {
             setControls();
-            cbRounds.SelectedIndex = setRound() - 1;
+            currentRound = setRound();
+            cbRounds.SelectedIndex = currentRound - 1;
         }
 
 
         private int setRound()
         {
             int round = 0;
-            
+            lastRound = 0;
             using (OracleConnection connection = new OracleConnection(FormLogin.connString))
             {
                 connection.Open();
@@ -118,6 +134,7 @@ namespace TipsterCup
                     {
                         round = reader.GetInt32(0);
                     }
+                    lastRound = round;
                 }
             }
             return round;
@@ -164,6 +181,7 @@ namespace TipsterCup
                 btnTip.Dock = DockStyle.Fill;
                 btnTip.Click += new EventHandler(button_Click);
                 tableResults.Controls.Add(btnTip, 4, i);
+                buttons.Add(btnTip);
             }
         }
 
