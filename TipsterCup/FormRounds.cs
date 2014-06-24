@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.DataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,9 +21,8 @@ namespace TipsterCup
         public FormRounds(MainDoc doc)
         {
             InitializeComponent();
-
             docMain = doc;
-            Rounds = new List<Round>();
+            //Rounds = new List<Round>();
             labels = new List<Label>();
         }
 
@@ -30,6 +30,21 @@ namespace TipsterCup
         private void setMatches()
         {
             matchesInRound = new List<Match>();
+
+            /*using (OracleConnection connection = new OracleConnection(FormLogin.connString))
+            {
+                connection.Open();
+                String query = "SELECT * FROM Match WHERE idRound = "+ (cbRounds.SelectedIndex + 1);
+                OracleCommand command = new OracleCommand(query, connection);
+                OracleDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Match m = new Match(reader.GetInt32(0), reader.GetInt32(3), reader.GetInt32(4), reader.GetInt32(2), reader.GetDateTime(1));
+                    matchesInRound.Add(m);
+                }
+                
+            }*/
+
             foreach (Match match in docMain.Matches)
             {
                 if (match.Round.Id == cbRounds.SelectedIndex + 1)
@@ -38,8 +53,7 @@ namespace TipsterCup
                 }
             }
 
-
-
+            
             for (int i = 0; i < matchesInRound.Count; i++)
             {
                 labels[i * 4].Text = matchesInRound[i].DateMatch.ToShortDateString();

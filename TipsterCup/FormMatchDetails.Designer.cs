@@ -41,6 +41,8 @@
             this.lblHomeTeam = new System.Windows.Forms.Label();
             this.pbGuestTeam = new System.Windows.Forms.PictureBox();
             this.lblGuestTeam = new System.Windows.Forms.Label();
+            this.listHome = new System.Windows.Forms.ListBox();
+            this.listGuest = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbHomeTeam)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbGuestTeam)).BeginInit();
             this.SuspendLayout();
@@ -168,11 +170,35 @@
             this.lblGuestTeam.Text = "label9";
             this.lblGuestTeam.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
+            // listHome
+            // 
+            this.listHome.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.listHome.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listHome.FormattingEnabled = true;
+            this.listHome.Location = new System.Drawing.Point(22, 255);
+            this.listHome.Name = "listHome";
+            this.listHome.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.listHome.Size = new System.Drawing.Size(263, 91);
+            this.listHome.TabIndex = 18;
+            // 
+            // listGuest
+            // 
+            this.listGuest.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.listGuest.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listGuest.FormattingEnabled = true;
+            this.listGuest.Location = new System.Drawing.Point(316, 255);
+            this.listGuest.Name = "listGuest";
+            this.listGuest.Size = new System.Drawing.Size(269, 91);
+            this.listGuest.TabIndex = 19;
+            // 
             // FormMatchDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(612, 331);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(612, 374);
+            this.Controls.Add(this.listGuest);
+            this.Controls.Add(this.listHome);
             this.Controls.Add(this.pbGuestTeam);
             this.Controls.Add(this.lblGuestTeam);
             this.Controls.Add(this.pbHomeTeam);
@@ -210,5 +236,7 @@
         private System.Windows.Forms.Label lblHomeTeam;
         private System.Windows.Forms.PictureBox pbGuestTeam;
         private System.Windows.Forms.Label lblGuestTeam;
+        private System.Windows.Forms.ListBox listHome;
+        private System.Windows.Forms.ListBox listGuest;
     }
 }
