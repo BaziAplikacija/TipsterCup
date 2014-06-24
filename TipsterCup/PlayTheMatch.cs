@@ -29,8 +29,9 @@ namespace TipsterCup
         private int totalInterruptTokens;
         private int totalSaveTokens;
 
-        public PlayTheMatch(MainDoc mainDoc, Match match)
+        public PlayTheMatch(MainDoc mainDoc, int idMatch)
         {
+            Match match = mainDoc.getMatchById(idMatch);
             random = new Random();
             List<Player> homeTeam = mainDoc.getFirstEleven(match.HomeTeam.Name);
             List<Player> guestTeam = mainDoc.getFirstEleven(match.HomeTeam.Name);
