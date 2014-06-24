@@ -44,8 +44,11 @@ namespace TipsterCup
 
         public static int IdLoggedTipster = -1;
 
-        public static  Dictionary<String, String> translator; 
+        public static  Dictionary<String, String> translator;
+
+        public static MainDoc docMain;
         
+
 
         public FormLogin()
         {
@@ -53,9 +56,11 @@ namespace TipsterCup
             
             InitializeComponent();
 
-            
+            docMain = new MainDoc();
+            fillMainDoc();
             initializeDateandInterval();
 
+            
             initMessages();
         }
 
@@ -128,7 +133,7 @@ namespace TipsterCup
 
             }
 
-            
+            DateTime oldVirtual = virtualDate;
             double minutes = date.Subtract(lastDate).TotalMinutes;
             int daysPassed =(int) (minutes / timeInterval);
             virtualDate = virtualDate.AddDays(daysPassed);
@@ -136,6 +141,7 @@ namespace TipsterCup
             int hoursThisDay = thisDay / 60;
             int minutesThisDay = thisDay % 60;
             
+
             using (OracleConnection connection = new OracleConnection(FormLogin.connString))
             {
                 connection.Open();
@@ -154,6 +160,7 @@ namespace TipsterCup
                 command.CommandType = CommandType.Text;
                 command.ExecuteNonQuery();
             }
+            checkFinishedMatches(oldVirtual, virtualDate);
             timerOneTickOneDay.Interval = timeInterval * 60 * 1000;
             timerThisDay.Interval = (timeInterval - thisDay)*60*1000;
             timerThisDay.Start();
@@ -306,8 +313,29 @@ namespace TipsterCup
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            DateTime oldVirtualDate = virtualDate;
             virtualDate = virtualDate.AddDays(1);
+            checkFinishedMatches(oldVirtualDate, virtualDate);
             updateVirtualDateAndLastDate();
+        }
+
+        private void checkFinishedMatches(DateTime from, DateTime to)
+        {
+            using (OracleConnection connection = new OracleConnection(connString))
+            {
+                connection.Open();
+                String query = "SELECT idMatch FROM Match WHERE DateMatch >= (TO_DATE('" + from.Month + "/" + from.Day + "/" + from.Year +
+                    "', 'mm/dd/yyyy')) AND DateMatch < (TO_DATE('" + to.Month + "/" + to.Day + "/" + to.Year + "', 'mm/dd/yyyy')) ORDER BY idMatch";
+
+                OracleCommand command = new OracleCommand(query, connection);
+                command.CommandType = CommandType.Text;
+                OracleDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int idMatch = reader.GetInt32(0);
+                    PlayTheMatch ptm = new PlayTheMatch(FormLogin.docMain, idMatch);
+                }
+            }
         }
 
         public void updateVirtualDateAndLastDate()
@@ -332,6 +360,7 @@ namespace TipsterCup
                 command.CommandType = CommandType.Text;
                 command.ExecuteNonQuery();
             }
+            
         }
 
         private void timer2_Tick(object sender, EventArgs e)
@@ -351,10 +380,166 @@ namespace TipsterCup
 
         private void timerThisDay_Tick(object sender, EventArgs e)
         {
+            DateTime oldVirtualDate = virtualDate;
             virtualDate = virtualDate.AddDays(1);
+            checkFinishedMatches(oldVirtualDate, virtualDate);
             updateVirtualDateAndLastDate();
             timerOneTickOneDay.Start();
             timerThisDay.Stop();
         }
+
+
+
+
+
+
+        //MainDoc
+
+        private void fillMainDoc()
+        {
+
+            using (OracleConnection connection = new OracleConnection(FormLogin.connString))
+            {
+                connection.Open();
+                OracleCommand command;
+                OracleDataReader reader;
+
+
+                String query = "SELECT * FROM Manager";
+                command = new OracleCommand(query, connection);
+                command.CommandType = CommandType.Text;
+                reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+
+
+                    int id = reader.GetInt32(0);
+                    String firstName = (String)reader[1];
+                    String lastName = (String)reader[2];
+                    DateTime dateOfBirth = (DateTime)reader[3];
+
+
+
+                    double experience = Convert.ToDouble(reader[4]);
+                    docMain.addManager(id, firstName, lastName, dateOfBirth, experience);
+                }
+
+
+                query = "SELECT * FROM Team";
+                command = new OracleCommand(query, connection);
+                command.CommandType = CommandType.Text;
+                reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    //IDTEAM	NAME	CITY	RATING	IDMANAGER	STADIUM PICTUREPATH
+
+                    int id = Convert.ToInt32(reader[0]);
+                    String name = Convert.ToString(reader[1]);
+                    String city = Convert.ToString(reader[2]);
+                    double rating = Convert.ToDouble(reader[3]);
+                    int idManager = Convert.ToInt32(reader[4]);
+                    String stadium = Convert.ToString(reader[5]);
+                    String picturePath = Convert.ToString(reader[6]);
+
+                    docMain.addTeam(id, name, city, rating, docMain.getManagerById(idManager), stadium, picturePath);
+
+
+                }
+
+                query = "SELECT * FROM Position";
+                command = new OracleCommand(query, connection);
+                command.CommandType = CommandType.Text;
+                reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int id = Convert.ToInt32(reader[0]);
+                    String name = Convert.ToString(reader[1]);
+                    double factorGoal = Convert.ToDouble(reader[2]);
+                    double factorAssist = Convert.ToDouble(reader[3]);
+                    double factorInterrupt = Convert.ToDouble(reader[4]);
+                    double factorSave = Convert.ToDouble(reader[5]);
+
+                    docMain.addPosition(id, name, factorGoal, factorAssist, factorInterrupt, factorSave);
+
+                }
+
+                query = "SELECT * FROM Player";
+                command = new OracleCommand(query, connection);
+                command.CommandType = CommandType.Text;
+                reader = command.ExecuteReader();
+                //IDPLAYER	NAME	SURNAME	DATEOFBIRTH	RATING	IDTEAM	IDPOSITION
+                while (reader.Read())
+                {
+                    int id = Convert.ToInt32(reader[0]);
+                    String firstName = Convert.ToString(reader[1]);
+                    String lastName = Convert.ToString(reader[2]);
+                    DateTime dateOfBirth = Convert.ToDateTime(reader[3]);
+                    double rating = Convert.ToDouble(reader[4]);
+                    int idTeam = Convert.ToInt32(reader[5]);
+                    int idPosition = Convert.ToInt32(reader[6]);
+
+
+
+                    docMain.addPlayer(id, firstName, lastName, dateOfBirth, rating, idTeam, idPosition);
+
+                }
+
+
+                query = "SELECT * FROM Round";
+                command = new OracleCommand(query, connection);
+                command.CommandType = CommandType.Text;
+                reader = command.ExecuteReader();
+                //IDROUND DATEFROM DATETO
+                while (reader.Read())
+                {
+                    int id = Convert.ToInt32(reader[0]);
+                    DateTime dateFrom = Convert.ToDateTime(reader[1]);
+                    DateTime dateTo = Convert.ToDateTime(reader[2]);
+
+                    docMain.addRound(id, dateFrom, dateTo);
+                }
+
+                query = "SELECT * FROM Match";
+                command = new OracleCommand(query, connection);
+                command.CommandType = CommandType.Text;
+                reader = command.ExecuteReader();
+                //IDMATCH	DATEMATCH	IDROUND	IDGUESTTEAM	IDHOMETEAM
+                while (reader.Read())
+                {
+                    int id = Convert.ToInt32(reader[0]);
+                    DateTime dateMatch = Convert.ToDateTime(reader[1]);
+                    int idRound = Convert.ToInt32(reader[2]);
+                    int idGuestTeam = Convert.ToInt32(reader[3]);
+                    int idHomeTeam = Convert.ToInt32(reader[4]);
+
+                    docMain.addMatch(id, dateMatch, idRound, idGuestTeam, idHomeTeam);
+                }
+
+                query = "SELECT * FROM Goal";
+                command = new OracleCommand(query, connection);
+                command.CommandType = CommandType.Text;
+                reader = command.ExecuteReader();
+                //IDGOAL	MINUTES	IDMATCH	IDPLAYER
+                while (reader.Read())
+                {
+                    int id = Convert.ToInt32(reader[0]);
+                    int minutes = Convert.ToInt32(reader[1]);
+                    int idMatch = Convert.ToInt32(reader[2]);
+                    int idPlayer = Convert.ToInt32(reader[3]);
+
+
+                    docMain.addGoal(id, minutes, idMatch, idPlayer);
+                }
+            }
+        }
+
     }
+
+
+
+
+
 }
