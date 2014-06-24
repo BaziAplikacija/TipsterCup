@@ -14,160 +14,18 @@ namespace TipsterCup
     public partial class FormMain : Form
     {
         
-        MainDoc docMain;
         public FormMain()
         {
             InitializeComponent();
             
-            docMain = new MainDoc();
-
+            
             
             fillGrid();
-            fillMainDoc();
             //GenerateGoalsForMatch ggm = new GenerateGoalsForMatch(docMain, docMain.getMatchById(31), connection);
 
         }
 
-        private void fillMainDoc()
-        {
-
-            using (OracleConnection connection = new OracleConnection(FormLogin.connString))
-            {
-                connection.Open();
-                OracleCommand command;
-                OracleDataReader reader;
-
-           
-            String query = "SELECT * FROM Manager";
-            command = new OracleCommand(query, connection);
-            command.CommandType = CommandType.Text;
-            reader = command.ExecuteReader();
-
-            while (reader.Read())
-            {
-
-              
-                int id = reader.GetInt32(0);
-                String firstName = (String)reader[1];
-                String lastName = (String)reader[2];
-                DateTime dateOfBirth = (DateTime)reader[3];
-
-
-
-                double experience = Convert.ToDouble(reader[4]);
-                docMain.addManager(id, firstName, lastName, dateOfBirth, experience);
-            }
-
-           
-            query = "SELECT * FROM Team";
-            command = new OracleCommand(query, connection);
-            command.CommandType = CommandType.Text;
-            reader = command.ExecuteReader();
-
-            while (reader.Read())
-            {
-                //IDTEAM	NAME	CITY	RATING	IDMANAGER	STADIUM PICTUREPATH
-
-                int id = Convert.ToInt32(reader[0]);
-                String name = Convert.ToString(reader[1]);
-                String city = Convert.ToString(reader[2]);
-                double rating = Convert.ToDouble(reader[3]);
-                int idManager = Convert.ToInt32(reader[4]);
-                String stadium = Convert.ToString(reader[5]);
-                String picturePath = Convert.ToString(reader[6]);
-
-                docMain.addTeam(id, name, city, rating, docMain.getManagerById(idManager), stadium, picturePath);
-
-
-            }
-
-            query = "SELECT * FROM Position";
-            command = new OracleCommand(query, connection);
-            command.CommandType = CommandType.Text;
-            reader = command.ExecuteReader();
-
-            while (reader.Read())
-            {
-                int id = Convert.ToInt32(reader[0]);
-                String name = Convert.ToString(reader[1]);
-                double factorGoal = Convert.ToDouble(reader[2]);
-                double factorAssist = Convert.ToDouble(reader[3]);
-                double factorInterrupt = Convert.ToDouble(reader[4]);
-                double factorSave = Convert.ToDouble(reader[5]);
-
-                docMain.addPosition(id, name, factorGoal, factorAssist, factorInterrupt, factorSave);
-
-            }
-
-            query = "SELECT * FROM Player";
-            command = new OracleCommand(query, connection);
-            command.CommandType = CommandType.Text;
-            reader = command.ExecuteReader();
-            //IDPLAYER	NAME	SURNAME	DATEOFBIRTH	RATING	IDTEAM	IDPOSITION
-            while (reader.Read())
-            {
-                int id = Convert.ToInt32(reader[0]);
-                String firstName = Convert.ToString(reader[1]);
-                String lastName = Convert.ToString(reader[2]);
-                DateTime dateOfBirth = Convert.ToDateTime(reader[3]);
-                double rating = Convert.ToDouble(reader[4]);
-                int idTeam = Convert.ToInt32(reader[5]);
-                int idPosition = Convert.ToInt32(reader[6]);
-
-                
-
-                docMain.addPlayer(id, firstName, lastName, dateOfBirth, rating, idTeam, idPosition);
-
-            }
-
-
-            query = "SELECT * FROM Round";
-            command = new OracleCommand(query, connection);
-            command.CommandType = CommandType.Text;
-            reader = command.ExecuteReader();
-            //IDROUND DATEFROM DATETO
-            while (reader.Read())
-            {
-                int id = Convert.ToInt32(reader[0]);
-                DateTime dateFrom = Convert.ToDateTime(reader[1]);
-                DateTime dateTo = Convert.ToDateTime(reader[2]);
-
-                docMain.addRound(id, dateFrom, dateTo);
-            }
-
-            query = "SELECT * FROM Match";
-            command = new OracleCommand(query, connection);
-            command.CommandType = CommandType.Text;
-            reader = command.ExecuteReader();
-            //IDMATCH	DATEMATCH	IDROUND	IDGUESTTEAM	IDHOMETEAM
-            while (reader.Read())
-            {
-                int id = Convert.ToInt32(reader[0]);
-                DateTime dateMatch = Convert.ToDateTime(reader[1]);
-                int idRound = Convert.ToInt32(reader[2]);
-                int idGuestTeam = Convert.ToInt32(reader[3]);
-                int idHomeTeam = Convert.ToInt32(reader[4]);
-
-                docMain.addMatch(id, dateMatch, idRound, idGuestTeam, idHomeTeam);
-            }
-
-            query = "SELECT * FROM Goal";
-            command = new OracleCommand(query, connection);
-            command.CommandType = CommandType.Text;
-            reader = command.ExecuteReader();
-            //IDGOAL	MINUTES	IDMATCH	IDPLAYER
-            while (reader.Read())
-            {
-                int id = Convert.ToInt32(reader[0]);
-                int minutes = Convert.ToInt32(reader[1]);
-                int idMatch = Convert.ToInt32(reader[2]);
-                int idPlayer = Convert.ToInt32(reader[3]);
-
-
-                docMain.addGoal(id, minutes, idMatch, idPlayer);
-            }
-            }
-        }
+        
 
         private void fillGrid()
         {
@@ -200,14 +58,14 @@ namespace TipsterCup
             {
                 String teamName = Convert.ToString(gridStandings.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
                 
-                FormTeam frmTeam = new FormTeam(docMain.getTeamByName(teamName),docMain);
+                FormTeam frmTeam = new FormTeam(FormLogin.docMain.getTeamByName(teamName),FormLogin.docMain);
                 frmTeam.Show();
             }
         }
 
         private void btnRounds_Click(object sender, EventArgs e)
         {
-            FormRounds frmRounds = new FormRounds(docMain);
+            FormRounds frmRounds = new FormRounds(FormLogin.docMain);
             frmRounds.Show();
         }
 
