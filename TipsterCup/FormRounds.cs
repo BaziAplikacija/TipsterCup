@@ -31,7 +31,7 @@ namespace TipsterCup
         {
             matchesInRound = new List<Match>();
 
-            /*using (OracleConnection connection = new OracleConnection(FormLogin.connString))
+            using (OracleConnection connection = new OracleConnection(FormLogin.connString))
             {
                 connection.Open();
                 String query = "SELECT * FROM Match WHERE idRound = "+ (cbRounds.SelectedIndex + 1);
@@ -43,15 +43,15 @@ namespace TipsterCup
                     matchesInRound.Add(m);
                 }
                 
-            }*/
+            }
 
-            foreach (Match match in docMain.Matches)
+            /*foreach (Match match in docMain.Matches)
             {
                 if (match.Round.Id == cbRounds.SelectedIndex + 1)
                 {
                     matchesInRound.Add(match);
                 }
-            }
+            }*/
 
             
             for (int i = 0; i < matchesInRound.Count; i++)
@@ -87,11 +87,41 @@ namespace TipsterCup
         private void FormRounds_Load(object sender, EventArgs e)
         {
             setControls();
-            cbRounds.SelectedIndex = cbRounds.Items.Count - 1;
-
-
+            cbRounds.SelectedIndex = setRound() - 1;
         }
 
+
+        private int setRound()
+        {
+            int round = 0;
+            
+            using (OracleConnection connection = new OracleConnection(FormLogin.connString))
+            {
+                connection.Open();
+                
+                String query = "SELECT idRound FROM Round WHERE dateFrom < (TO_DATE('" + FormLogin.virtualDate.Month + "/" + FormLogin.virtualDate.Day + "/" + FormLogin.virtualDate.Year
+                    + "', 'mm/dd/yyyy')) AND dateTo > (TO_DATE('" + FormLogin.virtualDate.Month + "/" + FormLogin.virtualDate.Day + "/" + FormLogin.virtualDate.Year+ "', 'mm/dd/yyyy'))";
+                OracleCommand command = new OracleCommand(query, connection);
+                OracleDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    round = reader.GetInt32(0);
+                }
+                if (round == 0)
+                {
+                    query = "SELECT idRound FROM Round WHERE dateTo < (TO_DATE('" + FormLogin.virtualDate.Month + "/" + FormLogin.virtualDate.Day + "/" + FormLogin.virtualDate.Year
+                    + "', 'mm/dd/yyyy')) ORDER BY idround";
+                    command = new OracleCommand(query, connection);
+                    reader = command.ExecuteReader();
+                    
+                    while (reader.Read())
+                    {
+                        round = reader.GetInt32(0);
+                    }
+                }
+            }
+            return round;
+        }
 
 
         private void setControls()
