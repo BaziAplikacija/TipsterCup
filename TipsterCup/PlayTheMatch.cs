@@ -31,13 +31,15 @@ namespace TipsterCup
 
         public PlayTheMatch(MainDoc mainDoc, int idMatch)
         {
+
             Match match = mainDoc.getMatchById(idMatch);
             random = new Random();
             List<Player> homeTeam = mainDoc.getFirstEleven(match.HomeTeam.Name);
             List<Player> guestTeam = mainDoc.getFirstEleven(match.HomeTeam.Name);
 
             int id = 0;//OVA TREBA DA GO DOBIJAM OD BAZATA
-
+            Participations = new List<Participates>();
+            AllPlayers = new List<Player>();
 
 
             totalAssistTokens = totalGoalTokens = totalInterruptTokens = totalSaveTokens = 0;
@@ -140,6 +142,40 @@ namespace TipsterCup
 
                 }
             }
+
+            //update na Player rating
+
+            /*for (int i = 0; i < AllPlayers.Count; i++)
+            {
+                AllPlayers[i].updateRating(Participations[i].MatchRating);
+
+                using (OracleConnection conn = new OracleConnection(FormLogin.connString))
+                {
+                    conn.Open();
+
+                    OracleCommand command = new OracleCommand("procInsertParticipates", conn);
+                    command.CommandType = CommandType.StoredProcedure;
+                    /*
+                     *  p_idPlayer in Participates.idPlayer%TYPE,
+                        p_idMatch in Participates.idMatch%TYPE, 
+                        p_numgoals in Participates.numgoals%TYPE, 
+                        p_numassists in Participates.numassists%TYPE, 
+                        p_numinterrupts in Participates.NUMINTERRUPTS%TYPE,  
+                        p_numsaves in Participates.numsaves%TYPE,
+                        p_matchrating in Participates.match_rating%TYPE) 
+                     */
+                    /*command.Parameters.Add("p_idPlayer", OracleDbType.Int32).Value = p.Player.Id;
+                    command.Parameters.Add("p_idMatch", OracleDbType.Int32).Value = p.Match.Id;
+                    command.Parameters.Add("p_numgoals", OracleDbType.Int32).Value = p.NumGoals;
+                    command.Parameters.Add("p_numassists", OracleDbType.Int32).Value = p.NumAssists;
+                    command.Parameters.Add("p_numinterrupts", OracleDbType.Int32).Value = p.NumInterrupts;
+                    command.Parameters.Add("p_numsaves", OracleDbType.Int32).Value = p.NumSaves;
+                    command.Parameters.Add("p_matchrating", OracleDbType.Int32).Value = p.MatchRating;
+
+                    command.ExecuteNonQuery();
+
+                }
+            }*/
         }
 
         private int goalScorer()
