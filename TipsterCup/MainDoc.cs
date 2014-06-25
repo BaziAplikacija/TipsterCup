@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TipsterCup
-{
+{//DALI DA DODAVAME PARTICIPATIONS?
     public class MainDoc
     {
 
