@@ -251,7 +251,7 @@ namespace TipsterCup
             needed[4] = 1;
             foreach (Player p in allPlayers)
             {
-                if (chosen[p.Id] < needed[p.Id])
+                if (chosen[p.Id] < needed[p.Position.Id])
                 {
                     toRet.Add(p);
                     chosen[p.Id]++;
