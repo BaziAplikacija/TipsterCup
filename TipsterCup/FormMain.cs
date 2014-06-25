@@ -146,7 +146,7 @@ namespace TipsterCup
                     seconds -= minutes * 60;
                     text = "Time until round "+currentRound.Id+":   ";
                     text += String.Format("{1:00} : {2:00} : {3:00}", currentRound.Id, hours, minutes, seconds);
-                    if (seconds < 10)
+                    if (this.seconds < 10)
                     {
                         lblNextRound.ForeColor = Color.Red;
                     }
