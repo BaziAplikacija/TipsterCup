@@ -22,8 +22,8 @@ namespace TipsterCup
         //verojatnosno-empirisko odreduvanje na najpogodni tezini, mozno e da ima i promeni
         private const int WEIGHT_GOAL = 1200;//na site igraci ke bidat ednakvo vrednuvani site dostignuvanja
         private const int WEIGHT_ASSIST = 1000;//nezavisno od pozicijata
-        private const int WEIGHT_INTERRUPT = 200;//Tokens ke vlijaat koj kolku poeni ke dobiva od sto
-        private const int WEIGHT_SAVE = 200;//bidejki toa odreduva koj igrac kolkavi sansi ima sto da postigne
+        private const int WEIGHT_INTERRUPT = 300;//Tokens ke vlijaat koj kolku poeni ke dobiva od sto
+        private const int WEIGHT_SAVE = 300;//bidejki toa odreduva koj igrac kolkavi sansi ima sto da postigne
                                             //vaka e po fer, bidejki na pr. gol e gol nezavisno dali igracot na
                                             //koja pozicija igra
 
