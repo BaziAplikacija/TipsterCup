@@ -15,7 +15,7 @@ namespace TipsterCup
         //pr. gol, asistencija i sl.
         //ovie ovde Tokens odreduvat verojatnost deka nesto voopsto ke se sluci
         private const int GOAL_TOKENS = 27;// 27/900 e verojatnost deka ke ima gol vo dadena minuta
-                                //E(Goal) = 2.7 na natprevar
+        //E(Goal) = 2.7 na natprevar
         private const int INTERRUPT_TOKENS = 350;//350/900 deka ke ima prekin na protivnicka akcija itn.
         private const int SAVE_TOKENS = 80;
         private const int NOTHING_HAPPENS_TOKENS = 460;
@@ -66,7 +66,8 @@ namespace TipsterCup
             for (int minute = 1; minute <= 90; minute++)//0 - goal and eventually assist, 1 - interrupt, 2 save, nothing
             {
                 int happens = whatHappens();
-                int nextGoal = mainDoc.Goals[mainDoc.Goals.Count - 1].Id + 1;//Slicno kako kaj Participates, sekade ke se stava nextGoal = 0, no toa ne pravi problem
+                int nextGoal = 1;
+                if (mainDoc.Goals.Count > 0) nextGoal = mainDoc.Goals[mainDoc.Goals.Count - 1].Id + 1;//Slicno kako kaj Participates, sekade ke se stava nextGoal = 0, no toa ne pravi problem
                 if (happens == 0)//goal
                 {
                     int scorerId = goalScorer();
@@ -94,15 +95,9 @@ namespace TipsterCup
                     }
                     //azuriranje na mainDoc
                     mainDoc.Goals.Add(goal);
-                    if (scorerId < 11)
-                    {
-                        match.GoalsHome.Add(goal);
-                    }
-                    else
-                    {
-                        match.GoalsGuest.Add(goal);
-                    }
-                    
+                    match.addGoal(goal);
+
+
                     Participations[scorerId].NumGoals++;
                     int assId = assistent();
                     if (assId != scorerId && (assId - 10) * (scorerId - 10) >= 0)
@@ -166,22 +161,22 @@ namespace TipsterCup
                 //mainDoc.Players[AllPlayers[i].Id].Rating = (double)AllPlayers[i].Rating;//azuriranje vo mainDoc
                 if (i < 11)
                 {
-                    homeAvgRating += (int) AllPlayers[i].Rating;
+                    homeAvgRating += (int)AllPlayers[i].Rating;
                 }
                 else
                 {
-                    guestAvgRating += (int) AllPlayers[i].Rating;
+                    guestAvgRating += (int)AllPlayers[i].Rating;
                 }
                 using (OracleConnection conn = new OracleConnection(FormLogin.connString))
                 {
                     conn.Open();
-                    String query = "UPDATE Player SET rating = " + (int) AllPlayers[i].Rating +
+                    String query = "UPDATE Player SET rating = " + (int)AllPlayers[i].Rating +
                         " WHERE idPlayer = " + AllPlayers[i].Id;
                     OracleCommand command = new OracleCommand(query, conn);
                     command.CommandType = CommandType.Text;
-                    
+
                     command.ExecuteNonQuery();
-                    
+
                 }
             }
             //update team ratings
@@ -228,9 +223,9 @@ namespace TipsterCup
                 tokens.Add(p.TokensGoals);
             }
             int token = random.Next(totalGoalTokens);
-            
+
             return ownerOfToken(token, tokens);
-            
+
         }
 
         private int assistent()
@@ -275,13 +270,13 @@ namespace TipsterCup
             {
                 lastToken.Add(lastToken[i - 1] + tokens[i]);
             }
-                for (int i = 0; i < 22; i++)
+            for (int i = 0; i < 22; i++)
+            {
+                if (chosen < lastToken[i])
                 {
-                    if (chosen < lastToken[i])
-                    {
-                        return i;
-                    }
+                    return i;
                 }
+            }
             return 21;
         }
 
@@ -298,7 +293,7 @@ namespace TipsterCup
 
             total += INTERRUPT_TOKENS;
 
-            if(tokenValue < total)
+            if (tokenValue < total)
             {
                 return 1;//assist
             }
