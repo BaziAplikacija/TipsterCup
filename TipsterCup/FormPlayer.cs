@@ -34,7 +34,7 @@ namespace TipsterCup
             using (OracleConnection connection = new OracleConnection(FormLogin.connString))
             {
                 connection.Open();
-                String query = "SELECT FLOOR(idMatch / 10) AS ROUND, Match_Rating FROM participates WHERE idPlayer = 122 ORDER BY idMatch";
+                String query = "SELECT m.idround as round, p.Match_Rating FROM participates p JOIN match m ON(p.idMatch = m.idMatch) WHERE p.idPlayer = 122 ORDER BY m.idRound";
                 DataTable table = new DataTable();
                 OracleDataAdapter dataAdapter = new OracleDataAdapter(query, connection);
                 dataAdapter.Fill(table);

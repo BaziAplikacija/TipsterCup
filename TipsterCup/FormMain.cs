@@ -128,6 +128,12 @@ namespace TipsterCup
             }
             else
             {
+                if (currentDay != dayInRound - (int)(currentRound.DateTo - FormLogin.virtualDate).TotalDays)
+                {
+                    currentDay = dayInRound - (int)(currentRound.DateTo - FormLogin.virtualDate).TotalDays;
+                    seconds = FormLogin.timeInterval * 60;
+
+                }
                 lblNextRound.ForeColor = Color.Black;
                 lblNextRound.Text = "Round " + currentRound.Id +" Day "+currentDay;
             }

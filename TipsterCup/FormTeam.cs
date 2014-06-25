@@ -38,11 +38,11 @@ namespace TipsterCup
             using (OracleConnection connection = new OracleConnection(FormLogin.connString))
             {
                 connection.Open();
-                String query = "SELECT FLOOR(idMatch / 10) AS ROUND, ROUND(SUM(part.match_Rating)/COUNT(part.match_Rating)) AS TEAMRATING"
-                    +" FROM participates part JOIN player p ON (part.idPlayer = p.idPlayer)"
-                    + " WHERE p.idTeam = 12"
-                    + " GROUP BY part.idMatch"
-                    + " ORDER BY part.idMatch";
+                String query = "SELECT m.idRound AS ROUND, ROUND(SUM(part.match_Rating)/COUNT(part.match_Rating)) AS TEAMRATING"
+                    + " FROM participates part JOIN player p ON (part.idPlayer = p.idPlayer) JOIN match m ON (part.idMatch = m.idMatch)"
+                    + " WHERE p.idTeam = " + Team.Id
+                    + " GROUP BY m.idRound"
+                    + " ORDER BY m.idRound";
                 OracleDataAdapter adapter = new OracleDataAdapter(query, connection);
                 DataTable table = new DataTable();
                 adapter.Fill(table);
