@@ -109,6 +109,10 @@ namespace TipsterCup
                     break;
             }
 
+            if (Position.Id != 4)
+            {
+                TokensGoals += (int)Team.Rating;
+            } 
 
         }
 

@@ -253,7 +253,7 @@ namespace TipsterCup
             while (toRet.Count < 11)
             {
                 int pos = random.Next(totalTokens);
-                for (int p = 0; p < allPlayers.Count; p++)
+                for (int p = 0; p < allPlayers.Count && toRet.Count < 11; p++)
                 {
                     if (pos < lastToken[p])
                     {
