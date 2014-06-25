@@ -118,6 +118,12 @@
     <Compile Include="FormTeam.Designer.cs">
       <DependentUpon>FormTeam.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormTip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTip.Designer.cs">
+      <DependentUpon>FormTip.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormTipster.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +187,9 @@
     <EmbeddedResource Include="FormTeam.resx">
       <DependentUpon>FormTeam.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormTip.resx">
+      <DependentUpon>FormTip.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormTipster.resx">
       <DependentUpon>FormTipster.cs</DependentUpon>
     </EmbeddedResource>
@@ -226,6 +235,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="imgMoney.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="imgMoneyTip.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="imgMusicOff.png">

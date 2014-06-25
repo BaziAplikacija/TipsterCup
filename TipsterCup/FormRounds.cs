@@ -193,6 +193,9 @@ namespace TipsterCup
         {
             int row = tableResults.GetRow(sender as Control);
             Match match = matchesInRound[row];
+
+            FormTip frmTip = new FormTip(match);
+            frmTip.Show();
         }
 
 
