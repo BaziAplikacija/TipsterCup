@@ -45,6 +45,8 @@
             this.timerCheckIntervalChanged = new System.Windows.Forms.Timer(this.components);
             this.llblRegister = new System.Windows.Forms.LinkLabel();
             this.timerThisDay = new System.Windows.Forms.Timer(this.components);
+            this.pbMusic = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMusic)).BeginInit();
             this.SuspendLayout();
             // 
             // lblUsername
@@ -175,12 +177,24 @@
             // 
             this.timerThisDay.Tick += new System.EventHandler(this.timerThisDay_Tick);
             // 
+            // pbMusic
+            // 
+            this.pbMusic.Image = ((System.Drawing.Image)(resources.GetObject("pbMusic.Image")));
+            this.pbMusic.Location = new System.Drawing.Point(20, 12);
+            this.pbMusic.Name = "pbMusic";
+            this.pbMusic.Size = new System.Drawing.Size(20, 20);
+            this.pbMusic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbMusic.TabIndex = 8;
+            this.pbMusic.TabStop = false;
+            this.pbMusic.Click += new System.EventHandler(this.pbMusic_Click);
+            // 
             // FormLogin
             // 
             this.AcceptButton = this.btnGo;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(413, 381);
+            this.Controls.Add(this.pbMusic);
             this.Controls.Add(this.llblRegister);
             this.Controls.Add(this.btnGo);
             this.Controls.Add(this.btnExit);
@@ -196,6 +210,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.FormLogin_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pbMusic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -218,5 +233,6 @@
         private System.Windows.Forms.Timer timerCheckIntervalChanged;
         private System.Windows.Forms.LinkLabel llblRegister;
         private System.Windows.Forms.Timer timerThisDay;
+        private System.Windows.Forms.PictureBox pbMusic;
     }
 }

@@ -48,6 +48,7 @@ namespace TipsterCup
 
         public static MainDoc docMain;
         
+        public static bool musicOn = true;
 
 
         public FormLogin()
@@ -514,6 +515,19 @@ namespace TipsterCup
                     docMain.addGoal(id, minutes, idMatch, idPlayer);
                 }
             }
+        }
+
+        private void pbMusic_Click(object sender, EventArgs e)
+        {
+            if (musicOn)
+            {
+                pbMusic.Image = Image.FromFile("imgMusicOff.png");
+            }
+            else
+            {
+                pbMusic.Image = Image.FromFile("imgMusicOn.png");
+            }
+            musicOn = !musicOn;
         }
 
     }
