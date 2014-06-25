@@ -187,8 +187,8 @@ namespace TipsterCup
             //update team ratings
             homeAvgRating /= 11;
             guestAvgRating /= 11;
-            int homeNewRating = (homeAvgRating + 29 * (int)match.HomeTeam.Rating) / 30;
-            int guestNewRating = (guestAvgRating + 29 * (int)match.GuestTeam.Rating) / 30;
+            int homeNewRating = (homeAvgRating + 49 * (int)match.HomeTeam.Rating) / 50;
+            int guestNewRating = (guestAvgRating + 49 * (int)match.GuestTeam.Rating) / 50;
             match.HomeTeam.Rating = homeNewRating;
             match.GuestTeam.Rating = guestNewRating;
             //mainDoc.Teams[match.GuestTeam.Id].Rating = (double) guestNewRating;

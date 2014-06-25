@@ -114,7 +114,7 @@ namespace TipsterCup
 
         public void updateRating(int matchRating)//podlozni se na promena tezinite
         {
-            Rating = (29 * Rating + matchRating) / 30;
+            Rating = (49 * Rating + matchRating) / 50;
         }
 
         //public OracleDataReader OracleDataRreader { get; set; }
