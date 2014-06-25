@@ -32,9 +32,11 @@ namespace TipsterCup
 
         //go cuva intervalot vo minuti
         public static int timeInterval;
-
         //virtuelnata data vo igrata
         public static DateTime virtualDate;
+        //sekundi do kraj na denot
+        public static int secondsRemaining;
+
 
         // parametri potrebni za konekcija so bazata
         public static String connString = "Data Source=(DESCRIPTION="
@@ -134,13 +136,13 @@ namespace TipsterCup
 
             }
 
-            DateTime oldVirtual = virtualDate;
-            double minutes = date.Subtract(lastDate).TotalMinutes;
-            int daysPassed =(int) (minutes / timeInterval);
-            virtualDate = virtualDate.AddDays(daysPassed);
-            int thisDay = (int)minutes % timeInterval;
-            int hoursThisDay = thisDay / 60;
-            int minutesThisDay = thisDay % 60;
+            DateTime oldVirtual = virtualDate;  //virtual prezemen od baza
+            double seconds = date.Subtract(lastDate).TotalSeconds; //pominati minuti od posledno logiranje
+            int daysPassed =(int) (seconds / (timeInterval*60)); //kolku celi denovi izminale
+            virtualDate = virtualDate.AddDays(daysPassed);  //noviot virtuelen datum
+            int thisDay = (int)seconds % (timeInterval*60);  //uste kolku sekundi dodeka da pomini denot sto e zapocnat
+            int hoursThisDay = thisDay / 60 / 60;
+            int minutesThisDay = (thisDay - hoursThisDay * 3600) / 60;
             
 
             using (OracleConnection connection = new OracleConnection(FormLogin.connString))
@@ -163,7 +165,10 @@ namespace TipsterCup
             }
             checkFinishedMatches(oldVirtual, virtualDate);
             timerOneTickOneDay.Interval = timeInterval * 60 * 1000;
-            timerThisDay.Interval = (timeInterval - thisDay)*60*1000;
+
+            secondsRemaining = (timeInterval * 60 - thisDay);
+            timerThisDay.Interval = secondsRemaining*1000;
+
             timerThisDay.Start();
             timerCheckIntervalChanged.Start();
         }
@@ -296,6 +301,7 @@ namespace TipsterCup
         {
             DateTime oldVirtualDate = virtualDate;
             virtualDate = virtualDate.AddDays(1);
+            secondsRemaining = timeInterval * 60;
             checkFinishedMatches(oldVirtualDate, virtualDate);
             updateVirtualDateAndLastDate();
         }
@@ -350,6 +356,7 @@ namespace TipsterCup
             {
                 timerOneTickOneDay.Interval = timeInterval * 1000 * 60;
             }
+            secondsRemaining--;
         }
 
         private void llblRegister_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -363,6 +370,7 @@ namespace TipsterCup
         {
             DateTime oldVirtualDate = virtualDate;
             virtualDate = virtualDate.AddDays(1);
+            secondsRemaining = timeInterval * 60;
             checkFinishedMatches(oldVirtualDate, virtualDate);
             updateVirtualDateAndLastDate();
             timerOneTickOneDay.Start();

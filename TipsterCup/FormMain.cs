@@ -22,8 +22,6 @@ namespace TipsterCup
         public static Boolean betweenRounds;
         public static Round currentRound;
         int seconds;
-        int dayInRound;
-        int currentDay;
         public static Boolean finished;
         
         
@@ -131,51 +129,81 @@ namespace TipsterCup
 
         private void initLabel()
         {
-            int seconds = this.seconds;
+            String text = "";
+            lblNextRound.ForeColor = Color.Black;
             if (finished)
             {
-                lblNextRound.Text = "Season finished";
+                text = "Season finished";
             }
             else
             {
                 if (betweenRounds)
                 {
-                    String text = "Time until next round:   ";
+                    int seconds = this.seconds;
                     int hours = seconds / 60 / 60;
-                    /*if(hours > 0){
-                        text += hours + " : ";
-                    }*/
-                    seconds -= hours * 60 * 60;
+                    seconds -= hours * 3600;
                     int minutes = seconds / 60;
-                    /*if(minutes > 0){
-                        text += minutes + " : ";
-                    }*/
                     seconds -= minutes * 60;
-                    text += String.Format("{0:00} : {1:00} : {2:00}", hours, minutes, seconds);
-                    lblNextRound.Text = text;
-                    if (this.seconds < 10)
+                    text = "Time until round "+currentRound.Id+":   ";
+                    text += String.Format("{1:00} : {2:00} : {3:00}", currentRound.Id, hours, minutes, seconds);
+                    if (seconds < 10)
                     {
                         lblNextRound.ForeColor = Color.Red;
-                    }
-                    else
-                    {
-                        lblNextRound.ForeColor = Color.Black;
                     }
                 }
                 else
                 {
-                    if (currentDay != dayInRound - (int)(currentRound.DateTo - FormLogin.virtualDate).TotalDays)
-                    {
-                        currentDay = dayInRound - (int)(currentRound.DateTo - FormLogin.virtualDate).TotalDays;
-                        seconds = FormLogin.timeInterval * 60;
-
-                    }
-                    lblNextRound.ForeColor = Color.Black;
-                    lblNextRound.Text = "Round " + currentRound.Id + " Day " + currentDay;
+                    text = "Round " + currentRound.Id + " is playing";
                 }
             }
-            lblNextRound.TextAlign = ContentAlignment.BottomCenter;
-            lblNextRound.Location = new Point(this.Width - 20 - lblNextRound.Width, lblNextRound.Location.Y);
+            lblNextRound.Text = text;
+            lblNextRound.TextAlign = ContentAlignment.BottomRight;
+            lblNextRound.Location = new Point(this.Width - lblNextRound.Width - 20, lblNextRound.Location.Y);
+        }
+        
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (seconds > 0)
+            {
+                seconds--;
+            }
+            else
+            {
+                if (betweenRounds)
+                {
+                    betweenRounds = false;
+                }
+                else
+                {
+                    if (FormLogin.virtualDate.CompareTo(currentRound.DateTo) > 0)
+                    {
+                        timer1.Stop();
+                        initializeCountdown();
+                        return;
+                    }
+                }
+
+            }
+            initLabel();
+            initLblDate();
+        }
+
+        private void initializeCountdown()
+        {
+            setRound();
+
+            
+            if(!finished)
+            {
+                if (betweenRounds)
+                {
+                    seconds = (int)Math.Floor((currentRound.DateFrom - FormLogin.virtualDate).TotalDays - 1)*FormLogin.timeInterval*60 + FormLogin.secondsRemaining;
+                }
+                
+            }
+            initLabel();
+            timer1.Start();
         }
 
 
@@ -206,7 +234,7 @@ namespace TipsterCup
                     command = new OracleCommand(query, connection);
                     reader = command.ExecuteReader();
                     DateTime from = DateTime.Now;
-                    DateTime to =DateTime.Now;
+                    DateTime to = DateTime.Now;
                     while (reader.Read())
                     {
 
@@ -216,61 +244,14 @@ namespace TipsterCup
                         finished = false;
                         break;
                     }
-                    
+
                     betweenRounds = true;
                     currentRound = new Round(round, from, to);
-                    round++;
+
                 }
-                
+
             }
 
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            seconds--;
-            if (seconds == 0 && currentDay != dayInRound)
-            {
-                betweenRounds = false;
-                initLabel();
-                currentDay += 1;
-                seconds = FormLogin.timeInterval * 60;
-                //btnRounds_Click(null, null);
-            }
-            else if (seconds == 0 && currentDay == dayInRound)
-            {
-                timer1.Stop();
-                initializeCountdown();
-                //btnRounds_Click(null, null);
-                return;
-            }
-            initLabel();
-            initLblDate();
-        }
-
-        private void initializeCountdown()
-        {
-            setRound();
-
-            double difference = 0;
-            seconds = 0;
-            dayInRound = (int)(currentRound.DateTo - currentRound.DateFrom).TotalDays + 1;
-            currentDay = 0;
-
-            if (betweenRounds)
-            {
-                difference = (currentRound.DateFrom - FormLogin.virtualDate).TotalDays;
-            }
-            else
-            {
-                currentDay = dayInRound - (int)(currentRound.DateTo - FormLogin.virtualDate).TotalDays;
-            }
-
-
-            seconds = (int)difference * FormLogin.timeInterval * 60;
-            
-            initLabel();
-            timer1.Start();
         }
 
         
