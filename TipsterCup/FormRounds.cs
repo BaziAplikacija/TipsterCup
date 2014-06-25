@@ -92,13 +92,21 @@ namespace TipsterCup
         private void FormRounds_Load(object sender, EventArgs e)
         {
             setControls();
-            currentRound = setRound();
+            //currentRound = setRound();
+            if (FormMain.betweenRounds)
+            {
+                currentRound = FormMain.currentRound.Id;
+            }
+            else
+            {
+                currentRound = FormMain.currentRound.Id;
+            }
             cbRounds.SelectedIndex = currentRound - 1;
             disableButtons();
         }
 
 
-        private int setRound()
+        /*private int setRound()
         {
             int round = 0;
             //lastRound = 0;
@@ -130,7 +138,7 @@ namespace TipsterCup
                 }
             }
             return round;
-        }
+        }*/
 
 
         private void setControls()

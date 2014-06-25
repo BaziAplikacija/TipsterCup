@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnRounds = new System.Windows.Forms.Button();
             this.btnTeams = new System.Windows.Forms.Button();
             this.btnPlayers = new System.Windows.Forms.Button();
@@ -38,6 +39,8 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.pnlButtons = new System.Windows.Forms.Panel();
+            this.lblNextRound = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pnlButtons.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -148,15 +151,32 @@
             this.pnlButtons.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlButtons.Location = new System.Drawing.Point(0, 0);
             this.pnlButtons.Name = "pnlButtons";
-            this.pnlButtons.Size = new System.Drawing.Size(1006, 40);
+            this.pnlButtons.Size = new System.Drawing.Size(1155, 40);
             this.pnlButtons.TabIndex = 11;
+            // 
+            // lblNextRound
+            // 
+            this.lblNextRound.AutoSize = true;
+            this.lblNextRound.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblNextRound.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblNextRound.Location = new System.Drawing.Point(553, 389);
+            this.lblNextRound.Name = "lblNextRound";
+            this.lblNextRound.Size = new System.Drawing.Size(60, 24);
+            this.lblNextRound.TabIndex = 13;
+            this.lblNextRound.Text = "label1";
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1006, 422);
+            this.ClientSize = new System.Drawing.Size(1155, 422);
+            this.Controls.Add(this.lblNextRound);
             this.Controls.Add(this.pnlButtons);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
@@ -183,5 +203,7 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Panel pnlButtons;
+        private System.Windows.Forms.Label lblNextRound;
+        private System.Windows.Forms.Timer timer1;
     }
 }
