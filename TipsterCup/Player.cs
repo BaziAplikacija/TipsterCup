@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace TipsterCup
 {
-    public class Player : VirtualMan
+    public class Player : VirtualMan, IComparable
     {
 
         //IDPLAYER	NAME	SURNAME	DATEOFBIRTH	RATING	IDTEAM	IDPOSITION
@@ -122,5 +122,11 @@ namespace TipsterCup
         }
 
         //public OracleDataReader OracleDataRreader { get; set; }
+
+        public int CompareTo(object obj)
+        {
+            Player p = obj as Player;
+            return (int) (p.Rating - Rating);
+        }
     }
 }
