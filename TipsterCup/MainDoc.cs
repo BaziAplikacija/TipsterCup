@@ -243,7 +243,21 @@ namespace TipsterCup
             List<Player> allPlayers =  getPlayersFromTeam(teamName);
             List<int> lastToken = new List<int>();
             Random random = new Random();
-            int totalTokens = 0;
+            allPlayers.Sort();
+            int[] needed = new int[5], chosen = new int[5];
+            needed[1] = 2;
+            needed[2] = 4;
+            needed[3] = 4;
+            needed[4] = 1;
+            foreach (Player p in allPlayers)
+            {
+                if (chosen[p.Id] < needed[p.Id])
+                {
+                    toRet.Add(p);
+                    chosen[p.Id]++;
+                }   
+            }
+            /*int totalTokens = 0;
             for (int p = 0; p < allPlayers.Count; p++)
             {//verojatnosta deka ke igra daden igrac e proporcionalna na negoviot rating
                 lastToken.Add(totalTokens + (int)allPlayers[p].Rating);
@@ -272,7 +286,9 @@ namespace TipsterCup
                     }
                 }
                     
-            }
+            }*/
+
+
 
             return toRet;
         }
