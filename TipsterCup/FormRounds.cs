@@ -93,52 +93,27 @@ namespace TipsterCup
         {
             setControls();
             //currentRound = setRound();
-            if (FormMain.betweenRounds)
+            if (FormMain.finished)
             {
-                currentRound = FormMain.currentRound.Id;
+                currentRound = cbRounds.SelectedIndex = cbRounds.Items.Count - 1;
             }
             else
             {
-                currentRound = FormMain.currentRound.Id;
+                if (FormMain.betweenRounds)
+                {
+                    currentRound = FormMain.currentRound.Id;
+                }
+                else
+                {
+                    currentRound = FormMain.currentRound.Id;
+                }
+                cbRounds.SelectedIndex = currentRound - 1;
             }
-            cbRounds.SelectedIndex = currentRound - 1;
             disableButtons();
         }
 
 
-        /*private int setRound()
-        {
-            int round = 0;
-            //lastRound = 0;
-            using (OracleConnection connection = new OracleConnection(FormLogin.connString))
-            {
-                connection.Open();
-                
-                String query = "SELECT idRound FROM Round WHERE dateFrom < (TO_DATE('" + FormLogin.virtualDate.Month + "/" + FormLogin.virtualDate.Day + "/" + FormLogin.virtualDate.Year
-                    + "', 'mm/dd/yyyy')) AND dateTo > (TO_DATE('" + FormLogin.virtualDate.Month + "/" + FormLogin.virtualDate.Day + "/" + FormLogin.virtualDate.Year+ "', 'mm/dd/yyyy'))";
-                OracleCommand command = new OracleCommand(query, connection);
-                OracleDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    round = reader.GetInt32(0);
-                }
-                if (round == 0)
-                {
-                    query = "SELECT idRound FROM Round WHERE dateTo < (TO_DATE('" + FormLogin.virtualDate.Month + "/" + FormLogin.virtualDate.Day + "/" + FormLogin.virtualDate.Year
-                    + "', 'mm/dd/yyyy')) ORDER BY idround";
-                    command = new OracleCommand(query, connection);
-                    reader = command.ExecuteReader();
-                    
-                    while (reader.Read())
-                    {
-                        round = reader.GetInt32(0);
-                    }
-                    round++;
-                    //lastRound = round;
-                }
-            }
-            return round;
-        }*/
+        
 
 
         private void setControls()

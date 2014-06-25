@@ -23,6 +23,7 @@ namespace TipsterCup
         int seconds;
         int dayInRound;
         int currentDay;
+        public static Boolean finished;
         
         
         public FormMain()
@@ -120,40 +121,47 @@ namespace TipsterCup
         private void initLabel()
         {
             int seconds = this.seconds;
-            if (betweenRounds)
+            if (finished)
             {
-                String text = "Time until next round:   ";
-                int hours = seconds / 60 / 60;
-                /*if(hours > 0){
-                    text += hours + " : ";
-                }*/
-                seconds -= hours * 60 * 60;
-                int minutes = seconds / 60;
-                /*if(minutes > 0){
-                    text += minutes + " : ";
-                }*/
-                seconds -= minutes * 60;
-                text  += String.Format("{0:00} : {1:00} : {2:00}",hours, minutes, seconds);
-                lblNextRound.Text = text;
-                if (this.seconds < 10)
-                {
-                    lblNextRound.ForeColor = Color.Red;
-                }
-                else
-                {
-                    lblNextRound.ForeColor = Color.Black;
-                }
+                lblNextRound.Text = "Season finished";
             }
             else
             {
-                if (currentDay != dayInRound - (int)(currentRound.DateTo - FormLogin.virtualDate).TotalDays)
+                if (betweenRounds)
                 {
-                    currentDay = dayInRound - (int)(currentRound.DateTo - FormLogin.virtualDate).TotalDays;
-                    seconds = FormLogin.timeInterval * 60;
-
+                    String text = "Time until next round:   ";
+                    int hours = seconds / 60 / 60;
+                    /*if(hours > 0){
+                        text += hours + " : ";
+                    }*/
+                    seconds -= hours * 60 * 60;
+                    int minutes = seconds / 60;
+                    /*if(minutes > 0){
+                        text += minutes + " : ";
+                    }*/
+                    seconds -= minutes * 60;
+                    text += String.Format("{0:00} : {1:00} : {2:00}", hours, minutes, seconds);
+                    lblNextRound.Text = text;
+                    if (this.seconds < 10)
+                    {
+                        lblNextRound.ForeColor = Color.Red;
+                    }
+                    else
+                    {
+                        lblNextRound.ForeColor = Color.Black;
+                    }
                 }
-                lblNextRound.ForeColor = Color.Black;
-                lblNextRound.Text = "Round " + currentRound.Id +" Day "+currentDay;
+                else
+                {
+                    if (currentDay != dayInRound - (int)(currentRound.DateTo - FormLogin.virtualDate).TotalDays)
+                    {
+                        currentDay = dayInRound - (int)(currentRound.DateTo - FormLogin.virtualDate).TotalDays;
+                        seconds = FormLogin.timeInterval * 60;
+
+                    }
+                    lblNextRound.ForeColor = Color.Black;
+                    lblNextRound.Text = "Round " + currentRound.Id + " Day " + currentDay;
+                }
             }
             lblNextRound.TextAlign = ContentAlignment.BottomCenter;
             lblNextRound.Location = new Point(this.Width - 20 - lblNextRound.Width, lblNextRound.Location.Y);
@@ -163,7 +171,7 @@ namespace TipsterCup
         private void setRound()
         {
             int round = 0;
-            //lastRound = 0;
+            finished = true;
             using (OracleConnection connection = new OracleConnection(FormLogin.connString))
             {
                 connection.Open();
@@ -177,6 +185,7 @@ namespace TipsterCup
                     currentRound = new Round(reader.GetInt32(0), reader.GetDateTime(1), reader.GetDateTime(2));
                     round = currentRound.Id;
                     betweenRounds = false;
+                    finished = false;
 
                 }
                 if (round == 0)
@@ -193,18 +202,15 @@ namespace TipsterCup
                         round = reader.GetInt32(0);
                         from = reader.GetDateTime(1);
                         to = reader.GetDateTime(2);
+                        finished = false;
                         break;
                     }
                     
                     betweenRounds = true;
                     currentRound = new Round(round, from, to);
                     round++;
-                    //lastRound = round;
                 }
-                else
-                {
-                    MessageBox.Show("vo round");
-                }
+                
             }
 
         }
