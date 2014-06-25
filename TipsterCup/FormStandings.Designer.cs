@@ -54,6 +54,7 @@
             this.gridStandings.Location = new System.Drawing.Point(75, 55);
             this.gridStandings.Name = "gridStandings";
             this.gridStandings.ReadOnly = true;
+            this.gridStandings.RowHeadersVisible = false;
             this.gridStandings.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.gridStandings.Size = new System.Drawing.Size(676, 422);
             this.gridStandings.TabIndex = 2;
