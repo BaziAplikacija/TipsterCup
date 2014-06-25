@@ -17,6 +17,7 @@ namespace TipsterCup
         FormRounds frmRounds;
         FormAllTipsters frmAllTipsters;
         FormStatistics frmStatistics;
+        FormTipster frmMyProfile;
 
         public static Boolean betweenRounds;
         public static Round currentRound;
@@ -32,6 +33,8 @@ namespace TipsterCup
             frmStandings = null;
             frmRounds = null;
             frmAllTipsters = null;
+            frmStatistics = null;
+            frmMyProfile = null;
         }
 
 
@@ -75,12 +78,20 @@ namespace TipsterCup
 
         private void btnMyProfile_Click(object sender, EventArgs e)
         {
-            FormTipster frmMyProfile = new FormTipster(FormLogin.IdLoggedTipster);
+            if(frmMyProfile != null) {
+                 frmMyProfile.Close();
+            }
+            frmMyProfile =   new FormTipster(FormLogin.IdLoggedTipster);
+            frmMyProfile.MdiParent = this;
             frmMyProfile.Show();
         }
 
         private void btnTipsters_Click(object sender, EventArgs e)
         {
+
+            if(frmAllTipsters != null) {
+                frmAllTipsters.Close();
+            }
             frmAllTipsters = new FormAllTipsters();
             frmAllTipsters.MdiParent = this;
            

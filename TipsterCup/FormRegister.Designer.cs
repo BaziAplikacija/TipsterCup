@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRegister));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -103,7 +104,7 @@
             this.tbUsername.Location = new System.Drawing.Point(179, 49);
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(137, 20);
-            this.tbUsername.TabIndex = 6;
+            this.tbUsername.TabIndex = 1;
             // 
             // tbPassword
             // 
@@ -111,21 +112,21 @@
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(137, 20);
-            this.tbPassword.TabIndex = 7;
+            this.tbPassword.TabIndex = 2;
             // 
             // tbSurname
             // 
             this.tbSurname.Location = new System.Drawing.Point(179, 155);
             this.tbSurname.Name = "tbSurname";
             this.tbSurname.Size = new System.Drawing.Size(137, 20);
-            this.tbSurname.TabIndex = 8;
+            this.tbSurname.TabIndex = 5;
             // 
             // tbName
             // 
             this.tbName.Location = new System.Drawing.Point(179, 127);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(137, 20);
-            this.tbName.TabIndex = 9;
+            this.tbName.TabIndex = 4;
             // 
             // tbRepPassword
             // 
@@ -133,32 +134,34 @@
             this.tbRepPassword.Name = "tbRepPassword";
             this.tbRepPassword.PasswordChar = '*';
             this.tbRepPassword.Size = new System.Drawing.Size(137, 20);
-            this.tbRepPassword.TabIndex = 10;
+            this.tbRepPassword.TabIndex = 3;
             // 
             // tbEmail
             // 
             this.tbEmail.Location = new System.Drawing.Point(179, 181);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(137, 20);
-            this.tbEmail.TabIndex = 11;
+            this.tbEmail.TabIndex = 6;
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(311, 241);
+            this.btnSubmit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSubmit.BackgroundImage")));
+            this.btnSubmit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSubmit.Location = new System.Drawing.Point(361, 226);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(75, 23);
+            this.btnSubmit.Size = new System.Drawing.Size(50, 50);
             this.btnSubmit.TabIndex = 12;
-            this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(73, 241);
+            this.btnExit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExit.BackgroundImage")));
+            this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnExit.Location = new System.Drawing.Point(22, 226);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(75, 23);
+            this.btnExit.Size = new System.Drawing.Size(50, 50);
             this.btnExit.TabIndex = 13;
-            this.btnExit.Text = "Back";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 

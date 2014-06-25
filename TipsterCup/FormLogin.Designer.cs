@@ -128,18 +128,18 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(57, 301);
+            this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
+            this.btnExit.Location = new System.Drawing.Point(20, 301);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(63, 68);
             this.btnExit.TabIndex = 6;
-            this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnGo
             // 
             this.btnGo.Image = ((System.Drawing.Image)(resources.GetObject("btnGo.Image")));
-            this.btnGo.Location = new System.Drawing.Point(306, 301);
+            this.btnGo.Location = new System.Drawing.Point(330, 301);
             this.btnGo.Name = "btnGo";
             this.btnGo.Size = new System.Drawing.Size(71, 68);
             this.btnGo.TabIndex = 5;

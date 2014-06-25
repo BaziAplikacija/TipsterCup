@@ -282,7 +282,7 @@ namespace TipsterCup
             lblLoginAs.Text = translator["Login " + currLanguage];
             lblUsername.Text = translator["Username " + currLanguage];
             lblPassword.Text = translator["Password " + currLanguage];
-            btnExit.Text = translator["Exit " + currLanguage];
+           // btnExit.Text = translator["Exit " + currLanguage];
             this.Text = translator["Form " + currLanguage];
 
             cbLoginAs.Items.Add(translator["Tipster " + currLanguage]);
