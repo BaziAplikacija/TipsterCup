@@ -66,7 +66,7 @@ namespace TipsterCup
             for (int minute = 1; minute <= 90; minute++)//0 - goal and eventually assist, 1 - interrupt, 2 save, nothing
             {
                 int happens = whatHappens();
-                int nextGoal = 0;//Slicno kako kaj Participates, sekade ke se stava nextGoal = 0, no toa ne pravi problem
+                int nextGoal = mainDoc.Goals[mainDoc.Goals.Count - 1].Id + 1;//Slicno kako kaj Participates, sekade ke se stava nextGoal = 0, no toa ne pravi problem
                 if (happens == 0)//goal
                 {
                     int scorerId = goalScorer();
@@ -92,10 +92,20 @@ namespace TipsterCup
                         command.ExecuteNonQuery();
 
                     }
-
+                    //azuriranje na mainDoc
+                    mainDoc.Goals.Add(goal);
+                    if (scorerId < 11)
+                    {
+                        match.GoalsHome.Add(goal);
+                    }
+                    else
+                    {
+                        match.GoalsGuest.Add(goal);
+                    }
+                    
                     Participations[scorerId].NumGoals++;
                     int assId = assistent();
-                    if (assId != scorerId)
+                    if (assId != scorerId && (assId - 10) * (scorerId - 10) >= 0)
                     {
                         Participations[assId].NumAssists++;
                     }
@@ -115,6 +125,7 @@ namespace TipsterCup
             foreach (Participates p in Participations)
             {
                 p.calculateMatchRating();
+                //int nextParticipateId = mainDoc.Par[mainDoc.Goals.Count - 1].Id + 1;
                 //dodavanje na ucestvata vo bazata
                 using (OracleConnection conn = new OracleConnection(FormLogin.connString))
                 {
@@ -142,41 +153,69 @@ namespace TipsterCup
                     command.ExecuteNonQuery();
 
                 }
+                //azuriranje na Participates
+
             }
 
-            //update na Player rating
 
-            /*for (int i = 0; i < AllPlayers.Count; i++)
+            //update na Player rating
+            int homeAvgRating = 0, guestAvgRating = 0;
+            for (int i = 0; i < AllPlayers.Count; i++)
             {
                 AllPlayers[i].updateRating(Participations[i].MatchRating);
-
+                //mainDoc.Players[AllPlayers[i].Id].Rating = (double)AllPlayers[i].Rating;//azuriranje vo mainDoc
+                if (i < 11)
+                {
+                    homeAvgRating += (int) AllPlayers[i].Rating;
+                }
+                else
+                {
+                    guestAvgRating += (int) AllPlayers[i].Rating;
+                }
                 using (OracleConnection conn = new OracleConnection(FormLogin.connString))
                 {
                     conn.Open();
-
-                    OracleCommand command = new OracleCommand("procInsertParticipates", conn);
-                    command.CommandType = CommandType.StoredProcedure;
-                    /*
-                     *  p_idPlayer in Participates.idPlayer%TYPE,
-                        p_idMatch in Participates.idMatch%TYPE, 
-                        p_numgoals in Participates.numgoals%TYPE, 
-                        p_numassists in Participates.numassists%TYPE, 
-                        p_numinterrupts in Participates.NUMINTERRUPTS%TYPE,  
-                        p_numsaves in Participates.numsaves%TYPE,
-                        p_matchrating in Participates.match_rating%TYPE) 
-                     */
-                    /*command.Parameters.Add("p_idPlayer", OracleDbType.Int32).Value = p.Player.Id;
-                    command.Parameters.Add("p_idMatch", OracleDbType.Int32).Value = p.Match.Id;
-                    command.Parameters.Add("p_numgoals", OracleDbType.Int32).Value = p.NumGoals;
-                    command.Parameters.Add("p_numassists", OracleDbType.Int32).Value = p.NumAssists;
-                    command.Parameters.Add("p_numinterrupts", OracleDbType.Int32).Value = p.NumInterrupts;
-                    command.Parameters.Add("p_numsaves", OracleDbType.Int32).Value = p.NumSaves;
-                    command.Parameters.Add("p_matchrating", OracleDbType.Int32).Value = p.MatchRating;
-
+                    String query = "UPDATE Player SET rating = " + (int) AllPlayers[i].Rating +
+                        " WHERE idPlayer = " + AllPlayers[i].Id;
+                    OracleCommand command = new OracleCommand(query, conn);
+                    command.CommandType = CommandType.Text;
+                    
                     command.ExecuteNonQuery();
-
+                    
                 }
-            }*/
+            }
+            //update team ratings
+            homeAvgRating /= 11;
+            guestAvgRating /= 11;
+            int homeNewRating = (homeAvgRating + 29 * (int)match.HomeTeam.Rating) / 30;
+            int guestNewRating = (guestAvgRating + 29 * (int)match.GuestTeam.Rating) / 30;
+            match.HomeTeam.Rating = homeNewRating;
+            match.GuestTeam.Rating = guestNewRating;
+            //mainDoc.Teams[match.GuestTeam.Id].Rating = (double) guestNewRating;
+            using (OracleConnection conn = new OracleConnection(FormLogin.connString))
+            {
+                conn.Open();
+                String query = "UPDATE Team SET rating = " + homeNewRating +
+                    " WHERE idTeam = " + match.HomeTeam.Id;
+                OracleCommand command = new OracleCommand(query, conn);
+                command.CommandType = CommandType.Text;
+
+                command.ExecuteNonQuery();
+
+            }
+
+            using (OracleConnection conn = new OracleConnection(FormLogin.connString))
+            {
+                conn.Open();
+                String query = "UPDATE Team SET rating = " + guestNewRating +
+                    " WHERE idTeam = " + match.GuestTeam.Id;
+                OracleCommand command = new OracleCommand(query, conn);
+                command.CommandType = CommandType.Text;
+
+                command.ExecuteNonQuery();
+
+            }
+
         }
 
         private int goalScorer()
