@@ -18,9 +18,9 @@ namespace TipsterCup
         public FormPlayer(Player player)
         {
             InitializeComponent();
-            changeChartView();
+            
             Player = player;
-
+            changeChartView();
             lblFirstName.Text = player.FirstName;
             lblLastName.Text = player.LastName;
             lblPosition.Text = player.Position.Description;
@@ -34,7 +34,7 @@ namespace TipsterCup
             using (OracleConnection connection = new OracleConnection(FormLogin.connString))
             {
                 connection.Open();
-                String query = "SELECT m.idround as round, p.Match_Rating FROM participates p JOIN match m ON(p.idMatch = m.idMatch) WHERE p.idPlayer = 122 ORDER BY m.idRound";
+                String query = "SELECT m.idround as round, p.Match_Rating FROM participates p JOIN match m ON(p.idMatch = m.idMatch) WHERE p.idPlayer = "+Player.Id+" ORDER BY m.idRound";
                 DataTable table = new DataTable();
                 OracleDataAdapter dataAdapter = new OracleDataAdapter(query, connection);
                 dataAdapter.Fill(table);
@@ -54,8 +54,9 @@ namespace TipsterCup
             chartPlayerRating.ChartAreas["ChartArea1"].AxisY.Title = "Rankings";
             chartPlayerRating.ChartAreas["ChartArea1"].AxisY.Minimum = 1000;
             chartPlayerRating.ChartAreas["ChartArea1"].AxisY.Maximum = 3000;
-            
 
+            chartPlayerRating.ChartAreas["ChartArea1"].Visible = true;
+            chartPlayerRating.Series["Series1"].BorderWidth = 3;
         }
 
         

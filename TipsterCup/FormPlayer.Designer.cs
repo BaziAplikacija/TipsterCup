@@ -151,6 +151,7 @@
             this.chartPlayerRating.Location = new System.Drawing.Point(12, 154);
             this.chartPlayerRating.Margin = new System.Windows.Forms.Padding(1);
             this.chartPlayerRating.Name = "chartPlayerRating";
+            this.chartPlayerRating.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series1.Name = "Series1";

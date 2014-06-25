@@ -59,7 +59,8 @@ namespace TipsterCup
             chartTeamRating.ChartAreas["ChartArea1"].AxisX.Interval = 1;
             chartTeamRating.ChartAreas["ChartArea1"].AxisY.Minimum = 1000;
             chartTeamRating.ChartAreas["ChartArea1"].AxisY.Maximum = 3000;
-            
+            chartTeamRating.ChartAreas["ChartArea1"].Visible = true;
+            chartTeamRating.Series["Series1"].BorderWidth = 3;
 
 
 

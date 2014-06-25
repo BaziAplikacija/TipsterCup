@@ -163,6 +163,7 @@
             this.chartTeamRating.ChartAreas.Add(chartArea1);
             this.chartTeamRating.Location = new System.Drawing.Point(255, 21);
             this.chartTeamRating.Name = "chartTeamRating";
+            this.chartTeamRating.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series1.Name = "Series1";
