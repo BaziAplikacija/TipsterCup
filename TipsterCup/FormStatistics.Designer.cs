@@ -33,6 +33,7 @@
             this.btnAverageAge = new System.Windows.Forms.Button();
             this.btnTopscorer = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnTeamGoals = new System.Windows.Forms.Button();
             this.btnHatTrick = new System.Windows.Forms.Button();
             this.gridLastPerformance = new System.Windows.Forms.DataGridView();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,13 +67,12 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colHomeTeam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnTeamGoals = new System.Windows.Forms.Button();
             this.gridTeamGoals = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.lblTeamGoals = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblTeamGoals = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridLastPerformance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridTopscorers)).BeginInit();
@@ -138,6 +138,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.btnTeamGoals);
             this.panel1.Controls.Add(this.btnHatTrick);
             this.panel1.Controls.Add(this.btnDreamTeam);
@@ -148,6 +149,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(268, 209);
             this.panel1.TabIndex = 4;
+            // 
+            // btnTeamGoals
+            // 
+            this.btnTeamGoals.BackColor = System.Drawing.SystemColors.Control;
+            this.btnTeamGoals.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTeamGoals.Location = new System.Drawing.Point(133, 122);
+            this.btnTeamGoals.Name = "btnTeamGoals";
+            this.btnTeamGoals.Size = new System.Drawing.Size(135, 64);
+            this.btnTeamGoals.TabIndex = 13;
+            this.btnTeamGoals.Text = "Team F/A";
+            this.btnTeamGoals.UseVisualStyleBackColor = false;
+            this.btnTeamGoals.Click += new System.EventHandler(this.btnTeamGoals_Click);
             // 
             // btnHatTrick
             // 
@@ -232,8 +245,11 @@
             // 
             // pnlLastPerformance
             // 
+            this.pnlLastPerformance.BackColor = System.Drawing.Color.Transparent;
             this.pnlLastPerformance.Controls.Add(this.lblLastPerformance);
             this.pnlLastPerformance.Controls.Add(this.gridLastPerformance);
+            this.pnlLastPerformance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pnlLastPerformance.ForeColor = System.Drawing.SystemColors.ControlText;
             this.pnlLastPerformance.Location = new System.Drawing.Point(308, 12);
             this.pnlLastPerformance.Name = "pnlLastPerformance";
             this.pnlLastPerformance.Size = new System.Drawing.Size(276, 228);
@@ -244,15 +260,18 @@
             this.lblLastPerformance.AutoSize = true;
             this.lblLastPerformance.Location = new System.Drawing.Point(10, 19);
             this.lblLastPerformance.Name = "lblLastPerformance";
-            this.lblLastPerformance.Size = new System.Drawing.Size(35, 13);
+            this.lblLastPerformance.Size = new System.Drawing.Size(47, 15);
             this.lblLastPerformance.TabIndex = 5;
             this.lblLastPerformance.Text = "label1";
             this.lblLastPerformance.Visible = false;
             // 
             // pnlTopScorers
             // 
+            this.pnlTopScorers.BackColor = System.Drawing.Color.Transparent;
             this.pnlTopScorers.Controls.Add(this.lblTopScorers);
             this.pnlTopScorers.Controls.Add(this.gridTopscorers);
+            this.pnlTopScorers.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pnlTopScorers.ForeColor = System.Drawing.SystemColors.ControlText;
             this.pnlTopScorers.Location = new System.Drawing.Point(600, 12);
             this.pnlTopScorers.Name = "pnlTopScorers";
             this.pnlTopScorers.Size = new System.Drawing.Size(276, 228);
@@ -263,15 +282,18 @@
             this.lblTopScorers.AutoSize = true;
             this.lblTopScorers.Location = new System.Drawing.Point(10, 19);
             this.lblTopScorers.Name = "lblTopScorers";
-            this.lblTopScorers.Size = new System.Drawing.Size(35, 13);
+            this.lblTopScorers.Size = new System.Drawing.Size(47, 15);
             this.lblTopScorers.TabIndex = 5;
             this.lblTopScorers.Text = "label1";
             this.lblTopScorers.Visible = false;
             // 
             // pnlDreamTeam
             // 
+            this.pnlDreamTeam.BackColor = System.Drawing.Color.Transparent;
             this.pnlDreamTeam.Controls.Add(this.lblDreamTeam);
             this.pnlDreamTeam.Controls.Add(this.gridDreamTeam);
+            this.pnlDreamTeam.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pnlDreamTeam.ForeColor = System.Drawing.SystemColors.ControlText;
             this.pnlDreamTeam.Location = new System.Drawing.Point(892, 12);
             this.pnlDreamTeam.Name = "pnlDreamTeam";
             this.pnlDreamTeam.Size = new System.Drawing.Size(350, 228);
@@ -282,7 +304,7 @@
             this.lblDreamTeam.AutoSize = true;
             this.lblDreamTeam.Location = new System.Drawing.Point(10, 19);
             this.lblDreamTeam.Name = "lblDreamTeam";
-            this.lblDreamTeam.Size = new System.Drawing.Size(35, 13);
+            this.lblDreamTeam.Size = new System.Drawing.Size(47, 15);
             this.lblDreamTeam.TabIndex = 5;
             this.lblDreamTeam.Text = "label1";
             this.lblDreamTeam.Visible = false;
@@ -336,8 +358,11 @@
             // 
             // pnlAverageAge
             // 
+            this.pnlAverageAge.BackColor = System.Drawing.Color.Transparent;
             this.pnlAverageAge.Controls.Add(this.lblAverageAge);
             this.pnlAverageAge.Controls.Add(this.gridAverageAge);
+            this.pnlAverageAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pnlAverageAge.ForeColor = System.Drawing.SystemColors.ControlText;
             this.pnlAverageAge.Location = new System.Drawing.Point(308, 259);
             this.pnlAverageAge.Name = "pnlAverageAge";
             this.pnlAverageAge.Size = new System.Drawing.Size(276, 228);
@@ -348,7 +373,7 @@
             this.lblAverageAge.AutoSize = true;
             this.lblAverageAge.Location = new System.Drawing.Point(10, 19);
             this.lblAverageAge.Name = "lblAverageAge";
-            this.lblAverageAge.Size = new System.Drawing.Size(35, 13);
+            this.lblAverageAge.Size = new System.Drawing.Size(47, 15);
             this.lblAverageAge.TabIndex = 5;
             this.lblAverageAge.Text = "label1";
             this.lblAverageAge.Visible = false;
@@ -386,8 +411,11 @@
             // 
             // pnlHatTrick
             // 
+            this.pnlHatTrick.BackColor = System.Drawing.Color.Transparent;
             this.pnlHatTrick.Controls.Add(this.lblHatTrick);
             this.pnlHatTrick.Controls.Add(this.gridHatTrick);
+            this.pnlHatTrick.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pnlHatTrick.ForeColor = System.Drawing.SystemColors.ControlText;
             this.pnlHatTrick.Location = new System.Drawing.Point(600, 259);
             this.pnlHatTrick.Name = "pnlHatTrick";
             this.pnlHatTrick.Size = new System.Drawing.Size(604, 228);
@@ -398,7 +426,7 @@
             this.lblHatTrick.AutoSize = true;
             this.lblHatTrick.Location = new System.Drawing.Point(10, 19);
             this.lblHatTrick.Name = "lblHatTrick";
-            this.lblHatTrick.Size = new System.Drawing.Size(35, 13);
+            this.lblHatTrick.Size = new System.Drawing.Size(47, 15);
             this.lblHatTrick.TabIndex = 5;
             this.lblHatTrick.Text = "label1";
             this.lblHatTrick.Visible = false;
@@ -464,18 +492,6 @@
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
             // 
-            // btnTeamGoals
-            // 
-            this.btnTeamGoals.BackColor = System.Drawing.SystemColors.Control;
-            this.btnTeamGoals.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTeamGoals.Location = new System.Drawing.Point(133, 122);
-            this.btnTeamGoals.Name = "btnTeamGoals";
-            this.btnTeamGoals.Size = new System.Drawing.Size(135, 64);
-            this.btnTeamGoals.TabIndex = 13;
-            this.btnTeamGoals.Text = "Team F/A";
-            this.btnTeamGoals.UseVisualStyleBackColor = false;
-            this.btnTeamGoals.Click += new System.EventHandler(this.btnTeamGoals_Click);
-            // 
             // gridTeamGoals
             // 
             this.gridTeamGoals.AllowUserToAddRows = false;
@@ -493,25 +509,6 @@
             this.gridTeamGoals.Size = new System.Drawing.Size(244, 150);
             this.gridTeamGoals.TabIndex = 6;
             this.gridTeamGoals.Visible = false;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.lblTeamGoals);
-            this.panel2.Controls.Add(this.gridTeamGoals);
-            this.panel2.Location = new System.Drawing.Point(26, 278);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(276, 246);
-            this.panel2.TabIndex = 13;
-            // 
-            // lblTeamGoals
-            // 
-            this.lblTeamGoals.AutoSize = true;
-            this.lblTeamGoals.Location = new System.Drawing.Point(10, 9);
-            this.lblTeamGoals.Name = "lblTeamGoals";
-            this.lblTeamGoals.Size = new System.Drawing.Size(35, 13);
-            this.lblTeamGoals.TabIndex = 5;
-            this.lblTeamGoals.Text = "label1";
-            this.lblTeamGoals.Visible = false;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -534,6 +531,28 @@
             this.Column5.ReadOnly = true;
             this.Column5.Width = 50;
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.Controls.Add(this.lblTeamGoals);
+            this.panel2.Controls.Add(this.gridTeamGoals);
+            this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.panel2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.panel2.Location = new System.Drawing.Point(26, 278);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(276, 246);
+            this.panel2.TabIndex = 13;
+            // 
+            // lblTeamGoals
+            // 
+            this.lblTeamGoals.AutoSize = true;
+            this.lblTeamGoals.Location = new System.Drawing.Point(10, 9);
+            this.lblTeamGoals.Name = "lblTeamGoals";
+            this.lblTeamGoals.Size = new System.Drawing.Size(47, 15);
+            this.lblTeamGoals.TabIndex = 5;
+            this.lblTeamGoals.Text = "label1";
+            this.lblTeamGoals.Visible = false;
+            // 
             // FormStatistics
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -549,6 +568,7 @@
             this.Name = "FormStatistics";
             this.Text = "FormStatistics";
             this.Load += new System.EventHandler(this.FormStatistics_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.FormStatistics_Paint);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridLastPerformance)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridTopscorers)).EndInit();

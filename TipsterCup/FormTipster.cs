@@ -15,11 +15,13 @@ namespace TipsterCup
     {
         int idTipster;
         public FormAllTipsters frmParent;
+        private Bitmap bgImage;
+
         public FormTipster(int idTipster)
         {
             this.idTipster = idTipster;
             InitializeComponent();
-
+            bgImage = new Bitmap("bgFootballStadium.jpg");
             
         }
 
@@ -70,6 +72,15 @@ namespace TipsterCup
                 frmParent.callLoad();
             }
             
+        }
+
+        private void FormTipster_Paint(object sender, PaintEventArgs e)
+        {
+            if (idTipster == FormLogin.IdLoggedTipster)
+            {
+                e.Graphics.Clear(Color.White);
+                e.Graphics.DrawImage(bgImage, 0, 0, this.Width, this.Height);
+            }
         }
 
 

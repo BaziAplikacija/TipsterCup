@@ -21,7 +21,7 @@ namespace TipsterCup
 
         private void FormStandings_Load(object sender, EventArgs e)
         {
-            bgImage = new Bitmap("bgStadium.jpg");
+            bgImage = new Bitmap("bgFootballStadium.jpg");
             
             fillGrid();
             this.WindowState = FormWindowState.Maximized;

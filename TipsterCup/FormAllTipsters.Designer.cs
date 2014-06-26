@@ -93,6 +93,7 @@
             this.Name = "FormAllTipsters";
             this.Text = "FormAllTipsters";
             this.Load += new System.EventHandler(this.FormAllTipsters_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.FormAllTipsters_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.gridTipsters)).EndInit();
             this.ResumeLayout(false);
 

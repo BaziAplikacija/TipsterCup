@@ -11,8 +11,10 @@ using System.Windows.Forms;
 
 namespace TipsterCup
 {
+    
     public partial class FormRounds : Form
     {
+        private Bitmap bgImage;
 
         int currentRound;
         //int lastRound;
@@ -30,7 +32,7 @@ namespace TipsterCup
             //Rounds = new List<Round>();
             labels = new List<Label>();
             buttons = new List<Button>();
-            
+            bgImage = new Bitmap("bgFootballStadium.jpg");
         }
 
 
@@ -200,6 +202,12 @@ namespace TipsterCup
 
             FormTip frmTip = new FormTip(match);
             frmTip.Show();
+        }
+
+        private void FormRounds_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.Clear(Color.White);
+            e.Graphics.DrawImage(bgImage, 0, 0, this.Width, this.Height);
         }
 
 

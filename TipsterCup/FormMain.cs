@@ -81,6 +81,7 @@ namespace TipsterCup
             }
             frmMyProfile =   new FormTipster(FormLogin.IdLoggedTipster);
             frmMyProfile.MdiParent = this;
+            
             frmMyProfile.Show();
         }
 

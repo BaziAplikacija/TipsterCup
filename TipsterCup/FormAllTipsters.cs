@@ -13,9 +13,11 @@ namespace TipsterCup
 {
     public partial class FormAllTipsters : Form
     {
+        private Bitmap bgImage;
         public FormAllTipsters()
         {
             InitializeComponent();
+            bgImage = new Bitmap("bgFootballStadium.jpg");
         
         }
 
@@ -58,6 +60,12 @@ namespace TipsterCup
             FormTipster frmTipster = new FormTipster(idTipster);
             frmTipster.frmParent = this;
             frmTipster.Show();
+        }
+
+        private void FormAllTipsters_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.Clear(Color.White);
+            e.Graphics.DrawImage(bgImage, 0, 0, this.Width, this.Height);
         }
     }
 }

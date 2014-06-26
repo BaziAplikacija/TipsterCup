@@ -87,9 +87,12 @@
             // 
             this.lblRound.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblRound.AutoSize = true;
-            this.lblRound.Location = new System.Drawing.Point(277, 47);
+            this.lblRound.BackColor = System.Drawing.Color.Transparent;
+            this.lblRound.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRound.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.lblRound.Location = new System.Drawing.Point(272, 45);
             this.lblRound.Name = "lblRound";
-            this.lblRound.Size = new System.Drawing.Size(42, 13);
+            this.lblRound.Size = new System.Drawing.Size(59, 23);
             this.lblRound.TabIndex = 2;
             this.lblRound.Text = "Round:";
             // 
@@ -130,6 +133,7 @@
             this.Name = "FormRounds";
             this.Text = "FormRound";
             this.Load += new System.EventHandler(this.FormRounds_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.FormRounds_Paint);
             this.ResumeLayout(false);
             this.PerformLayout();
 
