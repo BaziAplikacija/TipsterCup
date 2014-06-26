@@ -56,7 +56,6 @@ namespace TipsterCup
         {
             if (e.ColumnIndex == 0 && e.RowIndex != -1)
             {
-                MessageBox.Show("Got ya!");
                 String teamName = Convert.ToString(gridStandings.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
 
                 FormTeam frmTeam = new FormTeam(FormLogin.docMain.getTeamByName(teamName), FormLogin.docMain);

@@ -139,10 +139,6 @@ namespace TipsterCup
             }
         }
 
-        private void FormTipster_MouseClick(object sender, MouseEventArgs e)
-        {
-            MessageBox.Show(e.Location.ToString());
-        }
 
 
     }

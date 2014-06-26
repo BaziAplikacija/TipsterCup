@@ -252,7 +252,6 @@
             this.Text = "FormTipster";
             this.Load += new System.EventHandler(this.FormTipster_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.FormTipster_Paint);
-            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.FormTipster_MouseClick);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
