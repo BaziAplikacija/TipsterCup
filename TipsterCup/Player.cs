@@ -111,7 +111,7 @@ namespace TipsterCup
 
             if (Position.Id != 4)
             {
-                TokensGoals += (int)Team.Rating;
+                TokensGoals *= (int)Team.Rating / 10;
             } 
 
         }

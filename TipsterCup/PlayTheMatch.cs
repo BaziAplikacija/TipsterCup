@@ -17,13 +17,15 @@ namespace TipsterCup
         private const int GOAL_TOKENS = 27;// 27/900 e verojatnost deka ke ima gol vo dadena minuta
         //E(Goal) = 2.7 na natprevar
         private const int INTERRUPT_TOKENS = 350;//350/900 deka ke ima prekin na protivnicka akcija itn.
+        //E(interrupts) = 35
         private const int SAVE_TOKENS = 80;
+        //E(saves) = 8
         private const int NOTHING_HAPPENS_TOKENS = 460;
         private const int TOTAL_TOKENS = 900;
         Random random;
 
-        private const int WEIGHT_GOALS_MATCH_RATING = 200;
-
+        private const int WEIGHT_GOALS_MATCH_RATING = 200;// + WGMT * (postignati_od_cel_tim - golovi_na_protivnik)
+      
         public List<Participates> Participations { get; set; }
         public List<Player> AllPlayers { get; set; }
 
@@ -67,7 +69,7 @@ namespace TipsterCup
                 totalAssistTokens += p.TokensAssists;                     //no ovaa lista e samo lokalna za ovaa klasa
                 totalGoalTokens += p.TokensGoals;               //i toj index ne se koristi na drugi mesta, pa zatoa ne smeta
                 totalInterruptTokens += p.TokensInterrupts;//ne go izbrisav poleto bidejki koga ke se zemaat site ucestva od glavnata forma
-                totalSaveTokens += p.TokensSaves;           //poleto bidejki koga ke se zemaat site ucestva od glavnata forma ke bide potrebno i toa pole
+                totalSaveTokens += p.TokensSaves;           //ke bide potrebno i toa pole
             }
             foreach (Player p in guestTeam)
             {
@@ -89,7 +91,6 @@ namespace TipsterCup
                 {
                     int scorerId = goalScorer();
                     Goal goal = new Goal(nextGoal, minute, match, AllPlayers[scorerId]);
-                    //dodavanje na gol vo bazata
                     if (scorerId < 11)
                     {
                         goalsHome++;
@@ -98,6 +99,8 @@ namespace TipsterCup
                     {
                         goalsGuest++;
                     }
+
+                    //dodavanje na gol vo bazata
                     using (OracleConnection conn = new OracleConnection(FormLogin.connString))
                     {
                          conn.Open();
@@ -140,11 +143,12 @@ namespace TipsterCup
                     Participations[saverId].NumSaves++;
                 }
             }
-
+            //obnova na rejtinzi
             for(int i = 0; i < Participations.Count; i++)
             {
                 Participates p = Participations[i];
                 p.calculateMatchRating();
+                p.MatchRating = (int) ((AllPlayers[i].Rating + p.MatchRating) / 2);
                 if(i < 11) {
                     p.MatchRating = p.MatchRating + goalsHome * WEIGHT_GOALS_MATCH_RATING - goalsGuest * WEIGHT_GOALS_MATCH_RATING;
                     if (p.Player.Position.Id == 1)//napagac
