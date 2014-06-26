@@ -275,7 +275,7 @@ namespace TipsterCup
                 int numGenerated = Int32.Parse(command.ExecuteScalar().ToString());
 
                // MessageBox.Show("Num generated: " + numGenerated + " Current round: " + currentRound.Id);
-                if (numGenerated > 0)
+                if (numGenerated >= 70)
                 {
                     generateCoeff = false;
                 }
