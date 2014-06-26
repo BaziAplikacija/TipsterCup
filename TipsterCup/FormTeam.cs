@@ -90,6 +90,7 @@ namespace TipsterCup
             lblName.Text = Team.Name;
             lblCity.Text = Team.City;
             lblStadium.Text = Team.Stadium;
+            lblManager.Text = Team.Manager.FirstName+" "+Team.Manager.LastName;
 
             foreach (Player player in players)
             {
@@ -274,6 +275,18 @@ namespace TipsterCup
         private void FormTeam_FormClosed(object sender, FormClosedEventArgs e)
         {
             FormLogin.player.currentMedia = FormLogin.playlistMain.get_Item(0);
+        }
+
+        private void lblManager_Click(object sender, EventArgs e)
+        {
+            FormManager frmManager = new FormManager(Team.Manager);
+            frmManager.Show();
+        }
+
+
+        private void lblManager_MouseMove(object sender, MouseEventArgs e)
+        {
+            Cursor.Current = Cursors.Hand;
         }
     }
 }
