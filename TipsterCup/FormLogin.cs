@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -59,12 +60,10 @@ namespace TipsterCup
             
             InitializeComponent();
 
+            initMessages();
             docMain = new MainDoc();
             fillMainDoc();
-            initializeDateandInterval();
-
             
-            initMessages();
         }
 
         private void initMessages()
@@ -104,6 +103,8 @@ namespace TipsterCup
             
             cbLanguage.SelectedIndex = 0;
             cbLoginAs.SelectedIndex = 0;
+
+            initializeDateandInterval();
         }
 
 
@@ -163,7 +164,9 @@ namespace TipsterCup
                 command.CommandType = CommandType.Text;
                 command.ExecuteNonQuery();
             }
-            checkFinishedMatches(oldVirtual, virtualDate);
+
+            Thread thread = new Thread(() => checkFinishedMatches(oldVirtual, virtualDate));
+            thread.Start();
             timerOneTickOneDay.Interval = timeInterval * 60 * 1000;
 
             secondsRemaining = (timeInterval * 60 - thisDay);
@@ -302,7 +305,11 @@ namespace TipsterCup
             DateTime oldVirtualDate = virtualDate;
             virtualDate = virtualDate.AddDays(1);
             secondsRemaining = timeInterval * 60;
-            checkFinishedMatches(oldVirtualDate, virtualDate);
+
+            Thread thread = new Thread(() => checkFinishedMatches(oldVirtualDate,virtualDate));
+            thread.Start();
+           
+            
             updateVirtualDateAndLastDate();
         }
 
@@ -321,6 +328,7 @@ namespace TipsterCup
                 {
                     int idMatch = reader.GetInt32(0);
                     PlayTheMatch ptm = new PlayTheMatch(FormLogin.docMain, idMatch);
+                    
                 }
             }
         }
@@ -366,12 +374,17 @@ namespace TipsterCup
             frmRegister.ShowDialog();
         }
 
+ 
+
         private void timerThisDay_Tick(object sender, EventArgs e)
         {
             DateTime oldVirtualDate = virtualDate;
             virtualDate = virtualDate.AddDays(1);
             secondsRemaining = timeInterval * 60;
-            checkFinishedMatches(oldVirtualDate, virtualDate);
+
+            Thread thread = new Thread(() => checkFinishedMatches(oldVirtualDate, virtualDate));
+            thread.Start();
+
             updateVirtualDateAndLastDate();
             timerOneTickOneDay.Start();
             timerThisDay.Stop();
