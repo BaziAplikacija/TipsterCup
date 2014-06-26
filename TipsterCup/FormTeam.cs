@@ -265,7 +265,7 @@ namespace TipsterCup
 
         private void FormTeam_Load(object sender, EventArgs e)
         {
-            FormLogin.player.currentMedia = FormLogin.playlistTeams.get_Item(Team.Id);
+            FormLogin.player.currentMedia = FormLogin.playlistTeams.get_Item(Team.Id-1);
             this.Controls.Add(tableResults);
             tableResults.AutoScroll = true;
             showHistoryResults();

@@ -86,6 +86,7 @@ namespace TipsterCup
 
             playlistTeams = player.newPlaylist("Team playlist", "");
             
+
             playlistTeams.appendItem(player.newMedia("liverpoolSong.mp3"));
             playlistTeams.appendItem(player.newMedia("chelseaSong.mp3"));
             playlistTeams.appendItem(player.newMedia("manchesterCitySong.mp3"));
