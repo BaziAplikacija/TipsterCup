@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Oracle.DataAccess.Client;
 
+
+// !!!! TREBA DA SE TESTIRA !!!!! 
 namespace TipsterCup
 {
     public partial class FormTip : Form
@@ -89,8 +91,8 @@ namespace TipsterCup
             using (OracleConnection conn = new OracleConnection(FormLogin.connString))
             {
                 conn.Open();
-                // 31 e samo za testiranje!
-                string query = "select * from CoeffForMatch where idMatch = " + 31 + " order by idCoefficient ";
+                
+                string query = "select * from CoeffForMatch where idMatch = " + Match.Id + " order by idCoefficient ";
 
                 OracleCommand command = new OracleCommand(query, conn);
                 command.CommandType = CommandType.Text;
@@ -139,7 +141,7 @@ namespace TipsterCup
             {
                 conn.Open();
                 
-                string query = "insert into tips(idtipster, idshowcoefficient) values (" + FormLogin.IdLoggedTipster + ", " + checkedCoeff.IdShowCoeff + ")";
+                string query = "insert into tips(idtipster, idshowcoefficient, amount) values (" + FormLogin.IdLoggedTipster + ", " + checkedCoeff.IdShowCoeff + ", " + (int)nudCash.Value + ")";
                 OracleCommand command = new OracleCommand(query,conn);
                 command.CommandType = CommandType.Text;
 
