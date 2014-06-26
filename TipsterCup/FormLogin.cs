@@ -318,8 +318,7 @@ namespace TipsterCup
             using (OracleConnection connection = new OracleConnection(connString))
             {
                 connection.Open();
-                String query = "SELECT idMatch FROM Match WHERE DateMatch >= (TO_DATE('" + from.Month + "/" + from.Day + "/" + from.Year +
-                    "', 'mm/dd/yyyy')) AND DateMatch < (TO_DATE('" + to.Month + "/" + to.Day + "/" + to.Year + "', 'mm/dd/yyyy')) ORDER BY idMatch";
+                String query = "SELECT idMatch FROM Match WHERE Finished = 'n' AND DateMatch <= (TO_DATE('" + to.Month + "/" + to.Day + "/" + to.Year + "', 'mm/dd/yyyy')) ORDER BY idMatch";
 
                 OracleCommand command = new OracleCommand(query, connection);
                 command.CommandType = CommandType.Text;
@@ -328,7 +327,10 @@ namespace TipsterCup
                 {
                     int idMatch = reader.GetInt32(0);
                     PlayTheMatch ptm = new PlayTheMatch(FormLogin.docMain, idMatch);
-                    
+                    query = "UPDATE Match SET finished = 'y' WHERE idMatch = " + idMatch;
+                    command = new OracleCommand(query, connection);
+                    command.CommandType = CommandType.Text;
+                    command.ExecuteNonQuery();
                 }
             }
         }
