@@ -22,6 +22,8 @@ namespace TipsterCup
         private const int TOTAL_TOKENS = 900;
         Random random;
 
+        private const int WIN_BONUS = 300;
+
         public List<Participates> Participations { get; set; }
         public List<Player> AllPlayers { get; set; }
 
@@ -77,6 +79,7 @@ namespace TipsterCup
                 totalSaveTokens += p.TokensSaves;
             }
             //sluckite vo dadeni minuti
+            int goalsHome = 0, goalsGuest = 0;
             for (int minute = 1; minute <= 90; minute++)//0 - goal and eventually assist, 1 - interrupt, 2 save, nothing
             {
                 int happens = whatHappens();
@@ -87,7 +90,14 @@ namespace TipsterCup
                     int scorerId = goalScorer();
                     Goal goal = new Goal(nextGoal, minute, match, AllPlayers[scorerId]);
                     //dodavanje na gol vo bazata
-
+                    if (scorerId < 11)
+                    {
+                        goalsHome++;
+                    }
+                    else
+                    {
+                        goalsGuest++;
+                    }
                     using (OracleConnection conn = new OracleConnection(FormLogin.connString))
                     {
                          conn.Open();
@@ -131,9 +141,27 @@ namespace TipsterCup
                 }
             }
 
-            foreach (Participates p in Participations)
+            for(int i = 0; i < Participations.Count; i++)
             {
+                Participates p = Participations[i];
                 p.calculateMatchRating();
+                if(i < 11) {
+                    if(goalsHome > goalsGuest) {//pobeda
+                        p.MatchRating += WIN_BONUS;
+                    }
+                    else if(goalsHome < goalsGuest) {//poraz
+                        p.MatchRating -= WIN_BONUS;
+                    }
+                }
+                else {
+                    if(goalsHome > goalsGuest) {//pobeda
+                        p.MatchRating += WIN_BONUS;
+                    }
+                    else if(goalsHome < goalsGuest) {//poraz
+                        p.MatchRating -= WIN_BONUS;
+                    }
+                }
+                
                 //int nextParticipateId = mainDoc.Par[mainDoc.Goals.Count - 1].Id + 1;
                 //dodavanje na ucestvata vo bazata
                 using (OracleConnection conn = new OracleConnection(FormLogin.connString))
@@ -196,6 +224,7 @@ namespace TipsterCup
             //update team ratings
             homeAvgRating /= 11;
             guestAvgRating /= 11;
+
             int homeNewRating = (homeAvgRating + 49 * (int)match.HomeTeam.Rating) / 50;
             int guestNewRating = (guestAvgRating + 49 * (int)match.GuestTeam.Rating) / 50;
             match.HomeTeam.Rating = homeNewRating;
