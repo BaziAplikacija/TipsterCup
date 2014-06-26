@@ -220,8 +220,12 @@ namespace TipsterCup
 
         private void setRound()
         {
+
+
             int round = 0;
             finished = true;
+
+            bool generateCoeff = true;
             using (OracleConnection connection = new OracleConnection(FormLogin.connString))
             {
                 connection.Open();
@@ -255,13 +259,31 @@ namespace TipsterCup
                         finished = false;
                         break;
                     }
+                    
 
                     betweenRounds = true;
                     currentRound = new Round(round, from, to);
                     
                 }
+                reader.Close();
+
+                query = "SELECT COUNT(*) FROM CoeffGenerated WHERE idRound = " + currentRound.Id;
+
+                command = new OracleCommand(query, connection);
+                command.CommandType = CommandType.Text;
+
+                int numGenerated = Int32.Parse(command.ExecuteScalar().ToString());
+
+               // MessageBox.Show("Num generated: " + numGenerated + " Current round: " + currentRound.Id);
+                if (numGenerated >= 70)
+                {
+                    generateCoeff = false;
+                }
 
             }
+
+
+            if(generateCoeff)
             CoefficientProvider.fillShowCoeffRound(currentRound.Id);
         }
 
