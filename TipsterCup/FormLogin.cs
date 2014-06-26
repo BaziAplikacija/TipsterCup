@@ -40,9 +40,9 @@ namespace TipsterCup
         public static int secondsRemaining;
 
         //player
-        public WindowsMediaPlayer player;
-        IWMPPlaylist playlistMain;
-        IWMPPlaylist playlistTeams;
+        public static WindowsMediaPlayer player;
+        public static IWMPPlaylist playlistMain;
+        public static IWMPPlaylist playlistTeams;
 
 
         // parametri potrebni za konekcija so bazata
@@ -81,7 +81,8 @@ namespace TipsterCup
 
             player.currentMedia = playlistMain.get_Item(0);
 
-            this.player.controls.play();
+            player.controls.play();
+            player.settings.setMode("loop", true);
 
             playlistTeams = player.newPlaylist("Team playlist", "");
             
@@ -105,8 +106,7 @@ namespace TipsterCup
             playlistTeams.appendItem(player.newMedia("cardiffCitySong.mp3"));
             playlistTeams.appendItem(player.newMedia("sunderlandSong.mp3"));
             playlistTeams.appendItem(player.newMedia("fulhamSong.mp3"));
-
-
+            
         }
         
             
@@ -586,10 +586,12 @@ namespace TipsterCup
             if (musicOn)
             {
                 pbMusic.Image = Image.FromFile("imgMusicOff.png");
+                player.settings.mute = true;
             }
             else
             {
                 pbMusic.Image = Image.FromFile("imgMusicOn.png");
+                player.settings.mute = false;
             }
             musicOn = !musicOn;
         }

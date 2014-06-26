@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pbTeam = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblStadium = new System.Windows.Forms.Label();
@@ -161,15 +161,15 @@
             // 
             // chartTeamRating
             // 
-            chartArea7.Name = "ChartArea1";
-            this.chartTeamRating.ChartAreas.Add(chartArea7);
+            chartArea1.Name = "ChartArea1";
+            this.chartTeamRating.ChartAreas.Add(chartArea1);
             this.chartTeamRating.Location = new System.Drawing.Point(255, 12);
             this.chartTeamRating.Name = "chartTeamRating";
             this.chartTeamRating.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series7.Name = "Series1";
-            this.chartTeamRating.Series.Add(series7);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Name = "Series1";
+            this.chartTeamRating.Series.Add(series1);
             this.chartTeamRating.Size = new System.Drawing.Size(408, 204);
             this.chartTeamRating.TabIndex = 8;
             this.chartTeamRating.Text = "chart1";
@@ -197,7 +197,7 @@
             this.tableResults.Name = "tableResults";
             this.tableResults.RowCount = 1;
             this.tableResults.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableResults.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableResults.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 414F));
             this.tableResults.Size = new System.Drawing.Size(334, 415);
             this.tableResults.TabIndex = 10;
             // 
@@ -220,6 +220,7 @@
             this.Controls.Add(this.pbTeam);
             this.Name = "FormTeam";
             this.Text = "FormTeam";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormTeam_FormClosed);
             this.Load += new System.EventHandler(this.FormTeam_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbTeam)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridPlayers)).EndInit();
