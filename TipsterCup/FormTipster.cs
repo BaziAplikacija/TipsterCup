@@ -28,10 +28,6 @@ namespace TipsterCup
         private void FormTipster_Load(object sender, EventArgs e)
         {
             
-            if (idTipster != FormLogin.IdLoggedTipster)
-            {
-                btnTransaction.Visible = true;
-            }
             using (OracleConnection conn = new OracleConnection(FormLogin.connString))
             {
                 conn.Open();
@@ -59,6 +55,66 @@ namespace TipsterCup
                 reader.Close();
 
             }
+
+            if (idTipster != FormLogin.IdLoggedTipster)
+            {
+                btnTransaction.Visible = true;
+            }
+            else
+            {
+                changeView();
+            }
+        }
+
+
+        private void changeView()
+        {
+            lblUsername.Location = new Point(200, 50);
+            lblFirstName.Location = new Point(200, lblUsername.Location.Y+50);
+            lblSurname.Location = new Point(200, lblUsername.Location.Y+100);
+            lblEmail.Location = new Point(200, lblUsername.Location.Y+150);
+            lblMoney.Location = new Point(200, lblUsername.Location.Y+200);
+            lblRank.Location = new Point(200, lblUsername.Location.Y+250);
+
+            lblUser.Location = new Point(50, lblUsername.Location.Y);
+            lblFirst.Location = new Point(50, lblUsername.Location.Y+50);
+            lblSur.Location = new Point(50, lblUsername.Location.Y+100);
+            lblE.Location = new Point(50, lblUsername.Location.Y + 150);
+            lblM.Location = new Point(50, lblUsername.Location.Y + 200);
+            lblR.Location = new Point(50, lblUsername.Location.Y + 250);
+
+            Color color = Color.FromArgb(255, 255, 255);
+            lblUsername.ForeColor = color;
+            lblFirstName.ForeColor = color;
+            lblSurname.ForeColor = color;
+            lblEmail.ForeColor = color;
+            lblMoney.ForeColor = color;
+            lblRank.ForeColor = color;
+
+            lblUser.ForeColor = color;
+            lblFirst.ForeColor = color;
+            lblSur.ForeColor = color;
+            lblE.ForeColor = color;
+            lblM.ForeColor = color;
+            lblR.ForeColor = color;
+
+            lblUsername.Font = new Font("Comic Sans MS", 12, FontStyle.Bold);
+            lblFirstName.Font = new Font("Comic Sans MS", 12, FontStyle.Bold);
+            lblSurname.Font = new Font("Comic Sans MS", 12, FontStyle.Bold);
+            lblEmail.Font = new Font("Comic Sans MS", 12, FontStyle.Bold);
+            lblMoney.Font = new Font("Comic Sans MS", 12, FontStyle.Bold);
+            lblRank.Font = new Font("Comic Sans MS", 12, FontStyle.Bold);
+
+            lblUser.Font = new Font("Comic Sans MS", 12, FontStyle.Bold);
+            lblFirst.Font = new Font("Comic Sans MS", 12, FontStyle.Bold);
+            lblSur.Font = new Font("Comic Sans MS", 12, FontStyle.Bold);
+            lblE.Font = new Font("Comic Sans MS", 12, FontStyle.Bold);
+            lblM.Font = new Font("Comic Sans MS", 12, FontStyle.Bold);
+            lblR.Font = new Font("Comic Sans MS", 12, FontStyle.Bold);
+
+            pictureBox1.Dispose();
+            pictureBox2.Dispose();
+            pictureBox3.Dispose();
         }
 
         private void btnTransaction_Click(object sender, EventArgs e)
@@ -81,6 +137,11 @@ namespace TipsterCup
                 e.Graphics.Clear(Color.White);
                 e.Graphics.DrawImage(bgImage, 0, 0, this.Width, this.Height);
             }
+        }
+
+        private void FormTipster_MouseClick(object sender, MouseEventArgs e)
+        {
+            MessageBox.Show(e.Location.ToString());
         }
 
 
