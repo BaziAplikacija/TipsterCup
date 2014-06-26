@@ -147,9 +147,25 @@ namespace TipsterCup
                 p.calculateMatchRating();
                 if(i < 11) {
                     p.MatchRating = p.MatchRating + goalsHome * WEIGHT_GOALS_MATCH_RATING - goalsGuest * WEIGHT_GOALS_MATCH_RATING;
+                    if (p.Player.Position.Id == 1)//napagac
+                    {
+                        p.MatchRating += WEIGHT_GOALS_MATCH_RATING * goalsHome;
+                    }
+                    else if (p.Player.Position.Id == 4)//golman
+                    {
+                        p.MatchRating -= WEIGHT_GOALS_MATCH_RATING * goalsGuest;
+                    }
                 }
                 else {
                     p.MatchRating = p.MatchRating + goalsHome * WEIGHT_GOALS_MATCH_RATING - goalsGuest * WEIGHT_GOALS_MATCH_RATING;
+                    if (p.Player.Position.Id == 1)//napagac
+                    {
+                        p.MatchRating += WEIGHT_GOALS_MATCH_RATING * goalsGuest;
+                    }
+                    else if (p.Player.Position.Id == 4)//golman
+                    {
+                        p.MatchRating -= WEIGHT_GOALS_MATCH_RATING * goalsHome;
+                    }
                 }
                 
                 //int nextParticipateId = mainDoc.Par[mainDoc.Goals.Count - 1].Id + 1;
