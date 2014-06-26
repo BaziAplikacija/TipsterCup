@@ -11,7 +11,7 @@ namespace TipsterCup
     class CoefficientProvider
     {
         private static double[] diff = {-0.5, 0, 0.5};
-        private static double[,] coeff = new double[16, 7];
+        private static double[,] coeff = new double[21, 7];
         private static int[] lowerBound = {500, 450, 400, 350, 300, 250, 200, 150, 100, 50, 0, 
                         -50, -100, -150, -200, -250, -300, -350, -400, -450, -2000};
         static Random random;
@@ -99,23 +99,23 @@ namespace TipsterCup
             coeff[9, 5] = 3.1;
             coeff[9, 6] = 17.0;
 
-            coeff[10, 0] = 2.95;
+            coeff[10, 0] = 2.75;
             coeff[10, 1] = 3.0;
-            coeff[10, 2] = 3.0;
+            coeff[10, 2] = 2.6;
             coeff[10, 3] = 1.6;
             coeff[10, 4] = 1.8;
             coeff[10, 5] = 2.95;
-            coeff[10, 6] = 21;
+            coeff[10, 6] = 16;
 
-            coeff[11, 0] = 3.5;
+            coeff[11, 0] = 2.9;
             coeff[11, 1] = 3.2;
-            coeff[11, 2] = 2.35;
+            coeff[11, 2] = 2.15;
             coeff[11, 3] = 1.7;
             coeff[11, 4] = 1.9;
             coeff[11, 5] = 2.85;
             coeff[11, 6] = 19.5;
 
-            coeff[12, 0] = 5.1;
+            coeff[12, 0] = 3.05;
             coeff[12, 1] = 3.8;
             coeff[12, 2] = 1.95;
             coeff[12, 3] = 1.9;
@@ -123,29 +123,69 @@ namespace TipsterCup
             coeff[12, 5] = 2.65;
             coeff[12, 6] = 15;
 
-            coeff[13, 0] = 5.5;
+            coeff[13, 0] = 3.2;
             coeff[13, 1] = 3.85;
-            coeff[13, 2] = 1.75;
+            coeff[13, 2] = 2.05;
             coeff[13, 3] = 1.85;
             coeff[13, 4] = 1.7;
             coeff[13, 5] = 2.8;
             coeff[13, 6] = 14.5;
 
-            coeff[14, 0] = 7.5;
+            coeff[14, 0] = 3.35;
             coeff[15, 1] = 4.25;
-            coeff[15, 2] = 1.45;
+            coeff[15, 2] = 2.15;
             coeff[15, 3] = 1.95;
             coeff[15, 4] = 1.65;
             coeff[15, 5] = 2.45;
             coeff[15, 6] = 12.5;
 
-            coeff[15, 0] = 11.25;
+            coeff[15, 0] = 3.5;
             coeff[15, 1] = 5.85;
-            coeff[15, 2] = 1.3;
+            coeff[15, 2] = 1.85;
             coeff[15, 3] = 2.15;
             coeff[15, 4] = 1.55;
             coeff[15, 5] = 2.15;
             coeff[15, 6] = 10.05;
+
+            coeff[16, 0] = 3.75;
+            coeff[16, 1] = 3.45;
+            coeff[16, 2] = 1.8;
+            coeff[16, 3] = 1.75;
+            coeff[16, 4] = 1.65;
+            coeff[16, 5] = 2.65;
+            coeff[16, 6] = 9.25;
+
+            coeff[17, 0] = 4.5;
+            coeff[17, 1] = 3.8;
+            coeff[17, 2] = 1.6;
+            coeff[17, 3] = 1.7;
+            coeff[17, 4] = 1.65;
+            coeff[17, 5] = 2.45;
+            coeff[17, 6] = 8.5;
+
+            coeff[18, 0] = 6.8;
+            coeff[18, 1] = 3.95;
+            coeff[18, 2] = 1.5;
+            coeff[18, 3] = 1.75;
+            coeff[18, 4] = 1.6;
+            coeff[18, 5] = 2.25;
+            coeff[18, 6] = 9.0;
+
+            coeff[19, 0] = 8.5;
+            coeff[19, 1] = 4.1;
+            coeff[19, 2] = 1.4;
+            coeff[19, 3] = 1.95;
+            coeff[19, 4] = 1.55;
+            coeff[19, 5] = 2.2;
+            coeff[19, 6] = 8.75;
+
+            coeff[20, 0] = 10.5;
+            coeff[20, 1] = 5.5;
+            coeff[20, 2] = 1.25;
+            coeff[20, 3] = 2.2;
+            coeff[20, 4] = 1.5;
+            coeff[20, 5] = 2.05;
+            coeff[20, 6] = 7.5;
 
             #endregion
         }
@@ -221,7 +261,14 @@ namespace TipsterCup
             {
                 if (ratingDiff > lowerBound[i])
                 {
-                    return coeff[i, type];// + diff[random.Next(3)];
+                    try
+                    {
+                        return coeff[i, type] + diff[random.Next(3)];
+                    }
+                    catch (Exception ex)
+                    {
+                        
+                    }
                 }
             }
             return -1;
