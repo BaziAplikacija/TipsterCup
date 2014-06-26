@@ -157,7 +157,7 @@ namespace TipsterCup
                 using (OracleConnection conn = new OracleConnection(FormLogin.connString))
                 {
                     conn.Open();
-                    String query = "INSERT INTO ShowCoeff VALUES(" + id + ", " + (i + 1) + 
+                    String query = "INSERT INTO SHOWCOEFF(idCoefficient,value,idMatch) VALUES(" + (i + 1) + 
                         ", " + getCoefficient(idMatch, (i + 1)) + ", " + idMatch + ")";
                     OracleCommand command = new OracleCommand(query, conn);
                     command.CommandType = CommandType.Text;
@@ -194,8 +194,8 @@ namespace TipsterCup
                     for (int i = 0; i < 7; i++)
                     {
 
-                         query = "INSERT INTO ShowCoeff VALUES(" + idNext + ", " + i +
-                                ", " + getCoefficient(idNext, i) + ", " + idMatch + ")";
+                         query = "INSERT INTO SHOWCOEFF(idCoefficient,value,idMatch) VALUES(" + (i + 1) +
+                       ", " + getCoefficient(idMatch, (i + 1)) + ", " + idMatch + ")";
                          command = new OracleCommand(query, connection);
                          command.CommandType = CommandType.Text;
 
