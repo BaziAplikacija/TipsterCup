@@ -32,9 +32,9 @@ namespace TipsterCup
 
             TokensGoals = (int) Rating;//vo osnova verojatnosta daden igrac da dade gol e proporcionalna
                                   // na negoviot rejting
-            TokensAssists = (int)Rating;
-            TokensInterrupts = (int)Rating;
-            TokensSaves = (int)Rating;
+            TokensAssists = (int)Rating * (int)Team.Rating / 10;
+            TokensInterrupts = (int)Rating * (int)Team.Rating / 10;
+            TokensSaves = (int)Rating * (int)Team.Rating / 10;
             switch (Position.Id)
             {
                 case 1://Napad
