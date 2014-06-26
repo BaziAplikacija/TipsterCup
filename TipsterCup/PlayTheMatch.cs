@@ -22,7 +22,7 @@ namespace TipsterCup
         private const int TOTAL_TOKENS = 900;
         Random random;
 
-        private const int WIN_BONUS = 300;
+        private const int WEIGHT_GOALS_MATCH_RATING = 200;
 
         public List<Participates> Participations { get; set; }
         public List<Player> AllPlayers { get; set; }
@@ -146,20 +146,10 @@ namespace TipsterCup
                 Participates p = Participations[i];
                 p.calculateMatchRating();
                 if(i < 11) {
-                    if(goalsHome > goalsGuest) {//pobeda
-                        p.MatchRating += WIN_BONUS;
-                    }
-                    else if(goalsHome < goalsGuest) {//poraz
-                        p.MatchRating -= WIN_BONUS;
-                    }
+                    p.MatchRating = p.MatchRating + goalsHome * WEIGHT_GOALS_MATCH_RATING - goalsGuest * WEIGHT_GOALS_MATCH_RATING;
                 }
                 else {
-                    if(goalsHome > goalsGuest) {//pobeda
-                        p.MatchRating += WIN_BONUS;
-                    }
-                    else if(goalsHome < goalsGuest) {//poraz
-                        p.MatchRating -= WIN_BONUS;
-                    }
+                    p.MatchRating = p.MatchRating + goalsHome * WEIGHT_GOALS_MATCH_RATING - goalsGuest * WEIGHT_GOALS_MATCH_RATING;
                 }
                 
                 //int nextParticipateId = mainDoc.Par[mainDoc.Goals.Count - 1].Id + 1;
