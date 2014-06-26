@@ -35,6 +35,11 @@ namespace TipsterCup
             frmStatistics = null;
             frmMyProfile = null;
             frmAllPlayers = null;
+            pbMusic.Location = new Point(this.Width - 2 * pbMusic.Width, pbMusic.Location.Y);
+            if (!FormLogin.musicOn)
+            {
+                pbMusic.Image = Image.FromFile("imgMusicOff.png");
+            }
         }
 
 
@@ -270,6 +275,21 @@ namespace TipsterCup
             frmAllPlayers = new FormAllPlayers();
             frmAllPlayers.MdiParent = this;
             frmAllPlayers.Show();
+        }
+
+        private void pbMusic_Click(object sender, EventArgs e)
+        {
+            if (FormLogin.musicOn)
+            {
+                pbMusic.Image = Image.FromFile("imgMusicOff.png");
+                FormLogin.player.settings.mute = true;
+            }
+            else
+            {
+                pbMusic.Image = Image.FromFile("imgMusicOn.png");
+                FormLogin.player.settings.mute = false;
+            }
+            FormLogin.musicOn = !FormLogin.musicOn;
         }
 
         

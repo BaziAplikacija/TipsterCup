@@ -120,6 +120,27 @@
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pbMusic.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABsAAAAZCAYAAADAHFVeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAACw0AAAsNAe0HwCwAAAAHdElNRQfeBhkTFQ//29zmAAADCklEQVRIS6WWXYiMURzG
+        3xkMM6MZoUwbDRHaWaVhi5JClKaZiHzkwi5JQxIukNpbJJ8lrjcfjVXskrZJuxd7jfKRjwvfSsQFF2g0
+        x+858747s5phdvapX3P+55z3fd5zzv+cM04DCri//9NY97dhpeAsTLFRbc2FK5CwUQPaDcZljyoq5INF
+        sM5GjrMd1C8PahuWjkIR9ILfsAukGRCBMFwCtS9wY5XfwRKoW4d9Pp8MTCAQ8Mx2wDR4Dx9B2g9qP2Mj
+        xzkCivfaqA5502H6+vpMMpn0zLIg6csLsAFmwVNQnzGgj1H5JkyEQalxegWanp1gwuGw6ezsNFJzc7Nn
+        5k3jVlDdIxs5zmVQrLWbDF/hJ8wHq9Gghx/CPbjvYpqamkxXV5c1kqqYKb1V9wbicNKNb4Mfrrvx4LqN
+        gx6/329isZiJx+MmGAyqg2lvb3dtSqpiJn2G76DRZNzyS5C8ZVhuIySzG9Fo1OTzeVMsFk06nbZm2WzW
+        tSkpkUhUMzsBqj8E4+Et/AJpLahNphppySwSiZiBgQH70kwmU9WspaWlmtkyUL02u+QlibQKVD4Nyovy
+        yBo0UyKo/qKNHOcJKI6C1kr9r4E9vkZqpudVf8FGjvMAFE+FxfADekD9Rmw2CVT/98gmgEamfZiD8shG
+        sGYrQPXV1mwlqKxTZeia9fb2mkKhYFKp1HDMjoHqlY1B0J7zsnENqG1INmoTWoNK2traXJuSaph9AO2t
+        9aAr6Bu8Amkb6JnBfaYT5CC8hucuL6CoTZ7L5VyrqmaVJ4iOuVNufAc0EmWh4iEnfwh04c12mQM62U0o
+        FDLd3d21zDaB6p7ZqHw2bgRtiS+gBEnCP6VLbx/oYdPf329aW1s9M+/U12mhl20BHd6PQX3018E79W+B
+        MrYudXCf6YVGGcuvzHQjjAJN/SeQDoDaz9uoHNd9n3k6DnrQM/OmUVOlDFSSaVOrfSFoWVTW5boUhq0O
+        8Ayrfe08SJeKzmpQv7tgU74RbYarMNNGtRWDc6APaFhKmnr/D9oToyzH+QOSu9kWTN8yZQAAAABJRU5E
+        rkJggg==
+</value>
+  </data>
   <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>132, 17</value>
   </metadata>

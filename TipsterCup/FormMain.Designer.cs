@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.btnRounds = new System.Windows.Forms.Button();
             this.btnTeams = new System.Windows.Forms.Button();
             this.btnPlayers = new System.Windows.Forms.Button();
@@ -43,8 +44,10 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblDate = new System.Windows.Forms.Label();
+            this.pbMusic = new System.Windows.Forms.PictureBox();
             this.pnlButtons.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMusic)).BeginInit();
             this.SuspendLayout();
             // 
             // btnRounds
@@ -145,6 +148,7 @@
             // pnlButtons
             // 
             this.pnlButtons.BackColor = System.Drawing.Color.LightGray;
+            this.pnlButtons.Controls.Add(this.pbMusic);
             this.pnlButtons.Controls.Add(this.btnStandings);
             this.pnlButtons.Controls.Add(this.btnExit);
             this.pnlButtons.Controls.Add(this.btnRounds);
@@ -196,6 +200,17 @@
             this.lblDate.TabIndex = 15;
             this.lblDate.Text = "label2";
             // 
+            // pbMusic
+            // 
+            this.pbMusic.Image = ((System.Drawing.Image)(resources.GetObject("pbMusic.Image")));
+            this.pbMusic.Location = new System.Drawing.Point(1117, 9);
+            this.pbMusic.Name = "pbMusic";
+            this.pbMusic.Size = new System.Drawing.Size(20, 20);
+            this.pbMusic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbMusic.TabIndex = 10;
+            this.pbMusic.TabStop = false;
+            this.pbMusic.Click += new System.EventHandler(this.pbMusic_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -214,6 +229,7 @@
             this.pnlButtons.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMusic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -235,5 +251,6 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.PictureBox pbMusic;
     }
 }
