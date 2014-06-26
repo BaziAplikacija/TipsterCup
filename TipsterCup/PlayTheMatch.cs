@@ -34,6 +34,7 @@ namespace TipsterCup
         {
 
             Match match = mainDoc.getMatchById(idMatch);
+
             random = new Random();
             List<Player> homeTeam = mainDoc.getFirstEleven(match.HomeTeam.Name);
             List<Player> guestTeam = mainDoc.getFirstEleven(match.GuestTeam.Name);
@@ -42,6 +43,19 @@ namespace TipsterCup
             Participations = new List<Participates>();
             AllPlayers = new List<Player>();
 
+            //za oznacuvanje deka e odigran
+
+            using (OracleConnection conn = new OracleConnection(FormLogin.connString))
+            {
+                conn.Open();
+                String query = "UPDATE Match SET Finished = 'y'"  +
+                    " WHERE idMatch = " + idMatch;
+                OracleCommand command = new OracleCommand(query, conn);
+                command.CommandType = CommandType.Text;
+
+                command.ExecuteNonQuery();
+
+            }
 
             totalAssistTokens = totalGoalTokens = totalInterruptTokens = totalSaveTokens = 0;
             foreach (Player p in homeTeam)
@@ -76,7 +90,7 @@ namespace TipsterCup
 
                     using (OracleConnection conn = new OracleConnection(FormLogin.connString))
                     {
-                        conn.Open();
+                         conn.Open();
 
                         OracleCommand command = new OracleCommand("procInsertGoal", conn);
                         command.CommandType = CommandType.StoredProcedure;
