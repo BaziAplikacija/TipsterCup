@@ -141,7 +141,7 @@ namespace TipsterCup
             {
                 conn.Open();
                 
-                string query = "insert into tips(idtipster, idshowcoefficient, amount) values (" + FormLogin.IdLoggedTipster + ", " + checkedCoeff.IdShowCoeff + ", " + (int)nudCash.Value + ")";
+                string query = "insert into tips(idtipster, idshowcoefficient, amount,validated) values (" + FormLogin.IdLoggedTipster + ", " + checkedCoeff.IdShowCoeff + ", " + (int)nudCash.Value + ",'n')";
                 OracleCommand command = new OracleCommand(query,conn);
                 command.CommandType = CommandType.Text;
 
