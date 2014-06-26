@@ -275,13 +275,14 @@ namespace TipsterCup
                 int numGenerated = Int32.Parse(command.ExecuteScalar().ToString());
 
                // MessageBox.Show("Num generated: " + numGenerated + " Current round: " + currentRound.Id);
-                if (numGenerated >= 70)
+                if (numGenerated > 0)
                 {
                     generateCoeff = false;
                 }
 
             }
 
+            new CoefficientProvider();
 
             if(generateCoeff)
             CoefficientProvider.fillShowCoeffRound(currentRound.Id);
