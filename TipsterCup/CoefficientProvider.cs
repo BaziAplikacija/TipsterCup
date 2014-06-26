@@ -221,7 +221,7 @@ namespace TipsterCup
             {
                 if (ratingDiff > lowerBound[i])
                 {
-                    return coeff[i, type] + diff[random.Next(3)];
+                    return coeff[i, type];// + diff[random.Next(3)];
                 }
             }
             return -1;
