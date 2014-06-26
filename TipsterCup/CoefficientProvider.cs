@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Oracle.DataAccess.Client;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -147,8 +149,70 @@ namespace TipsterCup
  
         }
 
-        public static double getCoefficient(Match m, int type)//dava vrednost na koef. za daden natprevar
+        public void fillShowCoeff(int idMatch)
         {
+            int id = firstCoeffId(idMatch);
+            for (int i = 0; i < 7; i++)
+            {
+                using (OracleConnection conn = new OracleConnection(FormLogin.connString))
+                {
+                    conn.Open();
+                    String query = "INSERT INTO ShowCoeff VALUES(" + id + ", " + (i + 1) + 
+                        ", " + getCoefficient(idMatch, (i + 1)) + ", " + idMatch + ")";
+                    OracleCommand command = new OracleCommand(query, conn);
+                    command.CommandType = CommandType.Text;
+
+                    command.ExecuteNonQuery();
+
+                }
+                id++;
+            }
+            
+        }
+
+        public void fillShowCoeffRound(int roundId) 
+        {
+            using (OracleConnection connection = new OracleConnection(FormLogin.connString))
+            {
+                connection.Open();
+                OracleCommand command;
+                OracleDataReader reader;
+                String query;
+
+                
+                //site natprevari od dadena runda
+                query = "SELECT idMatch FROM Match WHERE idRound = " + roundId;
+                command = new OracleCommand(query, connection);
+                command.CommandType = CommandType.
+                    Text;
+                reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int idMatch = Convert.ToInt32(reader[0]);
+
+                    int idNext = firstCoeffId(idMatch);
+                    for (int i = 0; i < 7; i++)
+                    {
+
+                         query = "INSERT INTO ShowCoeff VALUES(" + idNext + ", " + i +
+                                ", " + getCoefficient(idNext, i) + ", " + idMatch + ")";
+                         command = new OracleCommand(query, connection);
+                         command.CommandType = CommandType.Text;
+
+                        command.ExecuteNonQuery();
+
+                        idNext++;
+                    }
+
+                }
+
+                
+            }
+        }
+
+        public static double getCoefficient(int idMatch, int type)//dava vrednost na koef. za daden natprevar
+        {
+            Match m = FormLogin.docMain.getMatchById(idMatch);
             random = new Random();
             type--;
             int ratingDiff = (int)(m.HomeTeam.Rating - m.GuestTeam.Rating);
@@ -162,8 +226,9 @@ namespace TipsterCup
             return -1;
         }
 
-        public double[] getCoefficientsForMatch(Match m)//dobivanje na site koefficienti za daden natprevar
+        public double[] getCoefficientsForMatch(int idMatch)//dobivanje na site koefficienti za daden natprevar
         {              //koef. so id = i od bazata ovde ima id = i - 1 
+            Match m = FormLogin.docMain.getMatchById(idMatch);
             random = new Random();
             double[] ret = new double[7];
             int ratingDiff = (int)(m.HomeTeam.Rating - m.GuestTeam.Rating);
@@ -181,6 +246,10 @@ namespace TipsterCup
                     
             }
             return null;
+        }
+
+        private int firstCoeffId(int idMatch) {
+            return (idMatch - 1) * 7 + 1;
         }
 
     }
