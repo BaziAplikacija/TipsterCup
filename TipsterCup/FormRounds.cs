@@ -48,6 +48,7 @@ namespace TipsterCup
                 }
             }
 
+            matchesInRound.Sort();
 
                 for (int i = 0; i < matchesInRound.Count; i++)
                 {
@@ -68,10 +69,13 @@ namespace TipsterCup
         }
 
 
+        public ComboBox getComboBox()
+        {
+            return cbRounds;
+        }
 
 
-
-        private void cbRounds_SelectedIndexChanged(object sender, EventArgs e)
+        public void cbRounds_SelectedIndexChanged(object sender, EventArgs e)
         {
             setMatches();
             disableButtons();

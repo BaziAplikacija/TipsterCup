@@ -183,7 +183,10 @@ namespace TipsterCup
                         return;
                     }
                 }
-
+                if (frmRounds != null)
+                {
+                    frmRounds.cbRounds_SelectedIndexChanged(null, null);
+                }
             }
             initLabel();
             initLblDate();
