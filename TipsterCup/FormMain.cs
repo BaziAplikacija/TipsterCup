@@ -18,6 +18,7 @@ namespace TipsterCup
         FormAllTipsters frmAllTipsters;
         FormStatistics frmStatistics;
         FormTipster frmMyProfile;
+        FormAllPlayers frmAllPlayers;
 
         public static Boolean betweenRounds;
         public static Round currentRound;
@@ -33,6 +34,7 @@ namespace TipsterCup
             frmAllTipsters = null;
             frmStatistics = null;
             frmMyProfile = null;
+            frmAllPlayers = null;
         }
 
 
@@ -256,6 +258,18 @@ namespace TipsterCup
 
             }
             CoefficientProvider.fillShowCoeffRound(currentRound.Id);
+        }
+
+        private void btnPlayers_Click(object sender, EventArgs e)
+        {
+            if (frmAllPlayers != null)
+            {
+                frmAllPlayers.Close();
+            }
+
+            frmAllPlayers = new FormAllPlayers();
+            frmAllPlayers.MdiParent = this;
+            frmAllPlayers.Show();
         }
 
         

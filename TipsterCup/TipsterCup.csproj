@@ -66,6 +66,12 @@
     <Compile Include="FormAdmin.Designer.cs">
       <DependentUpon>FormAdmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAllPlayers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAllPlayers.Designer.cs">
+      <DependentUpon>FormAllPlayers.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormAllTipsters.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +168,9 @@
     <EmbeddedResource Include="FormAdmin.resx">
       <DependentUpon>FormAdmin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormAllPlayers.resx">
+      <DependentUpon>FormAllPlayers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormAllTipsters.resx">
       <DependentUpon>FormAllTipsters.cs</DependentUpon>
     </EmbeddedResource>
@@ -252,6 +261,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="imgNo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="imgSearch.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="imgTrophy.jpg">

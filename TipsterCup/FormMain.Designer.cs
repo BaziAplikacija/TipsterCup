@@ -77,6 +77,7 @@
             this.btnPlayers.TabIndex = 3;
             this.btnPlayers.Text = "Players";
             this.btnPlayers.UseVisualStyleBackColor = true;
+            this.btnPlayers.Click += new System.EventHandler(this.btnPlayers_Click);
             // 
             // btnTipsters
             // 
