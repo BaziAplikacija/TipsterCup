@@ -143,8 +143,7 @@ namespace TipsterCup
             {
                 connection.Open();
                 String query = "SELECT m.idMatch, homeTeam, goalshome || ' - ' || goalsguest as result, guestteam "
-                    + "FROM Results r JOIN Match m ON (r.idMatch = m.idMatch) WHERE m.dateMatch < (TO_DATE('" + FormLogin.virtualDate.Month + "/" + FormLogin.virtualDate.Day + "/" + FormLogin.virtualDate.Year
-                    + "', 'mm/dd/yyyy')) AND (HOMETEAMID = "+Team.Id+" OR GUESTTEAMID = "+Team.Id+") ORDER BY m.datematch";
+                    + "FROM Results r JOIN Match m ON (r.idMatch = m.idMatch) WHERE (HOMETEAMID = "+Team.Id+" OR GUESTTEAMID = "+Team.Id+") ORDER BY m.datematch";
                 OracleCommand command = new OracleCommand(query, connection);
                 OracleDataReader reader = command.ExecuteReader();
                 while (reader.Read())
@@ -159,7 +158,7 @@ namespace TipsterCup
             tableResults.Controls.Clear();
             tableResults.RowStyles.Clear();
 
-            tableResults.RowCount = idMatches.Count;
+            tableResults.RowCount = idMatches.Count+1;
             
             for (int i = 0; i < tableResults.ColumnCount; i++){
                 for (int j = 0; j < tableResults.RowCount; ++j)
@@ -187,19 +186,19 @@ namespace TipsterCup
             labels[2].Font = new Font(labels[0].Font.FontFamily, 12);
 
 
-            for (int i = 1; i < idMatches.Count; i++)
+            for (int i = 0; i < idMatches.Count; i++)
             {
                 if (homeTeams[i].Equals(Team.Name))
                 {
-                    labels[i * 3].ForeColor = Color.Red;
+                    labels[(i+1) * 3].ForeColor = Color.Red;
                 }
                 if (guestTeams[i].Equals(Team.Name))
                 {
-                    labels[i * 3 + 2].ForeColor = Color.Red;
+                    labels[(i+1) * 3 + 2].ForeColor = Color.Red;
                 }
-                labels[i * 3].Text = homeTeams[i];
-                labels[i * 3 + 1].Text = results[i];
-                labels[i * 3 + 2].Text = guestTeams[i];
+                labels[(i+1) * 3].Text = homeTeams[i];
+                labels[(i+1) * 3 + 1].Text = results[i];
+                labels[(i+1) * 3 + 2].Text = guestTeams[i];
             }
         }
 
