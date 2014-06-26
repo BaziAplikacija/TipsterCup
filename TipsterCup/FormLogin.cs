@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WMPLib;
 
 namespace TipsterCup
 {
@@ -38,6 +39,11 @@ namespace TipsterCup
         //sekundi do kraj na denot
         public static int secondsRemaining;
 
+        //player
+        public WindowsMediaPlayer player;
+        IWMPPlaylist playlistMain;
+        IWMPPlaylist playlistTeams;
+
 
         // parametri potrebni za konekcija so bazata
         public static String connString = "Data Source=(DESCRIPTION="
@@ -63,8 +69,47 @@ namespace TipsterCup
             initMessages();
             docMain = new MainDoc();
             fillMainDoc();
+            player = new WindowsMediaPlayer();
+            setPlayer();
             
         }
+
+        private void setPlayer()
+        {
+            playlistMain = player.newPlaylist("Main playlist", "");
+            playlistMain.appendItem(player.newMedia("bgMusic.mp3"));
+
+            player.currentMedia = playlistMain.get_Item(0);
+
+            this.player.controls.play();
+
+            playlistTeams = player.newPlaylist("Team playlist", "");
+            
+            playlistTeams.appendItem(player.newMedia("liverpoolSong.mp3"));
+            playlistTeams.appendItem(player.newMedia("chelseaSong.mp3"));
+            playlistTeams.appendItem(player.newMedia("manchesterCitySong.mp3"));
+            playlistTeams.appendItem(player.newMedia("arsenalSong.mp3"));
+            playlistTeams.appendItem(player.newMedia("evertonSong.mp3"));
+            playlistTeams.appendItem(player.newMedia("tottenhamHotspurSong.mp3"));
+            playlistTeams.appendItem(player.newMedia("manchesterUnitedSong.mp3"));
+            playlistTeams.appendItem(player.newMedia("lsouthamptonSong.mp3"));
+            playlistTeams.appendItem(player.newMedia("newcastleUnitedSong.mp3"));
+            playlistTeams.appendItem(player.newMedia("stokeCitySong.mp3"));
+            playlistTeams.appendItem(player.newMedia("westHamUnitedSong.mp3"));
+            playlistTeams.appendItem(player.newMedia("astonVillaSong.mp3"));
+            playlistTeams.appendItem(player.newMedia("swanseaCitySong.mp3"));
+            playlistTeams.appendItem(player.newMedia("hullCitySong.mp3"));
+            playlistTeams.appendItem(player.newMedia("norwichCitySong.mp3"));
+            playlistTeams.appendItem(player.newMedia("crystalPalaceSong.mp3"));
+            playlistTeams.appendItem(player.newMedia("westBromwichSong.mp3"));
+            playlistTeams.appendItem(player.newMedia("cardiffCitySong.mp3"));
+            playlistTeams.appendItem(player.newMedia("sunderlandSong.mp3"));
+            playlistTeams.appendItem(player.newMedia("fulhamSong.mp3"));
+
+
+        }
+        
+            
 
         private void initMessages()
         {
