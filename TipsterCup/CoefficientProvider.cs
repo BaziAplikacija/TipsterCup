@@ -18,6 +18,7 @@ namespace TipsterCup
 
         public CoefficientProvider()
         {
+            #region Coefficients Initialization
             coeff[0, 0] = 1.25;
             coeff[0, 1] = 5.75;
             coeff[0, 2] = 10.5;
@@ -146,7 +147,7 @@ namespace TipsterCup
             coeff[15, 5] = 2.15;
             coeff[15, 6] = 10.05;
 
- 
+            #endregion
         }
 
         public void fillShowCoeff(int idMatch)
@@ -216,7 +217,7 @@ namespace TipsterCup
             random = new Random();
             type--;
             int ratingDiff = (int)(m.HomeTeam.Rating - m.GuestTeam.Rating);
-            for (int i = 0; i < lowerBound.Length; i++)
+            for (int i = 0; i < coeff.Length; i++)
             {
                 if (ratingDiff > lowerBound[i])
                 {
