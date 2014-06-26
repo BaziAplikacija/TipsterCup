@@ -327,10 +327,6 @@ namespace TipsterCup
                 {
                     int idMatch = reader.GetInt32(0);
                     PlayTheMatch ptm = new PlayTheMatch(FormLogin.docMain, idMatch);
-                    query = "UPDATE Match SET finished = 'y' WHERE idMatch = " + idMatch;
-                    command = new OracleCommand(query, connection);
-                    command.CommandType = CommandType.Text;
-                    command.ExecuteNonQuery();
                 }
             }
         }
