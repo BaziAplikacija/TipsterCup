@@ -99,7 +99,7 @@ namespace TipsterCup
             lblLastPerformance.Text = "The last performance of the team.\nThe  rightmost letter\n stands for the result in the last round.";
             lblTopScorers.Text = "Lists the topscorers.";
             lblDreamTeam.Text = "Shows the dream team.";
-            lblAverageAge.Text = "Shows the teams and their players average age.";
+            lblAverageAge.Text = "Shows the teams and their\n players average age.";
             lblHatTrick.Text = "Shows all players who managed to\n score 3 (or more) goals in some match.";
             lblTeamGoals.Text = "Shows each team with the number of goals scored\nand the number of goals received.\n F stands for FOR(scored)\n A stands for against (received)";
         }
@@ -245,8 +245,8 @@ namespace TipsterCup
 
         private void FormStatistics_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.Clear(Color.White);
-            e.Graphics.DrawImage(bgImage, 0, 0, this.Width, this.Height);
+           // e.Graphics.Clear(Color.White);
+           // e.Graphics.DrawImage(bgImage, 0, 0, this.Width, this.Height);
         }
 
         
