@@ -170,7 +170,7 @@ namespace TipsterCup
             
         }
 
-        public void fillShowCoeffRound(int roundId) 
+        public static void fillShowCoeffRound(int roundId) 
         {
             using (OracleConnection connection = new OracleConnection(FormLogin.connString))
             {
@@ -248,7 +248,7 @@ namespace TipsterCup
             return null;
         }
 
-        private int firstCoeffId(int idMatch) {
+        private static int firstCoeffId(int idMatch) {
             return (idMatch - 1) * 7 + 1;
         }
 

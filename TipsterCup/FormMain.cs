@@ -251,11 +251,11 @@ namespace TipsterCup
 
                     betweenRounds = true;
                     currentRound = new Round(round, from, to);
-
+                    
                 }
 
             }
-
+            CoefficientProvider.fillShowCoeffRound(currentRound.Id);
         }
 
         
