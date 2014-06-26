@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Coefficient.cs" />
     <Compile Include="CoefficientProvider.cs" />
     <Compile Include="DoubleBufferedTableLayoutPanel.cs">
       <SubType>Component</SubType>

@@ -49,7 +49,7 @@
             this.colRank,
             this.colTipster,
             this.colMoney});
-            this.gridTipsters.Location = new System.Drawing.Point(47, 85);
+            this.gridTipsters.Location = new System.Drawing.Point(205, 79);
             this.gridTipsters.Name = "gridTipsters";
             this.gridTipsters.ReadOnly = true;
             this.gridTipsters.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -88,7 +88,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(790, 437);
+            this.ClientSize = new System.Drawing.Size(1095, 539);
             this.Controls.Add(this.gridTipsters);
             this.Name = "FormAllTipsters";
             this.Text = "FormAllTipsters";
