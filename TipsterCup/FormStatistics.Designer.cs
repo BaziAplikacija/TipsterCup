@@ -72,7 +72,7 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlTeamGoals = new System.Windows.Forms.Panel();
             this.lblTeamGoals = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridLastPerformance)).BeginInit();
@@ -86,7 +86,7 @@
             this.pnlHatTrick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridHatTrick)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridTeamGoals)).BeginInit();
-            this.panel2.SuspendLayout();
+            this.pnlTeamGoals.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnDreamTeam
@@ -547,18 +547,18 @@
             this.Column5.ReadOnly = true;
             this.Column5.Width = 50;
             // 
-            // panel2
+            // pnlTeamGoals
             // 
-            this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.panel2.Controls.Add(this.lblTeamGoals);
-            this.panel2.Controls.Add(this.gridTeamGoals);
-            this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.panel2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.panel2.Location = new System.Drawing.Point(26, 267);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(276, 257);
-            this.panel2.TabIndex = 13;
-            this.panel2.Visible = false;
+            this.pnlTeamGoals.BackColor = System.Drawing.Color.Transparent;
+            this.pnlTeamGoals.Controls.Add(this.lblTeamGoals);
+            this.pnlTeamGoals.Controls.Add(this.gridTeamGoals);
+            this.pnlTeamGoals.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pnlTeamGoals.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.pnlTeamGoals.Location = new System.Drawing.Point(26, 267);
+            this.pnlTeamGoals.Name = "pnlTeamGoals";
+            this.pnlTeamGoals.Size = new System.Drawing.Size(276, 257);
+            this.pnlTeamGoals.TabIndex = 13;
+            this.pnlTeamGoals.Visible = false;
             // 
             // lblTeamGoals
             // 
@@ -579,7 +579,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1340, 549);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.pnlTeamGoals);
             this.Controls.Add(this.pnlHatTrick);
             this.Controls.Add(this.pnlAverageAge);
             this.Controls.Add(this.pnlDreamTeam);
@@ -607,8 +607,8 @@
             this.pnlHatTrick.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridHatTrick)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridTeamGoals)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.pnlTeamGoals.ResumeLayout(false);
+            this.pnlTeamGoals.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -658,7 +658,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnlTeamGoals;
         private System.Windows.Forms.Label lblTeamGoals;
 
     }

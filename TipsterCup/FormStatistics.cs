@@ -35,6 +35,7 @@ namespace TipsterCup
             {
                 gridLastPerformance.Visible = false;
                 lblLastPerformance.Visible = false;
+                pnlLastPerformance.Visible = false;
 
                 thisButton.BackColor = SystemColors.Control;
                 return;
@@ -58,8 +59,10 @@ namespace TipsterCup
                 }
                 reader.Close();
             }
-            gridLastPerformance.Visible = true;
+            pnlLastPerformance.Visible = true;
             lblLastPerformance.Visible = true;
+            gridLastPerformance.Visible = true;
+            
         }
 
         private void btnTopscorer_Click(object sender, EventArgs e)
@@ -72,6 +75,7 @@ namespace TipsterCup
             {
                 gridTopscorers.Visible = false;
                 lblTopScorers.Visible = false;
+                pnlTopScorers.Visible = false;
                 thisButton.BackColor = SystemColors.Control;
                 return;
             }
@@ -92,6 +96,7 @@ namespace TipsterCup
                 }
                 reader.Close();
             }
+            pnlTopScorers.Visible = true;
             gridTopscorers.Visible = true;
             lblTopScorers.Visible = true;
         }
@@ -114,6 +119,7 @@ namespace TipsterCup
             {
                 gridDreamTeam.Visible = false;
                 lblDreamTeam.Visible = false;
+                pnlDreamTeam.Visible = false;
                 thisButton.BackColor = SystemColors.Control;
                 return;
             }
@@ -135,6 +141,7 @@ namespace TipsterCup
                 }
                 reader.Close();
             }
+            pnlDreamTeam.Visible = true;
             gridDreamTeam.Visible = true;
             lblDreamTeam.Visible = true;
         }
@@ -148,6 +155,7 @@ namespace TipsterCup
             {
                 gridAverageAge.Visible = false;
                 lblAverageAge.Visible = false;
+                pnlAverageAge.Visible = false;
                 thisButton.BackColor = SystemColors.Control;
                 return;
             }
@@ -169,6 +177,7 @@ namespace TipsterCup
                 }
                 reader.Close();
             }
+            pnlAverageAge.Visible = true;
             gridAverageAge.Visible = true;
             lblAverageAge.Visible = true;
         }
@@ -182,7 +191,7 @@ namespace TipsterCup
             {
                 gridHatTrick.Visible = false;
                 lblHatTrick.Visible = false;
-
+                pnlHatTrick.Visible = false;
                 thisButton.BackColor = SystemColors.Control;
                 return;
             }
@@ -204,6 +213,7 @@ namespace TipsterCup
                 }
                 reader.Close();
             }
+            pnlHatTrick.Visible = true;
             gridHatTrick.Visible = true;
             lblHatTrick.Visible = true;
         }
@@ -216,6 +226,7 @@ namespace TipsterCup
             {
                 gridTeamGoals.Visible = false;
                 lblTeamGoals.Visible = false;
+                pnlTeamGoals.Visible = false;
                 thisButton.BackColor = SystemColors.Control;
                 
                 return;
@@ -241,6 +252,7 @@ namespace TipsterCup
                 }
                 reader.Close();
             }
+            pnlTeamGoals.Visible = true;
             gridTeamGoals.Visible = true;
             lblTeamGoals.Visible = true;
         }
