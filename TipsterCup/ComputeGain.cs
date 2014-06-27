@@ -35,9 +35,44 @@ namespace TipsterCup
             Validated = validated;
         }
 
+
+        public Double GetGain()
+        {
+            return Amount * Value;
+        }
+
         public Boolean IsWinning()
         {
-            return true;
+            if (IdCoefficient == 1)
+            {
+                return GoalsHome > GoalsGuest;
+            }
+
+            if (IdCoefficient == 2)
+            {
+                return GoalsHome == GoalsGuest;
+            }
+
+            if (IdCoefficient == 3)
+            {
+                return GoalsHome < GoalsGuest;
+            }
+
+            if (IdCoefficient == 4)
+            {
+                return GoalsHome + GoalsGuest <= 2;
+            }
+
+            if (IdCoefficient == 5)
+            {
+                return GoalsHome + GoalsGuest >= 3;
+            }
+
+            if (IdCoefficient == 6)
+            {
+                return GoalsHome + GoalsGuest >= 4;
+            }
+            return GoalsHome + GoalsGuest >= 7;
         }
 
     }

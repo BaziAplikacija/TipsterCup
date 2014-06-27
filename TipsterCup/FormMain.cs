@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Oracle.DataAccess.Client;
 
 namespace TipsterCup
 {
@@ -187,6 +188,44 @@ namespace TipsterCup
                     if (FormLogin.virtualDate.CompareTo(currentRound.DateTo) > 0)
                     {
                         timer1.Stop();
+
+                        /* se nagraduvaat tipsterite koi pogodile 
+                         */
+                        using (OracleConnection conn = new OracleConnection(FormLogin.connString))
+                        {
+                            conn.Open();
+
+                            string query = "select * from computegain where idRound = " + currentRound.Id;
+                            OracleCommand command = new OracleCommand(query, conn);
+                            command.CommandType = CommandType.Text;
+
+                            OracleDataReader reader = command.ExecuteReader();
+                            
+                            while (reader.Read())
+                            {
+                                ComputeGain gain = new ComputeGain(reader.GetInt32(0), reader.GetInt32(1), reader.GetString(2), reader.GetInt32(3), Double.Parse(reader[4].ToString()), reader.GetInt32(5), reader.GetInt32(6), reader.GetInt32(7), reader.GetInt32(8), reader.GetString(9));
+
+                                if (gain.IsWinning())
+                                {
+                                    string up = "update tipster set money = money + " + (int)gain.GetGain() + " WHERE idTipster = " + gain.IdTipster;
+                                    OracleCommand comm2 = new OracleCommand(up,conn);
+                                    comm2.CommandType = CommandType.Text;
+                                    comm2.ExecuteNonQuery();
+                                        
+                                }
+                            }
+                            query = "update tips set validated = 'y' where idTips IN (select idTips from computegain where idRound = " + currentRound.Id + " )";
+                            command = new OracleCommand(query, conn);
+                            command.CommandType = CommandType.Text;
+                            command.ExecuteNonQuery();
+
+                            reader.Close();
+
+                           
+                        }
+
+
+
                         initializeCountdown();
                         return;
                     }
