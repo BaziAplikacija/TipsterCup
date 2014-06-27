@@ -30,7 +30,7 @@ namespace TipsterCup
             Team = team;
             Position = position;
 
-            TokensGoals = (int) Rating;//vo osnova verojatnosta daden igrac da dade gol e proporcionalna
+            TokensGoals = (int) Rating * (int) Team.Rating;//vo osnova verojatnosta daden igrac da dade gol e proporcionalna
                                   // na negoviot rejting
             TokensAssists = (int)Rating * (int)Team.Rating / 10;
             TokensInterrupts = (int)Rating * (int)Team.Rating / 10;
