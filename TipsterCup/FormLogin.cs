@@ -275,7 +275,7 @@ namespace TipsterCup
                 }
                 else
                 {
-                    frmAdmin = new FormAdmin();
+                    frmAdmin = new FormAdmin(this);
                     frmAdmin.Show();
                 }
                 

@@ -13,12 +13,13 @@ namespace TipsterCup
 {
     public partial class FormAdmin : Form
     {
-        
-        
-        public FormAdmin()
+
+        FormLogin parent;
+        public FormAdmin(FormLogin form)
         {
             InitializeComponent();
             cbTime.SelectedIndex = 0;
+            parent = form;
         }
 
         private void FormAdmin_Load(object sender, EventArgs e)
