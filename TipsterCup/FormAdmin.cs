@@ -15,11 +15,13 @@ namespace TipsterCup
     {
 
         FormLogin parent;
+        private bool closeParent;
         public FormAdmin(FormLogin form)
         {
             InitializeComponent();
             cbTime.SelectedIndex = 0;
             parent = form;
+            closeParent = true;
         }
 
         private void FormAdmin_Load(object sender, EventArgs e)
@@ -42,6 +44,17 @@ namespace TipsterCup
             this.gbTimeInterval.Text = FormLogin.translator["VirtualDay " + FormLogin.currLanguage];
             this.lblDay.Text = FormLogin.translator["DayLbl " + FormLogin.currLanguage];
             this.btnChange.Text = FormLogin.translator["ChangeBtn " + FormLogin.currLanguage];
+
+            if (!FormMain.finished)
+            {
+                btnStart.Enabled = false;
+                label1.Text = "This season is not finished!";
+            }
+            else
+            {
+                btnStart.Enabled = true;
+                label1.Text = "This season is finished";
+            }
         }
 
         //Vo listBox gi stava tipsterite
@@ -157,6 +170,57 @@ namespace TipsterCup
             {
                 e.Graphics.DrawString(tipster.ToString(), new Font("Lucida Console", 9.75F, FontStyle.Regular, GraphicsUnit.Pixel), new SolidBrush(Color.Black), e.Bounds);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            parent.Show();
+            closeParent = false;
+            this.Close();
+        }
+
+        private void FormAdmin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if(closeParent)
+                parent.Close();
+        }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            using (OracleConnection connection = new OracleConnection(FormLogin.connString))
+            {
+                String query = "update basicInfo set time_interval = 1, virtual_Date = '08/16/2013'";
+                OracleCommand command = new OracleCommand(query, connection);
+                command.CommandType = CommandType.Text;
+                command.ExecuteNonQuery();
+
+                query = "delete from goal";
+                command = new OracleCommand(query, connection);
+                command.CommandType = CommandType.Text;
+                command.ExecuteNonQuery();
+
+                query = "delete from participates";
+                command = new OracleCommand(query, connection);
+                command.CommandType = CommandType.Text;
+                command.ExecuteNonQuery();
+
+                query = "delete from tips";
+                command = new OracleCommand(query, connection);
+                command.CommandType = CommandType.Text;
+                command.ExecuteNonQuery();
+
+                query = "delete from showCoeff";
+                command = new OracleCommand(query, connection);
+                command.CommandType = CommandType.Text;
+                command.ExecuteNonQuery();
+
+                query = "set Finished = 'n'";
+                command = new OracleCommand(query, connection);
+                command.CommandType = CommandType.Text;
+                command.ExecuteNonQuery();
+            }
+            FormMain.finished = false;
+
         }
     }
 }

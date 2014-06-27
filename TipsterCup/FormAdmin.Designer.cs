@@ -50,11 +50,16 @@
             this.btnChange = new System.Windows.Forms.Button();
             this.cbTime = new System.Windows.Forms.ComboBox();
             this.lblDay = new System.Windows.Forms.Label();
+            this.btnBack = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnStart = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabTipsters.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabOptions.SuspendLayout();
             this.gbTimeInterval.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -64,7 +69,7 @@
             this.tabControl1.Location = new System.Drawing.Point(6, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(500, 298);
+            this.tabControl1.Size = new System.Drawing.Size(500, 269);
             this.tabControl1.TabIndex = 2;
             // 
             // tabTipsters
@@ -74,7 +79,7 @@
             this.tabTipsters.Location = new System.Drawing.Point(4, 22);
             this.tabTipsters.Name = "tabTipsters";
             this.tabTipsters.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTipsters.Size = new System.Drawing.Size(492, 272);
+            this.tabTipsters.Size = new System.Drawing.Size(492, 243);
             this.tabTipsters.TabIndex = 0;
             this.tabTipsters.Text = "Tipsters";
             this.tabTipsters.UseVisualStyleBackColor = true;
@@ -104,7 +109,7 @@
             this.btnBan.BackColor = System.Drawing.Color.Red;
             this.btnBan.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnBan.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnBan.Location = new System.Drawing.Point(129, 225);
+            this.btnBan.Location = new System.Drawing.Point(131, 199);
             this.btnBan.Name = "btnBan";
             this.btnBan.Size = new System.Drawing.Size(123, 38);
             this.btnBan.TabIndex = 12;
@@ -233,11 +238,12 @@
             // 
             // tabOptions
             // 
+            this.tabOptions.Controls.Add(this.groupBox1);
             this.tabOptions.Controls.Add(this.gbTimeInterval);
             this.tabOptions.Location = new System.Drawing.Point(4, 22);
             this.tabOptions.Name = "tabOptions";
             this.tabOptions.Padding = new System.Windows.Forms.Padding(3);
-            this.tabOptions.Size = new System.Drawing.Size(492, 272);
+            this.tabOptions.Size = new System.Drawing.Size(492, 243);
             this.tabOptions.TabIndex = 1;
             this.tabOptions.Text = "Options";
             this.tabOptions.UseVisualStyleBackColor = true;
@@ -294,14 +300,56 @@
             this.lblDay.TabIndex = 0;
             this.lblDay.Text = "1 day =";
             // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(6, 268);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(496, 26);
+            this.btnBack.TabIndex = 3;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.btnStart);
+            this.groupBox1.Location = new System.Drawing.Point(21, 125);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(448, 84);
+            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "New Season";
+            // 
+            // btnStart
+            // 
+            this.btnStart.Location = new System.Drawing.Point(304, 34);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(108, 23);
+            this.btnStart.TabIndex = 2;
+            this.btnStart.Text = "Start new season";
+            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(17, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "label1";
+            // 
             // FormAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(506, 305);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.tabControl1);
             this.Name = "FormAdmin";
             this.Text = "FormAdmin";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormAdmin_FormClosed);
             this.Load += new System.EventHandler(this.FormAdmin_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabTipsters.ResumeLayout(false);
@@ -310,6 +358,8 @@
             this.tabOptions.ResumeLayout(false);
             this.gbTimeInterval.ResumeLayout(false);
             this.gbTimeInterval.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -338,5 +388,9 @@
         private System.Windows.Forms.Button btnChange;
         private System.Windows.Forms.ComboBox cbTime;
         private System.Windows.Forms.Label lblDay;
+        private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnStart;
     }
 }
