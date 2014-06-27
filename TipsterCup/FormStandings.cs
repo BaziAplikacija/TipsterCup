@@ -25,6 +25,13 @@ namespace TipsterCup
             
             fillGrid();
             this.WindowState = FormWindowState.Maximized;
+
+            gridStandings.Columns[0].HeaderText = FormLogin.translator["Team " + FormLogin.currLanguage];
+            gridStandings.Columns[1].HeaderText = FormLogin.translator["W " + FormLogin.currLanguage];
+            gridStandings.Columns[2].HeaderText = FormLogin.translator["D " + FormLogin.currLanguage];
+            gridStandings.Columns[3].HeaderText = FormLogin.translator["L " + FormLogin.currLanguage];
+            gridStandings.Columns[4].HeaderText = FormLogin.translator["Points " + FormLogin.currLanguage];
+            this.Text = FormLogin.translator["FormStandings " + FormLogin.currLanguage];
         }
 
         private void fillGrid()
