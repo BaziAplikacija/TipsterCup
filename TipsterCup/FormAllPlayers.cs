@@ -118,6 +118,34 @@ namespace TipsterCup
         private void FormAllPlayers_Load(object sender, EventArgs e)
         {
             fillGrid();
+
+            cbFirstName.Text = FormLogin.translator["FirstName " + FormLogin.currLanguage];
+            cbLastName.Text = FormLogin.translator["LastName " + FormLogin.currLanguage];
+            cbAge.Text = FormLogin.translator["Age " + FormLogin.currLanguage];
+            cbRating.Text = FormLogin.translator["Rating " + FormLogin.currLanguage];
+            cbGoals.Text = FormLogin.translator["Goals " + FormLogin.currLanguage];
+
+            lblFromAge.Text = FormLogin.translator["From " + FormLogin.currLanguage];
+            lblFromGoals.Text = FormLogin.translator["From " + FormLogin.currLanguage];
+            lblFromRating.Text = FormLogin.translator["From " + FormLogin.currLanguage];
+
+            lblToAge.Text = FormLogin.translator["To " + FormLogin.currLanguage];
+            lblToGoals.Text = FormLogin.translator["To " + FormLogin.currLanguage];
+            lblToRating.Text = FormLogin.translator["To " + FormLogin.currLanguage];
+
+            cbTeam.Text = FormLogin.translator["Team " + FormLogin.currLanguage];
+            cbPosition.Text = FormLogin.translator["Position " + FormLogin.currLanguage];
+
+            /* gridPlayers.Columns[0].HeaderText = FormLogin.translator["FirstName " + FormLogin.currLanguage];
+              gridPlayers.Columns[1].HeaderText = FormLogin.translator["LastName " + FormLogin.currLanguage];
+              gridPlayers.Columns[2].HeaderText = FormLogin.translator["Rating " + FormLogin.currLanguage];
+              gridPlayers.Columns[3].HeaderText = FormLogin.translator["Team " + FormLogin.currLanguage];
+              gridPlayers.Columns[4].HeaderText = FormLogin.translator["Position " + FormLogin.currLanguage];
+              gridPlayers.Columns[5].HeaderText = FormLogin.translator["Goals " + FormLogin.currLanguage];
+              gridPlayers.Columns[6].HeaderText = FormLogin.translator["Age " + FormLogin.currLanguage];*/
+           
+            
+
         }
 
         private void fillGrid()
