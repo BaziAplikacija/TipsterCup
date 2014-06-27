@@ -63,6 +63,7 @@ namespace TipsterCup
 
         private bool checkSeasonFinished(){
             using(OracleConnection connection = new OracleConnection(FormLogin.connString)){
+                connection.Open();
                 String query = "SELECT dateTo FROM ROUND WHERE idRound = 38";
                 OracleCommand command = new OracleCommand(query, connection);
                 command.CommandType = CommandType.Text;
