@@ -13,7 +13,7 @@ namespace TipsterCup
         private static double[] diff = {-0.5, 0, 0.5};
         private static double[,] coeff = new double[21, 7];
         private static int[] lowerBound = {500, 450, 400, 350, 300, 250, 200, 150, 100, 50, 0, 
-                        -50, -100, -150, -200, -250, -300, -350, -400, -450, -2000};
+                        -50, -100, -150, -200, -250, -300, -350, -400, -450, -200000000};
         static Random random;
 
         public CoefficientProvider()
@@ -132,12 +132,12 @@ namespace TipsterCup
             coeff[13, 6] = 14.5;
 
             coeff[14, 0] = 3.35;
-            coeff[15, 1] = 4.25;
-            coeff[15, 2] = 2.15;
-            coeff[15, 3] = 1.95;
-            coeff[15, 4] = 1.65;
-            coeff[15, 5] = 2.45;
-            coeff[15, 6] = 12.5;
+            coeff[14, 1] = 4.25;
+            coeff[14, 2] = 2.15;
+            coeff[14, 3] = 1.95;
+            coeff[14, 4] = 1.65;
+            coeff[14, 5] = 2.45;
+            coeff[14, 6] = 12.5;
 
             coeff[15, 0] = 3.5;
             coeff[15, 1] = 5.85;
@@ -224,25 +224,27 @@ namespace TipsterCup
                 //site natprevari od dadena runda
                 query = "SELECT idMatch FROM Match WHERE idRound = " + roundId;
                 command = new OracleCommand(query, connection);
-                command.CommandType = CommandType.
-                    Text;
+                command.CommandType = CommandType.Text;
                 reader = command.ExecuteReader();
                 while (reader.Read())
                 {
                     int idMatch = Convert.ToInt32(reader[0]);
 
-                    int idNext = firstCoeffId(idMatch);
+                    int idNext = firstCoeffId(idMatch) ;
                     for (int i = 0; i < 7; i++)
                     {
-
-                         query = "INSERT INTO SHOWCOEFF(idCoefficient,value,idMatch) VALUES(" + (i + 1) +
+                        try
+                        {
+                            query = "INSERT INTO SHOWCOEFF(idCoefficient,value,idMatch) VALUES(" + (i + 1) +
                        ", " + getCoefficient(idMatch, (i + 1)) + ", " + idMatch + ")";
-                         command = new OracleCommand(query, connection);
-                         command.CommandType = CommandType.Text;
+                            command = new OracleCommand(query, connection);
+                            command.CommandType = CommandType.Text;
 
-                        command.ExecuteNonQuery();
+                            command.ExecuteNonQuery();
 
-                        idNext++;
+                            idNext++;
+                        }
+                        catch (OracleException ex) { }
                     }
 
                 }
@@ -265,7 +267,7 @@ namespace TipsterCup
 
                 }
             }
-            return -1;
+            return 100;
         }
 
         public double[] getCoefficientsForMatch(int idMatch)//dobivanje na site koefficienti za daden natprevar
@@ -280,7 +282,11 @@ namespace TipsterCup
                 {
                     for (int j = 0; j < 7; j++)
                     {
-                        ret[j] = coeff[i, j] + random.Next(3);
+                        if (Math.Abs(coeff[i, j] - 0.0) < 0.000001)
+                        {
+                            throw new Exception() { };
+                        }
+                        ret[j] = coeff[i, j] + diff[random.Next(3)];
                     }
                     return ret;
                 }
