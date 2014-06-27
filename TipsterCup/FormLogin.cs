@@ -240,6 +240,13 @@ namespace TipsterCup
             translator.Add("Points English", "Points");
             translator.Add("Points Macedonian", "Поени");
 
+            // za FormRounds
+
+            translator.Add("FormRounds English", "Rounds");
+            translator.Add("FormRounds Macedonian", "Кола");
+            translator.Add("Tip English", "Tip");
+            translator.Add("Tip Macedonian", "Типувај");
+
             
 
         }

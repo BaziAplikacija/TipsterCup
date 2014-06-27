@@ -97,6 +97,10 @@ namespace TipsterCup
 
         private void FormRounds_Load(object sender, EventArgs e)
         {
+
+            lblRound.Text = FormLogin.translator["Round " + FormLogin.currLanguage] + ":";
+            this.Text = FormLogin.translator["FormRounds " + FormLogin.currLanguage];
+
             setControls();
             //currentRound = setRound();
             if (FormMain.finished)
@@ -116,6 +120,8 @@ namespace TipsterCup
                 cbRounds.SelectedIndex = currentRound - 1;
             }
             disableButtons();
+
+            
         }
 
 
@@ -158,7 +164,7 @@ namespace TipsterCup
                 labels.Add(labelGuest);
 
                 Button btnTip = new Button();
-                btnTip.Text = "Tip";
+                btnTip.Text = FormLogin.translator["Tip " + FormLogin.currLanguage];
                 btnTip.Dock = DockStyle.Fill;
                 btnTip.Click += new EventHandler(button_Click);
                 tableResults.Controls.Add(btnTip, 4, i);
