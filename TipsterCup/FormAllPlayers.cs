@@ -247,6 +247,16 @@ namespace TipsterCup
             fillGrid();
         }
 
+        private void gridPlayers_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                FormPlayer frmPlayer = new FormPlayer(FormLogin.docMain.getPlayerById(Int32.Parse(gridPlayers.Rows[e.RowIndex].Cells[0].Value.ToString())));
+                frmPlayer.Show();
+
+            }
+        }
+
         
         
     }

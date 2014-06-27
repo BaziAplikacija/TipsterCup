@@ -70,7 +70,10 @@
             // 
             // gridPlayers
             // 
+            this.gridPlayers.AllowUserToAddRows = false;
+            this.gridPlayers.AllowUserToDeleteRows = false;
             this.gridPlayers.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.gridPlayers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.gridPlayers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridPlayers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colId,
@@ -83,14 +86,18 @@
             this.colDate});
             this.gridPlayers.Location = new System.Drawing.Point(12, 289);
             this.gridPlayers.Name = "gridPlayers";
+            this.gridPlayers.ReadOnly = true;
             this.gridPlayers.RowHeadersVisible = false;
+            this.gridPlayers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridPlayers.Size = new System.Drawing.Size(1231, 266);
             this.gridPlayers.TabIndex = 0;
+            this.gridPlayers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridPlayers_CellDoubleClick);
             // 
             // colId
             // 
             this.colId.HeaderText = "IdPlayer";
             this.colId.Name = "colId";
+            this.colId.ReadOnly = true;
             this.colId.Visible = false;
             // 
             // colFirstname
@@ -98,40 +105,47 @@
             this.colFirstname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colFirstname.HeaderText = "First name";
             this.colFirstname.Name = "colFirstname";
+            this.colFirstname.ReadOnly = true;
             // 
             // colLastName
             // 
             this.colLastName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colLastName.HeaderText = "Last name";
             this.colLastName.Name = "colLastName";
+            this.colLastName.ReadOnly = true;
             // 
             // colRating
             // 
             this.colRating.HeaderText = "Rating";
             this.colRating.Name = "colRating";
+            this.colRating.ReadOnly = true;
             this.colRating.Width = 120;
             // 
             // colTeam
             // 
             this.colTeam.HeaderText = "Team";
             this.colTeam.Name = "colTeam";
+            this.colTeam.ReadOnly = true;
             this.colTeam.Width = 150;
             // 
             // colPosition
             // 
             this.colPosition.HeaderText = "Position";
             this.colPosition.Name = "colPosition";
+            this.colPosition.ReadOnly = true;
             this.colPosition.Width = 150;
             // 
             // colGoals
             // 
             this.colGoals.HeaderText = "Goals";
             this.colGoals.Name = "colGoals";
+            this.colGoals.ReadOnly = true;
             // 
             // colDate
             // 
             this.colDate.HeaderText = "Years";
             this.colDate.Name = "colDate";
+            this.colDate.ReadOnly = true;
             this.colDate.Width = 120;
             // 
             // lblSearchBy

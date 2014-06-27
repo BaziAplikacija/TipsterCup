@@ -107,7 +107,14 @@ namespace TipsterCup
 
             }
 
-            for(int i=0; i<rButtons.Count; i++) {
+
+
+            for(int i=0; i<Math.Min(rButtons.Count,coefficients.Count); i++) {
+
+                if (coefficients[i].Value <= 1)
+                {
+                    coefficients[i].Value = 1.1;
+                }
                 rButtons[i].Text = "    Coeff: " + coefficients[i].Value;
                 labels[i].Text = coefficients[i].Description;
             }
@@ -124,7 +131,7 @@ namespace TipsterCup
         {
             Coefficient checkedCoeff = null;
 
-            for (int i = 0; i < rButtons.Count; i++)
+            for (int i = 0; i < Math.Min(rButtons.Count,coefficients.Count); i++)
             {
                 
                 if (rButtons[i].Checked)
