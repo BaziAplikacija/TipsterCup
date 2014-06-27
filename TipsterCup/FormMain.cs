@@ -224,7 +224,10 @@ namespace TipsterCup
                            
                         }
 
-
+                        if (frmRounds != null)
+                        {
+                            frmRounds.cbRounds_SelectedIndexChanged(null, null);
+                        }
 
                         initializeCountdown();
                         return;
