@@ -127,11 +127,21 @@ namespace TipsterCup
             btnStandings_Click(null, null);
             initLblDate();
             initializeCountdown();
+
+            this.Text = FormLogin.translator["FormMain " + FormLogin.currLanguage];
+            this.btnExit.Text = FormLogin.translator["Exit " + FormLogin.currLanguage];
+            this.btnMyProfile.Text = FormLogin.translator["MyProfileBtn " + FormLogin.currLanguage];
+            this.btnStandings.Text = FormLogin.translator["StandingsBtn " + FormLogin.currLanguage];
+            this.btnRounds.Text = FormLogin.translator["RoundsBtn " + FormLogin.currLanguage];
+            this.btnMyProfile.Text = FormLogin.translator["MyProfileBtn " + FormLogin.currLanguage];
+            this.btnStatistics.Text = FormLogin.translator["StatisticsBtn " + FormLogin.currLanguage];
+            this.btnPlayers.Text = FormLogin.translator["PlayersBtn " + FormLogin.currLanguage];
+            this.btnTipsters.Text = FormLogin.translator["TipstersBtn " + FormLogin.currLanguage];
         }
 
 
         private void initLblDate(){
-             lblDate.Text = "Date: " + FormLogin.virtualDate.ToShortDateString();
+             lblDate.Text = FormLogin.translator["Date " + FormLogin.currLanguage ] + " " + FormLogin.virtualDate.ToShortDateString();
         }
 
 
@@ -142,7 +152,7 @@ namespace TipsterCup
             lblNextRound.ForeColor = Color.Black;
             if (finished)
             {
-                text = "Season finished";
+                text = FormLogin.translator["SeasonFin " + FormLogin.currLanguage];
             }
             else
             {
@@ -153,7 +163,7 @@ namespace TipsterCup
                     seconds -= hours * 3600;
                     int minutes = seconds / 60;
                     seconds -= minutes * 60;
-                    text = "Time until round "+currentRound.Id+":   ";
+                    text = FormLogin.translator["TimeUntilRound " + FormLogin.currLanguage] + " "+currentRound.Id+":   ";
                     text += String.Format("{1:00} : {2:00} : {3:00}", currentRound.Id, hours, minutes, seconds);
                     if (this.seconds < 10)
                     {
@@ -162,7 +172,7 @@ namespace TipsterCup
                 }
                 else
                 {
-                    text = "Round " + currentRound.Id + " is playing";
+                    text = FormLogin.translator["Round " + FormLogin.currLanguage] + " " + currentRound.Id + FormLogin.translator["Playing " + FormLogin.currLanguage];
                 }
             }
             lblNextRound.Text = text;

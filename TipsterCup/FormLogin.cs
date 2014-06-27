@@ -174,6 +174,41 @@ namespace TipsterCup
             translator.Add("FormAdmin Macedonian", "Администратор");
             translator.Add("DayLbl English", "1 day = ");
             translator.Add("DayLbl Macedonian", "1 ден = ");
+
+            // za FormMain
+            translator.Add("FormMain English", "Main form");
+            translator.Add("FormMain Macedonian", "Главна форма");
+            translator.Add("StandingsBtn English", "Standings");
+            translator.Add("StandingsBtn Macedonian", "Табела");
+
+            translator.Add("RoundsBtn English", "Rounds");
+            translator.Add("RoundsBtn Macedonian", "Кола");
+
+            translator.Add("PlayersBtn English", "Players");
+            translator.Add("PlayersBtn Macedonian", "Играчи");
+
+            translator.Add("TipstersBtn English", "Tipsters");
+            translator.Add("TipstersBtn Macedonian", "Типстери");
+
+            translator.Add("StatisticsBtn English", "Statistics");
+            translator.Add("StatisticsBtn Macedonian", "Статистика");
+
+            translator.Add("MyProfileBtn English", "My profile");
+            translator.Add("MyProfileBtn Macedonian", "Мој профил");
+
+            translator.Add("Date English", "Date");
+            translator.Add("Date Macedonian", "Датум");
+
+            translator.Add("TimeUntilRound English", "Time until round ");
+            translator.Add("TimeUntilRound Macedonian", "Време до коло  ");
+            translator.Add("Round English", "Round");
+            translator.Add("Round Macedonian", "Коло");
+            translator.Add("Playing English", " is playing");
+            translator.Add("Playing Macedonian", " се игра");
+            translator.Add("SeasonFin English", "Season is finished");
+            translator.Add("SeasonFin Macedonian", "Сезоната заврши");
+            
+
         }
 
         private void FormLogin_Load(object sender, EventArgs e)
