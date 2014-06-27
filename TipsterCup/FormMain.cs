@@ -20,6 +20,7 @@ namespace TipsterCup
         FormStatistics frmStatistics;
         FormTipster frmMyProfile;
         FormAllPlayers frmAllPlayers;
+        FormLogin frmLogin;
 
         public static Boolean betweenRounds;
         public static Round currentRound;
@@ -27,9 +28,11 @@ namespace TipsterCup
         public static Boolean finished;
         
         
-        public FormMain()
+        public FormMain(FormLogin frmLogin)
         {
+            
             InitializeComponent();
+            this.frmLogin = frmLogin;
             frmStandings = null;
             frmRounds = null;
             frmAllTipsters = null;
@@ -68,7 +71,7 @@ namespace TipsterCup
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            //Application.Exit();
         }
 
         private void btnStatistics_Click(object sender, EventArgs e)
@@ -129,6 +132,7 @@ namespace TipsterCup
             initializeCountdown();
 
             this.Text = FormLogin.translator["FormMain " + FormLogin.currLanguage];
+            this.btnLogOut.Text = FormLogin.translator["LogOut " + FormLogin.currLanguage];
             this.btnExit.Text = FormLogin.translator["Exit " + FormLogin.currLanguage];
             this.btnMyProfile.Text = FormLogin.translator["MyProfileBtn " + FormLogin.currLanguage];
             this.btnStandings.Text = FormLogin.translator["StandingsBtn " + FormLogin.currLanguage];
@@ -370,6 +374,14 @@ namespace TipsterCup
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            frmLogin.Show();
+            frmLogin.SetTbEmpty();
+            
         }
 
         

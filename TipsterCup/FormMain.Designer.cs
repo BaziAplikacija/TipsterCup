@@ -44,6 +44,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblDate = new System.Windows.Forms.Label();
+            this.btnLogOut = new System.Windows.Forms.Button();
             this.pnlButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMusic)).BeginInit();
             this.panel1.SuspendLayout();
@@ -118,7 +119,7 @@
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(667, 0);
+            this.btnExit.Location = new System.Drawing.Point(778, 0);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(115, 40);
             this.btnExit.TabIndex = 9;
@@ -138,6 +139,7 @@
             // pnlButtons
             // 
             this.pnlButtons.BackColor = System.Drawing.Color.LightGray;
+            this.pnlButtons.Controls.Add(this.btnLogOut);
             this.pnlButtons.Controls.Add(this.pbMusic);
             this.pnlButtons.Controls.Add(this.btnStandings);
             this.pnlButtons.Controls.Add(this.btnExit);
@@ -200,6 +202,17 @@
             this.lblDate.TabIndex = 15;
             this.lblDate.Text = "label2";
             // 
+            // btnLogOut
+            // 
+            this.btnLogOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogOut.Location = new System.Drawing.Point(666, 0);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(115, 40);
+            this.btnLogOut.TabIndex = 11;
+            this.btnLogOut.Text = "Log out";
+            this.btnLogOut.UseVisualStyleBackColor = true;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -240,5 +253,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.PictureBox pbMusic;
+        private System.Windows.Forms.Button btnLogOut;
     }
 }

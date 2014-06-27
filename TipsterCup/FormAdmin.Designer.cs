@@ -231,7 +231,7 @@
             this.listTipsters.FormattingEnabled = true;
             this.listTipsters.Location = new System.Drawing.Point(6, 6);
             this.listTipsters.Name = "listTipsters";
-            this.listTipsters.Size = new System.Drawing.Size(220, 264);
+            this.listTipsters.Size = new System.Drawing.Size(220, 238);
             this.listTipsters.TabIndex = 0;
             this.listTipsters.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listTipsters_DrawItem);
             this.listTipsters.SelectedIndexChanged += new System.EventHandler(this.listTipsters_SelectedIndexChanged);

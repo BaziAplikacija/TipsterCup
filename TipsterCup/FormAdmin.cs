@@ -31,7 +31,7 @@ namespace TipsterCup
             listTipsters.DrawItem += new DrawItemEventHandler(listTipsters_DrawItem);
 
 
-            this.Text = FormLogin.translator["FormRegister " + FormLogin.currLanguage];
+            this.Text = FormLogin.translator["FormAdmin " + FormLogin.currLanguage];
            // this.btnBan.Text = FormLogin.translator["BanBtn " + FormLogin.currLanguage];
             this.lblUsername.Text = FormLogin.translator["Username " + FormLogin.currLanguage];
             this.lblPassword.Text = FormLogin.translator["Password " + FormLogin.currLanguage];
@@ -211,11 +211,17 @@ namespace TipsterCup
         {
             using (OracleConnection connection = new OracleConnection(FormLogin.connString))
             {
-                String query = "update basicInfo set time_interval = 1, virtual_Date = '08/16/2013'";
+                connection.Open();
+                String query = "update basicinfo set time_interval=1, virtual_date = " + "(TO_DATE('" + 8 + "/" + 16 + "/" + 2013 + "', 'mm/dd/yyyy'))";
+                FormLogin.virtualDate = new DateTime(2013, 08, 16);
+                
+
+               // MessageBox.Show(query);
+                
                 OracleCommand command = new OracleCommand(query, connection);
                 command.CommandType = CommandType.Text;
                 command.ExecuteNonQuery();
-
+                
                 query = "delete from goal";
                 command = new OracleCommand(query, connection);
                 command.CommandType = CommandType.Text;
@@ -236,12 +242,13 @@ namespace TipsterCup
                 command.CommandType = CommandType.Text;
                 command.ExecuteNonQuery();
 
-                query = "set Finished = 'n'";
+                query = "update match set Finished = 'n'";
                 command = new OracleCommand(query, connection);
                 command.CommandType = CommandType.Text;
                 command.ExecuteNonQuery();
             }
             btnStart.Enabled = false;
+            label1.Text = FormLogin.translator["SeasonNotFin " + FormLogin.currLanguage];
         }
     }
 }

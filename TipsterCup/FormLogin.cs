@@ -292,6 +292,10 @@ namespace TipsterCup
 
             translator.Add("Rank English", "Rank");
             translator.Add("Rank Macedonian", "Ранг");
+
+            translator.Add("LogOut English", "Log out");
+            translator.Add("LogOut Macedonian", "Одјави се");
+
             
 
             
@@ -384,6 +388,12 @@ namespace TipsterCup
             Application.Exit();
         }
 
+        public void SetTbEmpty()
+        {
+            this.tbPassword.Text = "";
+            this.tbUsername.Text = "";
+        }
+
         private void btnGo_Click(object sender, EventArgs e)
         {
 
@@ -391,7 +401,7 @@ namespace TipsterCup
                 this.Hide();
                 if (cbLoginAs.SelectedIndex == 0)
                 {
-                    frmMain = new FormMain();
+                    frmMain = new FormMain(this);
 
                     frmMain.Show();
                 }
