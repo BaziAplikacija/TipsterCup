@@ -127,6 +127,18 @@ namespace TipsterCup
             this.Close();
         }
 
+        private void FormRegister_Load(object sender, EventArgs e)
+        {
+            lblName.Text = FormLogin.translator["Name " + FormLogin.currLanguage] + ":";
+            lblSurname.Text = FormLogin.translator["Surname " + FormLogin.currLanguage] + ":";
+            lblEmail.Text = FormLogin.translator["Email " + FormLogin.currLanguage] + ":";
+            lblPassword.Text = FormLogin.translator["Password " + FormLogin.currLanguage] + ":";
+            lblUsername.Text = FormLogin.translator["Username " + FormLogin.currLanguage] + ":";
+            lblRepPassword.Text = FormLogin.translator["RepPass " + FormLogin.currLanguage] + ":";
+            this.Text = FormLogin.translator["FormRegister " + FormLogin.currLanguage];
+            
+        }
+
        
     }
 }

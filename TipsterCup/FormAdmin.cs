@@ -26,6 +26,21 @@ namespace TipsterCup
             select_tipsters();
             listTipsters.DrawMode = DrawMode.OwnerDrawVariable;
             listTipsters.DrawItem += new DrawItemEventHandler(listTipsters_DrawItem);
+
+
+            this.Text = FormLogin.translator["FormRegister " + FormLogin.currLanguage];
+            this.btnBan.Text = FormLogin.translator["BanBtn " + FormLogin.currLanguage];
+            this.lblUsername.Text = FormLogin.translator["Username " + FormLogin.currLanguage];
+            this.lblPassword.Text = FormLogin.translator["Password " + FormLogin.currLanguage];
+            this.lblName.Text = FormLogin.translator["Name " + FormLogin.currLanguage];
+            this.lblSurname.Text = FormLogin.translator["Surname " + FormLogin.currLanguage];
+            this.lblRating.Text = FormLogin.translator["Rating " + FormLogin.currLanguage];
+            this.lblEmail.Text = FormLogin.translator["Email " + FormLogin.currLanguage];
+            this.tabControl1.TabPages[1].Text = FormLogin.translator["OptionsTab " + FormLogin.currLanguage];
+            this.tabControl1.TabPages[0].Text = FormLogin.translator["TipstersTab " + FormLogin.currLanguage];
+            this.gbTimeInterval.Text = FormLogin.translator["VirtualDay " + FormLogin.currLanguage];
+            this.lblDay.Text = FormLogin.translator["DayLbl " + FormLogin.currLanguage];
+            this.btnChange.Text = FormLogin.translator["ChangeBtn " + FormLogin.currLanguage];
         }
 
         //Vo listBox gi stava tipsterite

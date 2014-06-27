@@ -121,8 +121,8 @@ namespace TipsterCup
 
             translator.Add("Language English", "Language:");
             translator.Add("Login English", "Login as:");
-            translator.Add("Username English", "Username:");
-            translator.Add("Password English", "Password:");
+            translator.Add("Username English", "Username");
+            translator.Add("Password English", "Password");
             translator.Add("Exit English", "Exit");
             translator.Add("Tipster English", "Tipster");
             translator.Add("Administrator English", "Administrator");
@@ -133,7 +133,7 @@ namespace TipsterCup
 
             translator.Add("Language Macedonian", "Јазик:");
             translator.Add("Login Macedonian", "Најави се како:");
-            translator.Add("Username Macedonian", "Корисничко име:");
+            translator.Add("Username Macedonian", "Корисничко\nиме");
             translator.Add("Password Macedonian", "Лозинка:");
             translator.Add("Exit Macedonian", "Излез");
             translator.Add("Tipster Macedonian", "Типстер");
@@ -142,6 +142,38 @@ namespace TipsterCup
             translator.Add("Register Macedonian", "Регистрирај се");
             translator.Add("BannedMsg Macedonian", "Не можете да се најавите бидејќи сте банирани.");
             translator.Add("LoggedMsg Macedonian", "Не можете да се најавите бидејќи веќе некој е најавен со вашето корисничко име.");
+
+
+            // Za FormRegister
+            translator.Add("FormRegister English", "Register");
+            translator.Add("FormRegister Macedonian", "Регистрирај се");
+            translator.Add("RepPass English", "Repeat password");
+            translator.Add("RepPass Macedonian", "Повтори\nја лозинката");
+            translator.Add("Name English", "Name");
+            translator.Add("Name Macedonian", "Име");
+            translator.Add("Surname English", "Surname");
+            translator.Add("Surname Macedonian", "Презиме");
+            translator.Add("Email English", "E-mail");
+            translator.Add("Email Macedonian", "Е-пошта");
+
+            // za FormAdmin
+
+            translator.Add("BanBtn English", "BAN");
+            translator.Add("BanBtn Macedonian", "Банирај");
+            translator.Add("TipstersTab English", "Tipsters");
+            translator.Add("TipstersTab Macedonian", "Типстери");
+            translator.Add("OptionsTab English", "Options");
+            translator.Add("OptionsTab Macedonian", "Подесување");
+            translator.Add("Rating English", "Rating");
+            translator.Add("Rating Macedonian", "Рејтинг");
+            translator.Add("VirtualDay English", "Set virtual day");
+            translator.Add("VirtualDay Macedonian", "Постави виртуелен ден");
+            translator.Add("ChangeBtn English", "Change");
+            translator.Add("ChangeBtn Macedonian", "Промени");
+            translator.Add("FormAdmin English", "Administrator");
+            translator.Add("FormAdmin Macedonian", "Администратор");
+            translator.Add("DayLbl English", "1 day = ");
+            translator.Add("DayLbl Macedonian", "1 ден = ");
         }
 
         private void FormLogin_Load(object sender, EventArgs e)
