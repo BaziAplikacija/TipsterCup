@@ -282,10 +282,6 @@ namespace TipsterCup
                 {
                     for (int j = 0; j < 7; j++)
                     {
-                        if (Math.Abs(coeff[i, j] - 0.0) < 0.000001)
-                        {
-                            throw new Exception() { };
-                        }
                         ret[j] = coeff[i, j] + diff[random.Next(3)];
                     }
                     return ret;

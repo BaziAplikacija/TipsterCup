@@ -23,6 +23,7 @@ namespace TipsterCup
         private const int NOTHING_HAPPENS_TOKENS = 460;
         private const int TOTAL_TOKENS = 900;
         Random random;
+        private const int WIN_BONUS = 1000;
 
         private const int WEIGHT_GOALS_MATCH_RATING = 200;// + WGMT * (postignati_od_cel_tim - golovi_na_protivnik)
       
@@ -148,7 +149,7 @@ namespace TipsterCup
             {
                 Participates p = Participations[i];
                 p.calculateMatchRating();
-                p.MatchRating = (int) ((AllPlayers[i].Rating + p.MatchRating) / 2);
+                p.MatchRating = (int) ((AllPlayers[i].Rating + 9 * p.MatchRating) / 10);
                 if(i < 11) {
                     p.MatchRating = p.MatchRating + goalsHome * WEIGHT_GOALS_MATCH_RATING - goalsGuest * WEIGHT_GOALS_MATCH_RATING;
                     if (p.Player.Position.Id == 1)//napagac
@@ -159,6 +160,7 @@ namespace TipsterCup
                     {
                         p.MatchRating -= WEIGHT_GOALS_MATCH_RATING * goalsGuest;
                     }
+                    if (goalsHome > goalsGuest) p.MatchRating += WIN_BONUS;
                 }
                 else {
                     p.MatchRating = p.MatchRating + goalsHome * WEIGHT_GOALS_MATCH_RATING - goalsGuest * WEIGHT_GOALS_MATCH_RATING;
@@ -170,6 +172,7 @@ namespace TipsterCup
                     {
                         p.MatchRating -= WEIGHT_GOALS_MATCH_RATING * goalsHome;
                     }
+                    if (goalsHome < goalsGuest) p.MatchRating += WIN_BONUS;
                 }
                 
                 //int nextParticipateId = mainDoc.Par[mainDoc.Goals.Count - 1].Id + 1;
