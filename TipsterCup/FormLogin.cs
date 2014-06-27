@@ -157,7 +157,8 @@ namespace TipsterCup
             translator.Add("Email Macedonian", "Е-пошта");
 
             // za FormAdmin
-
+            translator.Add("UnBanBtn English", "UNBAN");
+            translator.Add("UnBanBtn Macedonian", "Одбанирај");
             translator.Add("BanBtn English", "BAN");
             translator.Add("BanBtn Macedonian", "Банирај");
             translator.Add("TipstersTab English", "Tipsters");
@@ -207,6 +208,18 @@ namespace TipsterCup
             translator.Add("Playing Macedonian", " се игра");
             translator.Add("SeasonFin English", "Season is finished");
             translator.Add("SeasonFin Macedonian", "Сезоната заврши");
+
+            translator.Add("NewSeason English", "New season");
+            translator.Add("NewSeason Macedonian", "Нова сезона");
+
+            translator.Add("SeasonNotFin English", "This season is not finished!");
+            translator.Add("SeasonNotFin Macedonian", "Оваа сезона не е завршена!");
+
+            translator.Add("StartNewSeason English", "Start new season");
+            translator.Add("StartNewSeason Macedonian", "Почни нова сезона");
+
+            translator.Add("BackBtn English", "Back");
+            translator.Add("BackBtn Macedonian", "Назад");
             
 
         }

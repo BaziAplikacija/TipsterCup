@@ -46,20 +46,20 @@
             this.lblUsername = new System.Windows.Forms.Label();
             this.listTipsters = new System.Windows.Forms.ListBox();
             this.tabOptions = new System.Windows.Forms.TabPage();
+            this.gbNewSeason = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnStart = new System.Windows.Forms.Button();
             this.gbTimeInterval = new System.Windows.Forms.GroupBox();
             this.btnChange = new System.Windows.Forms.Button();
             this.cbTime = new System.Windows.Forms.ComboBox();
             this.lblDay = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnStart = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabTipsters.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabOptions.SuspendLayout();
+            this.gbNewSeason.SuspendLayout();
             this.gbTimeInterval.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -238,7 +238,7 @@
             // 
             // tabOptions
             // 
-            this.tabOptions.Controls.Add(this.groupBox1);
+            this.tabOptions.Controls.Add(this.gbNewSeason);
             this.tabOptions.Controls.Add(this.gbTimeInterval);
             this.tabOptions.Location = new System.Drawing.Point(4, 22);
             this.tabOptions.Name = "tabOptions";
@@ -247,6 +247,36 @@
             this.tabOptions.TabIndex = 1;
             this.tabOptions.Text = "Options";
             this.tabOptions.UseVisualStyleBackColor = true;
+            // 
+            // gbNewSeason
+            // 
+            this.gbNewSeason.Controls.Add(this.label1);
+            this.gbNewSeason.Controls.Add(this.btnStart);
+            this.gbNewSeason.Location = new System.Drawing.Point(21, 125);
+            this.gbNewSeason.Name = "gbNewSeason";
+            this.gbNewSeason.Size = new System.Drawing.Size(448, 84);
+            this.gbNewSeason.TabIndex = 3;
+            this.gbNewSeason.TabStop = false;
+            this.gbNewSeason.Text = "New Season";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(17, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "label1";
+            // 
+            // btnStart
+            // 
+            this.btnStart.Location = new System.Drawing.Point(304, 34);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(108, 23);
+            this.btnStart.TabIndex = 2;
+            this.btnStart.Text = "Start new season";
+            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // gbTimeInterval
             // 
@@ -310,36 +340,6 @@
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.button1_Click);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.btnStart);
-            this.groupBox1.Location = new System.Drawing.Point(21, 125);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(448, 84);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "New Season";
-            // 
-            // btnStart
-            // 
-            this.btnStart.Location = new System.Drawing.Point(304, 34);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(108, 23);
-            this.btnStart.TabIndex = 2;
-            this.btnStart.Text = "Start new season";
-            this.btnStart.UseVisualStyleBackColor = true;
-            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "label1";
-            // 
             // FormAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -356,10 +356,10 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tabOptions.ResumeLayout(false);
+            this.gbNewSeason.ResumeLayout(false);
+            this.gbNewSeason.PerformLayout();
             this.gbTimeInterval.ResumeLayout(false);
             this.gbTimeInterval.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -389,7 +389,7 @@
         private System.Windows.Forms.ComboBox cbTime;
         private System.Windows.Forms.Label lblDay;
         private System.Windows.Forms.Button btnBack;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbNewSeason;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnStart;
     }

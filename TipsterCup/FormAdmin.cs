@@ -32,7 +32,7 @@ namespace TipsterCup
 
 
             this.Text = FormLogin.translator["FormRegister " + FormLogin.currLanguage];
-            this.btnBan.Text = FormLogin.translator["BanBtn " + FormLogin.currLanguage];
+           // this.btnBan.Text = FormLogin.translator["BanBtn " + FormLogin.currLanguage];
             this.lblUsername.Text = FormLogin.translator["Username " + FormLogin.currLanguage];
             this.lblPassword.Text = FormLogin.translator["Password " + FormLogin.currLanguage];
             this.lblName.Text = FormLogin.translator["Name " + FormLogin.currLanguage];
@@ -44,16 +44,19 @@ namespace TipsterCup
             this.gbTimeInterval.Text = FormLogin.translator["VirtualDay " + FormLogin.currLanguage];
             this.lblDay.Text = FormLogin.translator["DayLbl " + FormLogin.currLanguage];
             this.btnChange.Text = FormLogin.translator["ChangeBtn " + FormLogin.currLanguage];
+            this.btnBack.Text = FormLogin.translator["BackBtn " + FormLogin.currLanguage];
+            this.gbNewSeason.Text = FormLogin.translator["NewSeason " + FormLogin.currLanguage];
+            this.btnStart.Text = FormLogin.translator["StartNewSeason " + FormLogin.currLanguage];
 
             if (!FormMain.finished)
             {
                 btnStart.Enabled = false;
-                label1.Text = "This season is not finished!";
+                label1.Text = FormLogin.translator["SeasonNotFin " + FormLogin.currLanguage];
             }
             else
             {
                 btnStart.Enabled = true;
-                label1.Text = "This season is finished";
+                label1.Text = FormLogin.translator["SeasonFin " + FormLogin.currLanguage];
             }
         }
 
@@ -94,11 +97,11 @@ namespace TipsterCup
                 lblRatingData.Text = String.Format("{0}", tipster.Money);
                 if (tipster.Valid.Equals("n"))
                 {
-                    btnBan.Text = "UNBAN";
+                    btnBan.Text = FormLogin.translator["UnBanBtn " + FormLogin.currLanguage];
                 }
                 else
                 {
-                    btnBan.Text = "BAN";
+                    btnBan.Text = FormLogin.translator["BanBtn " + FormLogin.currLanguage];
                 }
             }
         }
