@@ -175,6 +175,21 @@ namespace TipsterCup
             translator.Add("FormAdmin Macedonian", "Администратор");
             translator.Add("DayLbl English", "1 day = ");
             translator.Add("DayLbl Macedonian", "1 ден = ");
+            translator.Add("SeasonFin English", "Season is finished");
+            translator.Add("SeasonFin Macedonian", "Сезоната заврши");
+
+            translator.Add("NewSeason English", "New season");
+            translator.Add("NewSeason Macedonian", "Нова сезона");
+
+            translator.Add("SeasonNotFin English", "This season is not finished!");
+            translator.Add("SeasonNotFin Macedonian", "Оваа сезона не е завршена!");
+
+            translator.Add("StartNewSeason English", "Start new season");
+            translator.Add("StartNewSeason Macedonian", "Почни нова сезона");
+
+            translator.Add("BackBtn English", "Back");
+            translator.Add("BackBtn Macedonian", "Назад");
+
 
             // za FormMain
             translator.Add("FormMain English", "Main form");
@@ -206,20 +221,25 @@ namespace TipsterCup
             translator.Add("Round Macedonian", "Коло");
             translator.Add("Playing English", " is playing");
             translator.Add("Playing Macedonian", " се игра");
-            translator.Add("SeasonFin English", "Season is finished");
-            translator.Add("SeasonFin Macedonian", "Сезоната заврши");
+            
 
-            translator.Add("NewSeason English", "New season");
-            translator.Add("NewSeason Macedonian", "Нова сезона");
+            //za FormStandings
 
-            translator.Add("SeasonNotFin English", "This season is not finished!");
-            translator.Add("SeasonNotFin Macedonian", "Оваа сезона не е завршена!");
+            translator.Add("Team English", "Team");
+            translator.Add("Team Macedonian", "Тим");
+            translator.Add("FormStandings English", "Standings");
+            translator.Add("FormStandings Macedonian", "Табела");
 
-            translator.Add("StartNewSeason English", "Start new season");
-            translator.Add("StartNewSeason Macedonian", "Почни нова сезона");
+            translator.Add("W English", "W");
+            translator.Add("W Macedonian", "Победи");
+            translator.Add("D English", "D");
+            translator.Add("D Macedonian", "Реми");
+            translator.Add("L English", "L");
+            translator.Add("L Macedonian", "Порази");
 
-            translator.Add("BackBtn English", "Back");
-            translator.Add("BackBtn Macedonian", "Назад");
+            translator.Add("Points English", "Points");
+            translator.Add("Points Macedonian", "Поени");
+
             
 
         }
