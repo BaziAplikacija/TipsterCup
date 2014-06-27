@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pbTeam = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblStadium = new System.Windows.Forms.Label();
@@ -169,15 +169,15 @@
             // 
             // chartTeamRating
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chartTeamRating.ChartAreas.Add(chartArea1);
+            chartArea2.Name = "ChartArea1";
+            this.chartTeamRating.ChartAreas.Add(chartArea2);
             this.chartTeamRating.Location = new System.Drawing.Point(255, 12);
             this.chartTeamRating.Name = "chartTeamRating";
             this.chartTeamRating.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Name = "Series1";
-            this.chartTeamRating.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Name = "Series1";
+            this.chartTeamRating.Series.Add(series2);
             this.chartTeamRating.Size = new System.Drawing.Size(408, 204);
             this.chartTeamRating.TabIndex = 8;
             this.chartTeamRating.Text = "chart1";
@@ -213,7 +213,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(29, 341);
+            this.label2.Location = new System.Drawing.Point(24, 341);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 19);
             this.label2.TabIndex = 11;

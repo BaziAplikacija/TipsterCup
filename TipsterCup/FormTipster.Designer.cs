@@ -45,19 +45,21 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnTransaction = new System.Windows.Forms.Button();
+            this.dataGrid = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // lblUser
             // 
             this.lblUser.AutoSize = true;
             this.lblUser.BackColor = System.Drawing.Color.Transparent;
-            this.lblUser.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblUser.Location = new System.Drawing.Point(38, 47);
+            this.lblUser.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblUser.Location = new System.Drawing.Point(51, 25);
             this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(60, 15);
+            this.lblUser.Size = new System.Drawing.Size(86, 21);
             this.lblUser.TabIndex = 0;
             this.lblUser.Text = "Username:";
             // 
@@ -65,10 +67,10 @@
             // 
             this.lblFirst.AutoSize = true;
             this.lblFirst.BackColor = System.Drawing.Color.Transparent;
-            this.lblFirst.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblFirst.Location = new System.Drawing.Point(38, 73);
+            this.lblFirst.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblFirst.Location = new System.Drawing.Point(51, 64);
             this.lblFirst.Name = "lblFirst";
-            this.lblFirst.Size = new System.Drawing.Size(63, 15);
+            this.lblFirst.Size = new System.Drawing.Size(94, 21);
             this.lblFirst.TabIndex = 1;
             this.lblFirst.Text = "First name:";
             // 
@@ -76,10 +78,10 @@
             // 
             this.lblSur.AutoSize = true;
             this.lblSur.BackColor = System.Drawing.Color.Transparent;
-            this.lblSur.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblSur.Location = new System.Drawing.Point(38, 101);
+            this.lblSur.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblSur.Location = new System.Drawing.Point(51, 105);
             this.lblSur.Name = "lblSur";
-            this.lblSur.Size = new System.Drawing.Size(55, 15);
+            this.lblSur.Size = new System.Drawing.Size(78, 21);
             this.lblSur.TabIndex = 2;
             this.lblSur.Text = "Surname:";
             // 
@@ -87,10 +89,10 @@
             // 
             this.lblE.AutoSize = true;
             this.lblE.BackColor = System.Drawing.Color.Transparent;
-            this.lblE.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblE.Location = new System.Drawing.Point(41, 132);
+            this.lblE.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblE.Location = new System.Drawing.Point(51, 151);
             this.lblE.Name = "lblE";
-            this.lblE.Size = new System.Drawing.Size(42, 15);
+            this.lblE.Size = new System.Drawing.Size(63, 21);
             this.lblE.TabIndex = 3;
             this.lblE.Text = "E-mail:";
             // 
@@ -98,10 +100,10 @@
             // 
             this.lblM.AutoSize = true;
             this.lblM.BackColor = System.Drawing.Color.Transparent;
-            this.lblM.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblM.Location = new System.Drawing.Point(41, 168);
+            this.lblM.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblM.Location = new System.Drawing.Point(51, 193);
             this.lblM.Name = "lblM";
-            this.lblM.Size = new System.Drawing.Size(44, 15);
+            this.lblM.Size = new System.Drawing.Size(62, 21);
             this.lblM.TabIndex = 4;
             this.lblM.Text = "Money:";
             // 
@@ -109,10 +111,10 @@
             // 
             this.lblR.AutoSize = true;
             this.lblR.BackColor = System.Drawing.Color.Transparent;
-            this.lblR.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblR.Location = new System.Drawing.Point(41, 210);
+            this.lblR.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblR.Location = new System.Drawing.Point(51, 234);
             this.lblR.Name = "lblR";
-            this.lblR.Size = new System.Drawing.Size(35, 15);
+            this.lblR.Size = new System.Drawing.Size(51, 21);
             this.lblR.TabIndex = 5;
             this.lblR.Text = "Rank:";
             // 
@@ -120,10 +122,10 @@
             // 
             this.lblMoney.AutoSize = true;
             this.lblMoney.BackColor = System.Drawing.Color.Transparent;
-            this.lblMoney.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblMoney.Location = new System.Drawing.Point(102, 168);
+            this.lblMoney.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblMoney.Location = new System.Drawing.Point(146, 193);
             this.lblMoney.Name = "lblMoney";
-            this.lblMoney.Size = new System.Drawing.Size(38, 15);
+            this.lblMoney.Size = new System.Drawing.Size(52, 21);
             this.lblMoney.TabIndex = 6;
             this.lblMoney.Text = "label7";
             // 
@@ -131,10 +133,10 @@
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.BackColor = System.Drawing.Color.Transparent;
-            this.lblEmail.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblEmail.Location = new System.Drawing.Point(102, 132);
+            this.lblEmail.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblEmail.Location = new System.Drawing.Point(146, 151);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(38, 15);
+            this.lblEmail.Size = new System.Drawing.Size(52, 21);
             this.lblEmail.TabIndex = 7;
             this.lblEmail.Text = "label8";
             // 
@@ -142,10 +144,10 @@
             // 
             this.lblSurname.AutoSize = true;
             this.lblSurname.BackColor = System.Drawing.Color.Transparent;
-            this.lblSurname.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblSurname.Location = new System.Drawing.Point(102, 101);
+            this.lblSurname.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblSurname.Location = new System.Drawing.Point(146, 105);
             this.lblSurname.Name = "lblSurname";
-            this.lblSurname.Size = new System.Drawing.Size(38, 15);
+            this.lblSurname.Size = new System.Drawing.Size(52, 21);
             this.lblSurname.TabIndex = 8;
             this.lblSurname.Text = "label9";
             // 
@@ -153,10 +155,10 @@
             // 
             this.lblFirstName.AutoSize = true;
             this.lblFirstName.BackColor = System.Drawing.Color.Transparent;
-            this.lblFirstName.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblFirstName.Location = new System.Drawing.Point(102, 73);
+            this.lblFirstName.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblFirstName.Location = new System.Drawing.Point(146, 64);
             this.lblFirstName.Name = "lblFirstName";
-            this.lblFirstName.Size = new System.Drawing.Size(43, 15);
+            this.lblFirstName.Size = new System.Drawing.Size(61, 21);
             this.lblFirstName.TabIndex = 9;
             this.lblFirstName.Text = "label10";
             // 
@@ -164,10 +166,10 @@
             // 
             this.lblUsername.AutoSize = true;
             this.lblUsername.BackColor = System.Drawing.Color.Transparent;
-            this.lblUsername.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblUsername.Location = new System.Drawing.Point(102, 47);
+            this.lblUsername.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblUsername.Location = new System.Drawing.Point(146, 25);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(41, 15);
+            this.lblUsername.Size = new System.Drawing.Size(61, 21);
             this.lblUsername.TabIndex = 10;
             this.lblUsername.Text = "label11";
             // 
@@ -175,10 +177,10 @@
             // 
             this.lblRank.AutoSize = true;
             this.lblRank.BackColor = System.Drawing.Color.Transparent;
-            this.lblRank.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblRank.Location = new System.Drawing.Point(102, 210);
+            this.lblRank.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblRank.Location = new System.Drawing.Point(146, 234);
             this.lblRank.Name = "lblRank";
-            this.lblRank.Size = new System.Drawing.Size(43, 15);
+            this.lblRank.Size = new System.Drawing.Size(61, 21);
             this.lblRank.TabIndex = 11;
             this.lblRank.Text = "label12";
             // 
@@ -186,7 +188,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(159, 158);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 192);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(29, 23);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -197,7 +199,7 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(159, 122);
+            this.pictureBox2.Location = new System.Drawing.Point(12, 150);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(29, 23);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -208,7 +210,7 @@
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(159, 200);
+            this.pictureBox3.Location = new System.Drawing.Point(12, 233);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(29, 23);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -217,21 +219,32 @@
             // 
             // btnTransaction
             // 
-            this.btnTransaction.Location = new System.Drawing.Point(307, 200);
+            this.btnTransaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnTransaction.Location = new System.Drawing.Point(12, 267);
             this.btnTransaction.Name = "btnTransaction";
-            this.btnTransaction.Size = new System.Drawing.Size(75, 23);
+            this.btnTransaction.Size = new System.Drawing.Size(796, 38);
             this.btnTransaction.TabIndex = 15;
             this.btnTransaction.Text = "Send money";
             this.btnTransaction.UseVisualStyleBackColor = true;
             this.btnTransaction.Visible = false;
             this.btnTransaction.Click += new System.EventHandler(this.btnTransaction_Click);
             // 
+            // dataGrid
+            // 
+            this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGrid.Location = new System.Drawing.Point(380, 25);
+            this.dataGrid.MaximumSize = new System.Drawing.Size(430, 230);
+            this.dataGrid.Name = "dataGrid";
+            this.dataGrid.Size = new System.Drawing.Size(430, 230);
+            this.dataGrid.TabIndex = 16;
+            // 
             // FormTipster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(419, 284);
+            this.ClientSize = new System.Drawing.Size(824, 317);
+            this.Controls.Add(this.dataGrid);
             this.Controls.Add(this.btnTransaction);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
@@ -255,6 +268,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -278,5 +292,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button btnTransaction;
+        private System.Windows.Forms.DataGridView dataGrid;
     }
 }

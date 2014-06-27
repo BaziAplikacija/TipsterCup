@@ -55,7 +55,7 @@ namespace TipsterCup
                 reader.Close();
 
             }
-
+            
             if (idTipster != FormLogin.IdLoggedTipster)
             {
                 btnTransaction.Visible = true;
@@ -64,6 +64,37 @@ namespace TipsterCup
             {
                 changeView();
             }
+
+            setDataGrid();
+
+        }
+
+        private void setDataGrid()
+        {
+            
+            DataTable table = new DataTable();
+            using (OracleConnection connection = new OracleConnection(FormLogin.connString))
+            {
+                String query = "SELECT c.description as Tip, c.value as Coefficient, r.homeTeam as HomeTeam, r.goalshome || ' - ' || r.goalsguest as Result, r.guestteam as GuestTeam"
+                    + " FROM Computegain c JOIN Results r ON (c.idMatch = r.idMatch) WHERE c.idTipster = "+idTipster;
+                OracleDataAdapter adapter = new OracleDataAdapter(query, connection);
+                adapter.Fill(table);
+                
+            }
+            dataGrid.DataSource = table;
+            dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGrid.AutoSize = true;
+            dataGrid.DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomCenter;
+            dataGrid.Columns["Tip"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
+            dataGrid.Columns["HomeTeam"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomRight;
+            dataGrid.Columns["GuestTeam"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomLeft;
+            dataGrid.Columns["GuestTeam"].HeaderText = "Guest Team";
+            dataGrid.Columns["HomeTeam"].HeaderText = "Home Team";
+            dataGrid.Columns["Tip"].HeaderText = "Tip";
+            dataGrid.Columns["Coefficient"].HeaderText = "Coefficient";
+            dataGrid.Columns["Result"].HeaderText = "Result";
+            
+            
         }
 
 
@@ -115,6 +146,8 @@ namespace TipsterCup
             pictureBox1.Dispose();
             pictureBox2.Dispose();
             pictureBox3.Dispose();
+
+            dataGrid.Location = new Point(this.Width - dataGrid.Width - 100, dataGrid.Location.Y);
         }
 
         private void btnTransaction_Click(object sender, EventArgs e)
