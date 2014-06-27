@@ -205,7 +205,7 @@ namespace TipsterCup
                         {
                             conn.Open();
 
-                            string query = "select * from computegain where idRound = " + currentRound.Id;
+                            string query = "select * from computegain where validated = 'n' AND idRound <= " + currentRound.Id;
                             OracleCommand command = new OracleCommand(query, conn);
                             command.CommandType = CommandType.Text;
 
@@ -224,7 +224,7 @@ namespace TipsterCup
                                         
                                 }
                             }
-                            query = "update tips set validated = 'y' where idTips IN (select idTips from computegain where idRound = " + currentRound.Id + " )";
+                            query = "update tips set validated = 'y' where idTips IN (select idTips from computegain where validated = 'n' AND idRound <= " + currentRound.Id + " )";
                             command = new OracleCommand(query, conn);
                             command.CommandType = CommandType.Text;
                             command.ExecuteNonQuery();

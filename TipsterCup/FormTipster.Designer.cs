@@ -231,6 +231,7 @@
             // 
             // dataGrid
             // 
+            this.dataGrid.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGrid.Location = new System.Drawing.Point(380, 25);
             this.dataGrid.MaximumSize = new System.Drawing.Size(430, 230);
@@ -262,7 +263,7 @@
             this.Controls.Add(this.lblFirst);
             this.Controls.Add(this.lblUser);
             this.Name = "FormTipster";
-            this.Text = "FormTipster";
+            this.Text = "Tipster";
             this.Load += new System.EventHandler(this.FormTipster_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.FormTipster_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

@@ -10,7 +10,7 @@ namespace TipsterCup
 {
     class CoefficientProvider
     {
-        private static double[] diff = {-0.5, 0, 0.5};
+        private static double[] diff = {-0.05, 0, 0.05};
         private static double[,] coeff = new double[21, 7];
         private static int[] lowerBound = {500, 450, 400, 350, 300, 250, 200, 150, 100, 50, 0, 
                         -50, -100, -150, -200, -250, -300, -350, -400, -450, -200000000};

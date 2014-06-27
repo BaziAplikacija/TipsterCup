@@ -179,7 +179,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "FormPlayer";
-            this.Text = "FormPlayer";
+            this.Text = "Player";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartPlayerRating)).EndInit();
             this.ResumeLayout(false);

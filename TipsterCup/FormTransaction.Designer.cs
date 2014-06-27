@@ -63,7 +63,7 @@
             this.tbMessage.Multiline = true;
             this.tbMessage.Name = "tbMessage";
             this.tbMessage.Size = new System.Drawing.Size(145, 84);
-            this.tbMessage.TabIndex = 3;
+            this.tbMessage.TabIndex = 2;
             // 
             // btnNo
             // 
@@ -83,7 +83,7 @@
             this.btnGo.Location = new System.Drawing.Point(277, 237);
             this.btnGo.Name = "btnGo";
             this.btnGo.Size = new System.Drawing.Size(50, 50);
-            this.btnGo.TabIndex = 5;
+            this.btnGo.TabIndex = 3;
             this.btnGo.UseVisualStyleBackColor = true;
             this.btnGo.Click += new System.EventHandler(this.btnGo_Click);
             // 
@@ -106,9 +106,9 @@
             0});
             this.nudAmount.Name = "nudAmount";
             this.nudAmount.Size = new System.Drawing.Size(103, 20);
-            this.nudAmount.TabIndex = 7;
+            this.nudAmount.TabIndex = 1;
             this.nudAmount.Value = new decimal(new int[] {
-            1,
+            10,
             0,
             0,
             0});
@@ -126,7 +126,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "FormTransaction";
-            this.Text = "FormTransaction";
+            this.Text = "Transaction";
             this.Load += new System.EventHandler(this.FormTransaction_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudAmount)).EndInit();
             this.ResumeLayout(false);

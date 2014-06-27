@@ -159,7 +159,7 @@ namespace TipsterCup
                 command.ExecuteNonQuery();
             }
 
-            MessageBox.Show("The tip was successful.");
+            MessageBox.Show("The tip was successful. You can gain " + checkedCoeff.Value*(int)nudCash.Value + " dollars.");
             this.Close();
         }
     }

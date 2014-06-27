@@ -455,7 +455,7 @@
             this.Controls.Add(this.lblSearchBy);
             this.Controls.Add(this.gridPlayers);
             this.Name = "FormAllPlayers";
-            this.Text = "To:";
+            this.Text = "All players";
             this.Load += new System.EventHandler(this.FormAllPlayers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridPlayers)).EndInit();
             this.ResumeLayout(false);
