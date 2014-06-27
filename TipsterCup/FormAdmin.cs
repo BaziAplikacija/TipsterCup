@@ -48,7 +48,7 @@ namespace TipsterCup
             this.gbNewSeason.Text = FormLogin.translator["NewSeason " + FormLogin.currLanguage];
             this.btnStart.Text = FormLogin.translator["StartNewSeason " + FormLogin.currLanguage];
 
-            if (!FormMain.finished)
+            if (!checkSeasonFinished())
             {
                 btnStart.Enabled = false;
                 label1.Text = FormLogin.translator["SeasonNotFin " + FormLogin.currLanguage];
@@ -59,6 +59,24 @@ namespace TipsterCup
                 label1.Text = FormLogin.translator["SeasonFin " + FormLogin.currLanguage];
             }
         }
+
+
+        private bool checkSeasonFinished(){
+            using(OracleConnection connection = new OracleConnection(FormLogin.connString)){
+                String query = "SELECT dateTo FROM ROUND WHERE idRound = 38";
+                OracleCommand command = new OracleCommand(query, connection);
+                command.CommandType = CommandType.Text;
+                OracleDataReader reader = command.ExecuteReader();
+                reader.Read();
+                DateTime lastDate = reader.GetDateTime(0);
+                 
+                if(lastDate.CompareTo(FormLogin.virtualDate) < 0){
+                     return true; 
+                }
+            }
+            return false;
+        }
+
 
         //Vo listBox gi stava tipsterite
         public void select_tipsters()
@@ -222,8 +240,7 @@ namespace TipsterCup
                 command.CommandType = CommandType.Text;
                 command.ExecuteNonQuery();
             }
-            FormMain.finished = false;
-
+            btnStart.Enabled = false;
         }
     }
 }
