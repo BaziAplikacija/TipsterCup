@@ -247,6 +247,53 @@ namespace TipsterCup
             translator.Add("Tip English", "Tip");
             translator.Add("Tip Macedonian", "Типувај");
 
+
+            // za FormAllPlayers
+
+            translator.Add("FirstName English", "First name");
+            translator.Add("FirstName Macedonian", "Име");
+
+            translator.Add("LastName English", "Last name");
+            translator.Add("LastName Macedonian", "Презиме");
+
+            translator.Add("SearchBy English", "Search by");
+            translator.Add("SearchBy Macedonian", "Пребарувај по");
+
+            translator.Add("Age English", "Age");
+            translator.Add("Age Macedonian", "Години");
+
+            translator.Add("Goals English", "Goals");
+            translator.Add("Goals Macedonian", "Голови");
+
+
+            translator.Add("From English", "From");
+            translator.Add("From Macedonian", "Од");
+
+            translator.Add("To English", "To");
+            translator.Add("To Macedonian", "До");
+
+
+            translator.Add("Position English", "Position");
+            translator.Add("Position Macedonian", "Позиција");
+
+            translator.Add("FormPlayers English", "Players");
+            translator.Add("FormPlayers Macedonian", "Играчи");
+
+
+
+            // za FormTipster
+
+            translator.Add("SendMoney English", "Send money");
+            translator.Add("SendMoney Macedonian", "Прати пари");
+
+
+            translator.Add("Money English", "Money");
+            translator.Add("Money Macedonian", "Пари");
+
+            translator.Add("Rank English", "Rank");
+            translator.Add("Rank Macedonian", "Ранг");
+            
+
             
 
         }

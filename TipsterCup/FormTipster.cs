@@ -27,7 +27,12 @@ namespace TipsterCup
 
         private void FormTipster_Load(object sender, EventArgs e)
         {
-            
+            lblUser.Text = FormLogin.translator["Username " + FormLogin.currLanguage];
+            lblFirst.Text = FormLogin.translator["FirstName " + FormLogin.currLanguage];
+            lblSur.Text = FormLogin.translator["LastName " + FormLogin.currLanguage];
+            lblE.Text = FormLogin.translator["Email " + FormLogin.currLanguage];
+            lblM.Text = FormLogin.translator["Money " + FormLogin.currLanguage];
+            btnTransaction.Text = FormLogin.translator["SendMoney " + FormLogin.currLanguage];
             using (OracleConnection conn = new OracleConnection(FormLogin.connString))
             {
                 conn.Open();

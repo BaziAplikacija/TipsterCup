@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.btnRounds = new System.Windows.Forms.Button();
-            this.btnTeams = new System.Windows.Forms.Button();
             this.btnPlayers = new System.Windows.Forms.Button();
             this.btnTipsters = new System.Windows.Forms.Button();
             this.btnStatistics = new System.Windows.Forms.Button();
@@ -40,14 +39,14 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.pnlButtons = new System.Windows.Forms.Panel();
+            this.pbMusic = new System.Windows.Forms.PictureBox();
             this.lblNextRound = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblDate = new System.Windows.Forms.Label();
-            this.pbMusic = new System.Windows.Forms.PictureBox();
             this.pnlButtons.SuspendLayout();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMusic)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnRounds
@@ -61,20 +60,10 @@
             this.btnRounds.UseVisualStyleBackColor = true;
             this.btnRounds.Click += new System.EventHandler(this.btnRounds_Click);
             // 
-            // btnTeams
-            // 
-            this.btnTeams.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTeams.Location = new System.Drawing.Point(223, 0);
-            this.btnTeams.Name = "btnTeams";
-            this.btnTeams.Size = new System.Drawing.Size(115, 40);
-            this.btnTeams.TabIndex = 2;
-            this.btnTeams.Text = "Teams";
-            this.btnTeams.UseVisualStyleBackColor = true;
-            // 
             // btnPlayers
             // 
             this.btnPlayers.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPlayers.Location = new System.Drawing.Point(335, 0);
+            this.btnPlayers.Location = new System.Drawing.Point(222, 0);
             this.btnPlayers.Name = "btnPlayers";
             this.btnPlayers.Size = new System.Drawing.Size(115, 40);
             this.btnPlayers.TabIndex = 3;
@@ -85,7 +74,7 @@
             // btnTipsters
             // 
             this.btnTipsters.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTipsters.Location = new System.Drawing.Point(446, 0);
+            this.btnTipsters.Location = new System.Drawing.Point(333, 0);
             this.btnTipsters.Name = "btnTipsters";
             this.btnTipsters.Size = new System.Drawing.Size(115, 40);
             this.btnTipsters.TabIndex = 4;
@@ -96,7 +85,7 @@
             // btnStatistics
             // 
             this.btnStatistics.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStatistics.Location = new System.Drawing.Point(557, 0);
+            this.btnStatistics.Location = new System.Drawing.Point(444, 0);
             this.btnStatistics.Name = "btnStatistics";
             this.btnStatistics.Size = new System.Drawing.Size(115, 40);
             this.btnStatistics.TabIndex = 5;
@@ -107,7 +96,7 @@
             // btnMyProfile
             // 
             this.btnMyProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMyProfile.Location = new System.Drawing.Point(668, 0);
+            this.btnMyProfile.Location = new System.Drawing.Point(555, 0);
             this.btnMyProfile.Name = "btnMyProfile";
             this.btnMyProfile.Size = new System.Drawing.Size(115, 40);
             this.btnMyProfile.TabIndex = 6;
@@ -129,12 +118,13 @@
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(780, 0);
+            this.btnExit.Location = new System.Drawing.Point(667, 0);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(115, 40);
             this.btnExit.TabIndex = 9;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // menuStrip1
             // 
@@ -153,7 +143,6 @@
             this.pnlButtons.Controls.Add(this.btnExit);
             this.pnlButtons.Controls.Add(this.btnRounds);
             this.pnlButtons.Controls.Add(this.btnMyProfile);
-            this.pnlButtons.Controls.Add(this.btnTeams);
             this.pnlButtons.Controls.Add(this.btnStatistics);
             this.pnlButtons.Controls.Add(this.btnPlayers);
             this.pnlButtons.Controls.Add(this.btnTipsters);
@@ -162,6 +151,17 @@
             this.pnlButtons.Name = "pnlButtons";
             this.pnlButtons.Size = new System.Drawing.Size(1155, 40);
             this.pnlButtons.TabIndex = 11;
+            // 
+            // pbMusic
+            // 
+            this.pbMusic.Image = ((System.Drawing.Image)(resources.GetObject("pbMusic.Image")));
+            this.pbMusic.Location = new System.Drawing.Point(1117, 9);
+            this.pbMusic.Name = "pbMusic";
+            this.pbMusic.Size = new System.Drawing.Size(20, 20);
+            this.pbMusic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbMusic.TabIndex = 10;
+            this.pbMusic.TabStop = false;
+            this.pbMusic.Click += new System.EventHandler(this.pbMusic_Click);
             // 
             // lblNextRound
             // 
@@ -200,17 +200,6 @@
             this.lblDate.TabIndex = 15;
             this.lblDate.Text = "label2";
             // 
-            // pbMusic
-            // 
-            this.pbMusic.Image = ((System.Drawing.Image)(resources.GetObject("pbMusic.Image")));
-            this.pbMusic.Location = new System.Drawing.Point(1117, 9);
-            this.pbMusic.Name = "pbMusic";
-            this.pbMusic.Size = new System.Drawing.Size(20, 20);
-            this.pbMusic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbMusic.TabIndex = 10;
-            this.pbMusic.TabStop = false;
-            this.pbMusic.Click += new System.EventHandler(this.pbMusic_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -227,9 +216,9 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.pnlButtons.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbMusic)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMusic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,7 +227,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnRounds;
-        private System.Windows.Forms.Button btnTeams;
         private System.Windows.Forms.Button btnPlayers;
         private System.Windows.Forms.Button btnTipsters;
         private System.Windows.Forms.Button btnStatistics;
