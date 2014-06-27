@@ -255,6 +255,7 @@
             this.pnlLastPerformance.Name = "pnlLastPerformance";
             this.pnlLastPerformance.Size = new System.Drawing.Size(276, 228);
             this.pnlLastPerformance.TabIndex = 8;
+            this.pnlLastPerformance.Visible = false;
             // 
             // lblLastPerformance
             // 
@@ -279,6 +280,7 @@
             this.pnlTopScorers.Name = "pnlTopScorers";
             this.pnlTopScorers.Size = new System.Drawing.Size(276, 228);
             this.pnlTopScorers.TabIndex = 9;
+            this.pnlTopScorers.Visible = false;
             // 
             // lblTopScorers
             // 
@@ -303,6 +305,7 @@
             this.pnlDreamTeam.Name = "pnlDreamTeam";
             this.pnlDreamTeam.Size = new System.Drawing.Size(350, 228);
             this.pnlDreamTeam.TabIndex = 10;
+            this.pnlDreamTeam.Visible = false;
             // 
             // lblDreamTeam
             // 
@@ -374,6 +377,7 @@
             this.pnlAverageAge.Name = "pnlAverageAge";
             this.pnlAverageAge.Size = new System.Drawing.Size(276, 228);
             this.pnlAverageAge.TabIndex = 11;
+            this.pnlAverageAge.Visible = false;
             // 
             // lblAverageAge
             // 
@@ -429,6 +433,7 @@
             this.pnlHatTrick.Name = "pnlHatTrick";
             this.pnlHatTrick.Size = new System.Drawing.Size(604, 228);
             this.pnlHatTrick.TabIndex = 12;
+            this.pnlHatTrick.Visible = false;
             // 
             // lblHatTrick
             // 
@@ -513,7 +518,7 @@
             this.dataGridViewTextBoxColumn5,
             this.Column4,
             this.Column5});
-            this.gridTeamGoals.Location = new System.Drawing.Point(10, 83);
+            this.gridTeamGoals.Location = new System.Drawing.Point(10, 104);
             this.gridTeamGoals.Name = "gridTeamGoals";
             this.gridTeamGoals.ReadOnly = true;
             this.gridTeamGoals.RowHeadersVisible = false;
@@ -549,10 +554,11 @@
             this.panel2.Controls.Add(this.gridTeamGoals);
             this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.panel2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.panel2.Location = new System.Drawing.Point(26, 278);
+            this.panel2.Location = new System.Drawing.Point(26, 267);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(276, 246);
+            this.panel2.Size = new System.Drawing.Size(276, 257);
             this.panel2.TabIndex = 13;
+            this.panel2.Visible = false;
             // 
             // lblTeamGoals
             // 
